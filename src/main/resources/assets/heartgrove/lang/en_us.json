@@ -1,0 +1,17 @@
+{
+  "item.heartgrove.aegis_ingot": "Aegis Ingot",
+  "item.heartgrove.raw_aegis": "Raw Aegis",
+
+  "block.heartgrove.aegis_block": "Aegis Block",
+  "block.heartgrove.aegis_ore": "Aegis Ore",
+  "block.heartgrove.larkspur_log": "Larkspur Log",
+  "block.heartgrove.larkspur_wood": "Larkspur Wood",
+  "block.heartgrove.stripped_larkspur_log": "Stripped Larkspur Log",
+  "block.heartgrove.stripped_larkspur_wood": "Stripped Larkspur Wood",
+  "block.heartgrove.larkspur_planks": "Larkspur Planks",
+  "block.heartgrove.larkspur_leaves": "Larkspur Leaves",
+  "block.heartgrove.larkspur_sapling": "Larkspur Sapling",
+
+  "creativetab.heartgrove.heartgrove_items": "Heartgrove Items",
+  "creativetab.heartgrove.heartgrove_woods": "Heartgrove Woods"
+}
