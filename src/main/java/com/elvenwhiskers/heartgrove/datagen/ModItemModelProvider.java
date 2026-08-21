@@ -24,12 +24,19 @@ public class ModItemModelProvider extends ItemModelProvider {
         saplingItem(ModBlocks.LARKSPUR_SAPLING);
         fenceItem(ModBlocks.LARKSPUR_FENCE, ModBlocks.LARKSPUR_PLANKS);
         basicItem(ModBlocks.LARKSPUR_DOOR.asItem());
+        wallItem(ModBlocks.LARKSPUR_WALL, ModBlocks.LARKSPUR_PLANKS);
     }
 
     private ItemModelBuilder saplingItem(DeferredBlock<Block> item) {
         return withExistingParent(item.getId().getPath(),
                 ResourceLocation.parse("item/generated")).texture("layer0",
                 ResourceLocation.fromNamespaceAndPath(HeartGrove.MOD_ID,"block/" + item.getId().getPath()));
+    }
+
+    public void wallItem(DeferredBlock<?> block, DeferredBlock<Block> baseBlock) {
+        this.withExistingParent(block.getId().getPath(), mcLoc("block/wall_inventory"))
+                .texture("wall",  ResourceLocation.fromNamespaceAndPath(HeartGrove.MOD_ID,
+                        "block/" + baseBlock.getId().getPath()));
     }
 
     public void fenceItem(DeferredBlock<?> block, DeferredBlock<Block> baseBlock) {

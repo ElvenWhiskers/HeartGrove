@@ -71,7 +71,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
         fenceGateBlock((FenceGateBlock) fenceGate.get(), blockTexture(planks.get()));
         blockItem(fenceGate);
         wallBlock((WallBlock) wall.get(), blockTexture(planks.get()));
-        blockItem(wall);
     }
 
     private void blockWithItem(DeferredBlock<?> deferredBlock) {
