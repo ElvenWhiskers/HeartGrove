@@ -11,6 +11,8 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
+import net.minecraft.world.level.block.state.properties.WoodType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -45,6 +47,24 @@ public class ModBlocks {
             () -> new ModFlammableLeaves(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES)));
     public static final DeferredBlock<Block> LARKSPUR_SAPLING = registerBlock("larkspur_sapling",
             () -> new SaplingBlock(ModTreeGrowers.LARKSPUR,BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING)));
+    public static final DeferredBlock<StairBlock> LARKSPUR_STAIRS = registerBlock("larkspur_stairs",
+            () -> new StairBlock(ModBlocks.LARKSPUR_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.of().strength(2f)));
+    public static final DeferredBlock<SlabBlock> LARKSPUR_SLAB = registerBlock("larkspur_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.of().strength(2f)));
+    public static final DeferredBlock<PressurePlateBlock> LARKSPUR_PRESSURE_PLATE = registerBlock("larkspur_pressure_plate",
+            () -> new PressurePlateBlock(BlockSetType.OAK, BlockBehaviour.Properties.of().strength(2f)));
+    public static final DeferredBlock<ButtonBlock> LARKSPUR_BUTTON = registerBlock("larkspur_button",
+            () -> new ButtonBlock(BlockSetType.OAK, 20, BlockBehaviour.Properties.of().strength(2f).noCollission()));
+    public static final DeferredBlock<FenceBlock> LARKSPUR_FENCE = registerBlock("larkspur_fence",
+            () -> new FenceBlock(BlockBehaviour.Properties.of().strength(2f)));
+    public static final DeferredBlock<FenceGateBlock> LARKSPUR_FENCE_GATE = registerBlock("larkspur_fence_gate",
+            () -> new FenceGateBlock(WoodType.OAK, BlockBehaviour.Properties.of().strength(2f)));
+    public static final DeferredBlock<WallBlock> LARKSPUR_WALL = registerBlock("larkspur_wall",
+            () -> new WallBlock(BlockBehaviour.Properties.of().strength(2f)));
+    public static final DeferredBlock<DoorBlock> LARKSPUR_DOOR = registerBlock("larkspur_door",
+            () -> new DoorBlock(BlockSetType.OAK, BlockBehaviour.Properties.of().strength(2f).noOcclusion()));
+    public static final DeferredBlock<TrapDoorBlock> LARKSPUR_TRAPDOOR = registerBlock("larkspur_trapdoor",
+            () -> new TrapDoorBlock(BlockSetType.OAK, BlockBehaviour.Properties.of().strength(2f).noOcclusion()));
 
 
 

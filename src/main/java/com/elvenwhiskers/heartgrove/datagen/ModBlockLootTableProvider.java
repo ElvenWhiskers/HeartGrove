@@ -31,6 +31,15 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.LARKSPUR_SAPLING.get());
         add(ModBlocks.LARKSPUR_LEAVES.get(), block ->
                 createLeavesDrops(block, ModBlocks.LARKSPUR_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
+        dropSelf(ModBlocks.LARKSPUR_STAIRS.get());
+        dropSelf(ModBlocks.LARKSPUR_SLAB.get());
+        dropSelf(ModBlocks.LARKSPUR_PRESSURE_PLATE.get());
+        dropSelf(ModBlocks.LARKSPUR_BUTTON.get());
+        dropSelf(ModBlocks.LARKSPUR_FENCE.get());
+        dropSelf(ModBlocks.LARKSPUR_FENCE_GATE.get());
+        dropSelf(ModBlocks.LARKSPUR_WALL.get());
+        dropSelf(ModBlocks.LARKSPUR_DOOR.get());
+        dropSelf(ModBlocks.LARKSPUR_TRAPDOOR.get());
 
         add(ModBlocks.AEGIS_ORE.get(),
                 block -> createOreDrop(ModBlocks.AEGIS_ORE.get(), ModItems.AEGIS_INGOT.get())); //regular ore loot table.

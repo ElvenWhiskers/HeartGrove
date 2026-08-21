@@ -27,7 +27,7 @@ public class ModCreativeModeTabs {
                     }).build());
 
     public static final Supplier<CreativeModeTab> HEARTGROVE_WOODS_TAB = CREATIVE_MODE_TAB.register("heartgrove_woods_tab",
-            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModBlocks.AEGIS_BLOCK))
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModBlocks.LARKSPUR_LOG))
                     .withTabsBefore(ResourceLocation.fromNamespaceAndPath(HeartGrove.MOD_ID, "heartgrove_items_tab"))
                     .title(Component.translatable("creativetab.heartgrove.heartgrove_woods"))
                     .displayItems((itemDisplayParameters, output) -> {
@@ -38,6 +38,15 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.LARKSPUR_PLANKS);
                         output.accept(ModBlocks.LARKSPUR_LEAVES);
                         output.accept(ModBlocks.LARKSPUR_SAPLING);
+                        output.accept(ModBlocks.LARKSPUR_STAIRS);
+                        output.accept(ModBlocks.LARKSPUR_SLAB);
+                        output.accept(ModBlocks.LARKSPUR_PRESSURE_PLATE);
+                        output.accept(ModBlocks.LARKSPUR_BUTTON);
+                        output.accept(ModBlocks.LARKSPUR_FENCE);
+                        output.accept(ModBlocks.LARKSPUR_FENCE_GATE);
+                        output.accept(ModBlocks.LARKSPUR_WALL);
+                        output.accept(ModBlocks.LARKSPUR_DOOR);
+                        output.accept(ModBlocks.LARKSPUR_TRAPDOOR);
                     }).build());
 
 

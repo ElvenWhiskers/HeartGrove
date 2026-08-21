@@ -22,6 +22,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.AEGIS_INGOT.get());
         basicItem(ModItems.RAW_AEGIS.get());
         saplingItem(ModBlocks.LARKSPUR_SAPLING);
+        fenceItem(ModBlocks.LARKSPUR_FENCE, ModBlocks.LARKSPUR_PLANKS);
+        basicItem(ModBlocks.LARKSPUR_DOOR.asItem());
     }
 
     private ItemModelBuilder saplingItem(DeferredBlock<Block> item) {
@@ -29,4 +31,11 @@ public class ModItemModelProvider extends ItemModelProvider {
                 ResourceLocation.parse("item/generated")).texture("layer0",
                 ResourceLocation.fromNamespaceAndPath(HeartGrove.MOD_ID,"block/" + item.getId().getPath()));
     }
+
+    public void fenceItem(DeferredBlock<?> block, DeferredBlock<Block> baseBlock) {
+        this.withExistingParent(block.getId().getPath(), mcLoc("block/fence_inventory"))
+                .texture("texture",  ResourceLocation.fromNamespaceAndPath(HeartGrove.MOD_ID,
+                        "block/" + baseBlock.getId().getPath()));
+    }
+
 }

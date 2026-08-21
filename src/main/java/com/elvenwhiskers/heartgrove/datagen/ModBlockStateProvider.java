@@ -5,8 +5,8 @@ import com.elvenwhiskers.heartgrove.block.ModBlocks;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.RotatedPillarBlock;
+import net.minecraft.world.level.block.*;
+import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -23,31 +23,73 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         blockWithItem(ModBlocks.AEGIS_ORE);
 
-        logBlock(((RotatedPillarBlock) ModBlocks.LARKSPUR_LOG.get()));
-        axisBlock(((RotatedPillarBlock) ModBlocks.LARKSPUR_WOOD.get()), blockTexture(ModBlocks.LARKSPUR_LOG.get()), blockTexture(ModBlocks.LARKSPUR_LOG.get()));
-        logBlock(((RotatedPillarBlock) ModBlocks.STRIPPED_LARKSPUR_LOG.get()));
-        axisBlock(((RotatedPillarBlock) ModBlocks.STRIPPED_LARKSPUR_WOOD.get()), blockTexture(ModBlocks.STRIPPED_LARKSPUR_LOG.get()), blockTexture(ModBlocks.STRIPPED_LARKSPUR_LOG.get()));
+        //step 1: logset
+        logSet(ModBlocks.LARKSPUR_LOG, ModBlocks.LARKSPUR_WOOD, ModBlocks.STRIPPED_LARKSPUR_LOG, ModBlocks.STRIPPED_LARKSPUR_WOOD);
 
-        blockItem(ModBlocks.LARKSPUR_LOG);
-        blockItem(ModBlocks.LARKSPUR_WOOD);
-        blockItem(ModBlocks.STRIPPED_LARKSPUR_LOG);
-        blockItem(ModBlocks.STRIPPED_LARKSPUR_WOOD);
+        //step 2: plankShapes
+        plankShapes(ModBlocks.LARKSPUR_PLANKS, ModBlocks.LARKSPUR_STAIRS, ModBlocks.LARKSPUR_SLAB, ModBlocks.LARKSPUR_PRESSURE_PLATE, ModBlocks.LARKSPUR_BUTTON, ModBlocks.LARKSPUR_FENCE, ModBlocks.LARKSPUR_FENCE_GATE, ModBlocks.LARKSPUR_WALL);
 
-        blockWithItem(ModBlocks.LARKSPUR_PLANKS);
+        //step 3: doorSet
+        doorSet(ModBlocks.LARKSPUR_DOOR, ModBlocks.LARKSPUR_TRAPDOOR);
 
         leavesBlock(ModBlocks.LARKSPUR_LEAVES);
         saplingBlock(ModBlocks.LARKSPUR_SAPLING);
 
+        //step 4: ideally
+        //woodSet("larkspur");
 
 
+    }
+
+    private void woodSet(){
+
+    }
+
+    private void logSet(DeferredBlock<?> log, DeferredBlock<?> wood, DeferredBlock<?> sLog, DeferredBlock<?> sWood){
+        logBlock(((RotatedPillarBlock) log.get()));
+        axisBlock(((RotatedPillarBlock) wood.get()), blockTexture(log.get()), blockTexture(log.get()));
+        logBlock(((RotatedPillarBlock) sLog.get()));
+        axisBlock(((RotatedPillarBlock) sWood.get()), blockTexture(sLog.get()), blockTexture(sLog.get()));
+
+        blockItem(log);
+        blockItem(wood);
+        blockItem(sLog);
+        blockItem(sWood);
+    }
+
+    private void plankShapes(DeferredBlock<?> planks, DeferredBlock<?> stairs, DeferredBlock<?> slab, DeferredBlock<?> pressurePlate, DeferredBlock<?> button, DeferredBlock<?> fence, DeferredBlock<?> fenceGate, DeferredBlock<?> wall){
+        blockWithItem(planks);
+        stairsBlock((StairBlock) stairs.get(), blockTexture(planks.get()));
+        blockItem(stairs);
+        slabBlock((SlabBlock) slab.get(), blockTexture(planks.get()), blockTexture(planks.get()));
+        blockItem(slab);
+        pressurePlateBlock((PressurePlateBlock) pressurePlate.get(), blockTexture(planks.get()));
+        blockItem(pressurePlate);
+        buttonBlock((ButtonBlock) button.get(), blockTexture(planks.get()));
+        blockItem(button);
+        fenceBlock((FenceBlock) fence.get(), blockTexture(planks.get()));
+        fenceGateBlock((FenceGateBlock) fenceGate.get(), blockTexture(planks.get()));
+        blockItem(fenceGate);
+        wallBlock((WallBlock) wall.get(), blockTexture(planks.get()));
+        blockItem(wall);
     }
 
     private void blockWithItem(DeferredBlock<?> deferredBlock) {
         simpleBlockWithItem(deferredBlock.get(), cubeAll(deferredBlock.get()));
     }
 
+    private void doorSet(DeferredBlock<?> door, DeferredBlock<?> trapDoor){
+        doorBlockWithRenderType((DoorBlock) door.get(), modLoc("block/" + door.getId().getPath() + "_bottom"), modLoc("block/" + door.getId().getPath() + "_top"), "cutout");
+        trapdoorBlockWithRenderType((TrapDoorBlock) trapDoor.get(), modLoc("block/" + trapDoor.getId().getPath()), true, "cutout");
+        blockItem(trapDoor, "_bottom");
+    }
+
     private void blockItem(DeferredBlock<?> deferredBlock) {
         simpleBlockItem(deferredBlock.get(), new ModelFile.UncheckedModelFile("heartgrove:block/" + deferredBlock.getId().getPath()));
+    }
+
+    private void blockItem(DeferredBlock<?> deferredBlock, String appendix) {
+        simpleBlockItem(deferredBlock.get(), new ModelFile.UncheckedModelFile("heartgrove:block/" + deferredBlock.getId().getPath() + appendix));
     }
 
     private void saplingBlock(DeferredBlock<Block> blockRegistryObject) {

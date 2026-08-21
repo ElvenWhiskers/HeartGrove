@@ -11,6 +11,15 @@
   "block.heartgrove.larkspur_planks": "Larkspur Planks",
   "block.heartgrove.larkspur_leaves": "Larkspur Leaves",
   "block.heartgrove.larkspur_sapling": "Larkspur Sapling",
+  "block.heartgrove.larkspur_stairs": "Larkspur Stairs",
+  "block.heartgrove.larkspur_slab": "Larkspur Slab",
+  "block.heartgrove.larkspur_pressure_plate": "Larkspur Pressure Plate",
+  "block.heartgrove.larkspur_button": "Larkspur Button",
+  "block.heartgrove.larkspur_fence": "Larkspur Fence",
+  "block.heartgrove.larkspur_fence_gate": "Larkspur Fence Gate",
+  "block.heartgrove.larkspur_wall": "Larkspur Wall",
+  "block.heartgrove.larkspur_door": "Larkspur Door",
+  "block.heartgrove.larkspur_trapdoor": "Larkspur Trapdoor",
 
   "creativetab.heartgrove.heartgrove_items": "Heartgrove Items",
   "creativetab.heartgrove.heartgrove_woods": "Heartgrove Woods"
