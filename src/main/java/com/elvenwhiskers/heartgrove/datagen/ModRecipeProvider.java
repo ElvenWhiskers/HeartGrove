@@ -59,7 +59,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 ModBlocks.LARKSPUR_SLAB.get(),
                 ModBlocks.LARKSPUR_STAIRS.get(),
                 ModBlocks.LARKSPUR_TRAPDOOR.get(),
-                ModBlocks.LARKSPUR_WALL.get());
+                ModBlocks.LARKSPUR_WALL.get(),
+                ModBlocks.LARKSPUR_CRAFTING_TABLE.get());
 
     }
 
@@ -141,7 +142,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     //Makes shapesss
-    protected static void allShapeParts(RecipeOutput pFinishedRecipe, ItemLike pPlanks, ItemLike pButton, ItemLike pDoor, ItemLike pFence, ItemLike pFenceGate, ItemLike pPressurePlate, ItemLike pSlab, ItemLike pStairs, ItemLike pTrap, ItemLike pWall){
+    protected static void allShapeParts(RecipeOutput pFinishedRecipe, ItemLike pPlanks, ItemLike pButton, ItemLike pDoor, ItemLike pFence, ItemLike pFenceGate, ItemLike pPressurePlate, ItemLike pSlab, ItemLike pStairs, ItemLike pTrap, ItemLike pWall, ItemLike pCraft){
         buttonBuilder(pButton, Ingredient.of(pPlanks))
                 .unlockedBy("has_" + getItemName(pPlanks), inventoryTrigger(ItemPredicate.Builder.item().of(pPlanks).build()))
                 .save(pFinishedRecipe, HeartGrove.MOD_ID + ":" + getItemName(pButton) + "_from_" + getItemName(pPlanks));
@@ -173,6 +174,12 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_" + getItemName(pPlanks), inventoryTrigger(ItemPredicate.Builder.item().
                         of(pPlanks).build()))
                 .save(pFinishedRecipe, HeartGrove.MOD_ID + ":" + getItemName(pWall) + "_from_" + getItemName(pPlanks));
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, pCraft, 1)
+                .requires(pPlanks, 4)
+                .unlockedBy("has_" + getItemName(pPlanks), inventoryTrigger(ItemPredicate.Builder.item().
+                        of(pPlanks).build()))
+                .save(pFinishedRecipe, HeartGrove.MOD_ID + ":" + getItemName(pCraft) + "_from_" + getItemName(pPlanks));
 
     }
 }
