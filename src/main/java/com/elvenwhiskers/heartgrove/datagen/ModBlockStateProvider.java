@@ -23,6 +23,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         blockWithItem(ModBlocks.AEGIS_ORE);
 
+        blockItem(ModBlocks.LARKSPUR_CRAFTING_TABLE);
+
+
         //step 1: logset
         logSet(ModBlocks.LARKSPUR_LOG, ModBlocks.LARKSPUR_WOOD, ModBlocks.STRIPPED_LARKSPUR_LOG, ModBlocks.STRIPPED_LARKSPUR_WOOD);
 
@@ -38,7 +41,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
         //step 4: ideally
         //woodSet("larkspur");
 
-
+        //Other blocks
+        ModelFile testModel = models().orientable("larkspur_crafting_table", modLoc("block/larkspur_crafting_table_side"), modLoc("block/larkspur_crafting_table_front"), modLoc("block/larkspur_crafting_table_top"));
+        simpleBlockWithItem(ModBlocks.LARKSPUR_CRAFTING_TABLE.get(), testModel);
     }
 
     private void woodSet(){

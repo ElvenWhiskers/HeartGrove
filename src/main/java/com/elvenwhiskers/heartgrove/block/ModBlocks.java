@@ -1,6 +1,7 @@
 package com.elvenwhiskers.heartgrove.block;
 
 import com.elvenwhiskers.heartgrove.HeartGrove;
+import com.elvenwhiskers.heartgrove.block.custom.ModCraftingTable;
 import com.elvenwhiskers.heartgrove.block.custom.ModFlammableLeaves;
 import com.elvenwhiskers.heartgrove.block.custom.ModFlammablePlanks;
 import com.elvenwhiskers.heartgrove.block.custom.ModFlammableRotatedPillarBlock;
@@ -65,6 +66,8 @@ public class ModBlocks {
             () -> new DoorBlock(BlockSetType.OAK, BlockBehaviour.Properties.of().strength(2f).noOcclusion()));
     public static final DeferredBlock<TrapDoorBlock> LARKSPUR_TRAPDOOR = registerBlock("larkspur_trapdoor",
             () -> new TrapDoorBlock(BlockSetType.OAK, BlockBehaviour.Properties.of().strength(2f).noOcclusion()));
+    public static final DeferredBlock<CraftingTableBlock> LARKSPUR_CRAFTING_TABLE = registerBlock("larkspur_crafting_table",
+            () -> new ModCraftingTable(BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE)));
 
 
 

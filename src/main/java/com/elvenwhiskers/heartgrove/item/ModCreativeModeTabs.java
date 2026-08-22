@@ -47,6 +47,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.LARKSPUR_WALL);
                         output.accept(ModBlocks.LARKSPUR_DOOR);
                         output.accept(ModBlocks.LARKSPUR_TRAPDOOR);
+                        output.accept(ModBlocks.LARKSPUR_CRAFTING_TABLE);
                     }).build());
 
 

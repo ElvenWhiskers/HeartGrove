@@ -40,6 +40,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.LARKSPUR_WALL.get());
         dropSelf(ModBlocks.LARKSPUR_DOOR.get());
         dropSelf(ModBlocks.LARKSPUR_TRAPDOOR.get());
+        dropSelf(ModBlocks.LARKSPUR_CRAFTING_TABLE.get());
 
         add(ModBlocks.AEGIS_ORE.get(),
                 block -> createOreDrop(ModBlocks.AEGIS_ORE.get(), ModItems.AEGIS_INGOT.get())); //regular ore loot table.
