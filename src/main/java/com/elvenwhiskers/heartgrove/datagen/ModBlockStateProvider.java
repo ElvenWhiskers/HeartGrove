@@ -23,20 +23,27 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         blockWithItem(ModBlocks.AEGIS_ORE);
 
-        blockItem(ModBlocks.LARKSPUR_CRAFTING_TABLE);
+        //blockItem(ModBlocks.LARKSPUR_CRAFTING_TABLE);
 
 
         //step 1: logset
         logSet(ModBlocks.LARKSPUR_LOG, ModBlocks.LARKSPUR_WOOD, ModBlocks.STRIPPED_LARKSPUR_LOG, ModBlocks.STRIPPED_LARKSPUR_WOOD);
+        logSet(ModBlocks.WISTERIA_LOG, ModBlocks.WISTERIA_WOOD, ModBlocks.STRIPPED_WISTERIA_LOG, ModBlocks.STRIPPED_WISTERIA_WOOD);
 
         //step 2: plankShapes
         plankShapes(ModBlocks.LARKSPUR_PLANKS, ModBlocks.LARKSPUR_STAIRS, ModBlocks.LARKSPUR_SLAB, ModBlocks.LARKSPUR_PRESSURE_PLATE, ModBlocks.LARKSPUR_BUTTON, ModBlocks.LARKSPUR_FENCE, ModBlocks.LARKSPUR_FENCE_GATE, ModBlocks.LARKSPUR_WALL);
+        plankShapes(ModBlocks.WISTERIA_PLANKS, ModBlocks.WISTERIA_STAIRS, ModBlocks.WISTERIA_SLAB, ModBlocks.WISTERIA_PRESSURE_PLATE, ModBlocks.WISTERIA_BUTTON, ModBlocks.WISTERIA_FENCE, ModBlocks.WISTERIA_FENCE_GATE, ModBlocks.WISTERIA_WALL);
 
         //step 3: doorSet
         doorSet(ModBlocks.LARKSPUR_DOOR, ModBlocks.LARKSPUR_TRAPDOOR);
+        doorSet(ModBlocks.WISTERIA_DOOR, ModBlocks.WISTERIA_TRAPDOOR);
 
         leavesBlock(ModBlocks.LARKSPUR_LEAVES);
         saplingBlock(ModBlocks.LARKSPUR_SAPLING);
+        leavesBlock(ModBlocks.WISTERIA_LEAVES);
+        leavesBlock(ModBlocks.BLUE_WISTERIA_LEAVES);
+        leavesBlock(ModBlocks.BLUE_WISTERIA_BLOSSOMS);
+        saplingBlock(ModBlocks.BLUE_WISTERIA_SAPLING);
 
         //step 4: ideally
         //woodSet("larkspur");

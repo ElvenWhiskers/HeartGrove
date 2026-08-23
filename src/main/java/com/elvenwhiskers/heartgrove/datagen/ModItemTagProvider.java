@@ -26,9 +26,14 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModBlocks.LARKSPUR_LOG.get().asItem())
                 .add(ModBlocks.LARKSPUR_WOOD.get().asItem())
                 .add(ModBlocks.STRIPPED_LARKSPUR_LOG.get().asItem())
-                .add(ModBlocks.STRIPPED_LARKSPUR_WOOD.get().asItem());
+                .add(ModBlocks.STRIPPED_LARKSPUR_WOOD.get().asItem())
+                .add(ModBlocks.WISTERIA_LOG.get().asItem())
+                .add(ModBlocks.WISTERIA_WOOD.get().asItem())
+                .add(ModBlocks.STRIPPED_WISTERIA_LOG.get().asItem())
+                .add(ModBlocks.STRIPPED_WISTERIA_WOOD.get().asItem());
 
         this.tag(ItemTags.PLANKS)
-                .add(ModBlocks.LARKSPUR_PLANKS.asItem());
+                .add(ModBlocks.LARKSPUR_PLANKS.asItem())
+                .add(ModBlocks.WISTERIA_PLANKS.asItem());
     }
 }

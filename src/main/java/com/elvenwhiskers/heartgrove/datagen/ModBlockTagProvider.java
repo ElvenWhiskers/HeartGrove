@@ -37,7 +37,13 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.LARKSPUR_FENCE_GATE.get())
                 .add(ModBlocks.LARKSPUR_WALL.get())
                 .add(ModBlocks.LARKSPUR_DOOR.get())
-                .add(ModBlocks.LARKSPUR_TRAPDOOR.get());
+                .add(ModBlocks.LARKSPUR_TRAPDOOR.get())
+
+                .add(ModBlocks.WISTERIA_LOG.get())
+                .add(ModBlocks.WISTERIA_WOOD.get())
+                .add(ModBlocks.STRIPPED_WISTERIA_LOG.get())
+                .add(ModBlocks.STRIPPED_WISTERIA_WOOD.get())
+                .add(ModBlocks.WISTERIA_PLANKS.get());
 
         tag(BlockTags.FENCE_GATES)
                 .add(ModBlocks.LARKSPUR_FENCE_GATE.get());
@@ -49,7 +55,10 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.LARKSPUR_FENCE.get());
 
         tag(BlockTags.LEAVES)
-                .add(ModBlocks.LARKSPUR_LEAVES.get());
+                .add(ModBlocks.LARKSPUR_LEAVES.get())
+                .add(ModBlocks.WISTERIA_LEAVES.get())
+                .add(ModBlocks.BLUE_WISTERIA_LEAVES.get())
+                .add(ModBlocks.BLUE_WISTERIA_BLOSSOMS.get());
 
         tag(BlockTags.WALLS)
                 .add(ModBlocks.LARKSPUR_WALL.get());
@@ -61,13 +70,18 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.LARKSPUR_STAIRS.get());
 
         tag(BlockTags.LOGS)
-                .add(ModBlocks.LARKSPUR_LOG.get());
+                .add(ModBlocks.LARKSPUR_LOG.get())
+                .add(ModBlocks.WISTERIA_LOG.get());
 
         tag(BlockTags.COMPLETES_FIND_TREE_TUTORIAL)
                 .add(ModBlocks.LARKSPUR_LOG.get())
                 .add(ModBlocks.LARKSPUR_WOOD.get())
                 .add(ModBlocks.STRIPPED_LARKSPUR_LOG.get())
-                .add(ModBlocks.STRIPPED_LARKSPUR_WOOD.get());
+                .add(ModBlocks.STRIPPED_LARKSPUR_WOOD.get())
+                .add(ModBlocks.WISTERIA_LOG.get())
+                .add(ModBlocks.WISTERIA_WOOD.get())
+                .add(ModBlocks.STRIPPED_WISTERIA_LOG.get())
+                .add(ModBlocks.STRIPPED_WISTERIA_WOOD.get());
 
         tag(BlockTags.SAPLINGS)
                 .add(ModBlocks.LARKSPUR_SAPLING.get());
@@ -85,7 +99,8 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.LARKSPUR_BUTTON.get());
 
         tag(BlockTags.PLANKS)
-                .add(ModBlocks.LARKSPUR_PLANKS.get());
+                .add(ModBlocks.LARKSPUR_PLANKS.get())
+                .add(ModBlocks.WISTERIA_PLANKS.get());
 
 
 
@@ -96,7 +111,11 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.LARKSPUR_LOG.get())
                 .add(ModBlocks.LARKSPUR_WOOD.get())
                 .add(ModBlocks.STRIPPED_LARKSPUR_LOG.get())
-                .add(ModBlocks.STRIPPED_LARKSPUR_WOOD.get());
+                .add(ModBlocks.STRIPPED_LARKSPUR_WOOD.get())
+                .add(ModBlocks.WISTERIA_LOG.get())
+                .add(ModBlocks.WISTERIA_WOOD.get())
+                .add(ModBlocks.STRIPPED_WISTERIA_LOG.get())
+                .add(ModBlocks.STRIPPED_WISTERIA_WOOD.get());
 
     }
 }

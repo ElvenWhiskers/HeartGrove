@@ -42,6 +42,29 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.LARKSPUR_TRAPDOOR.get());
         dropSelf(ModBlocks.LARKSPUR_CRAFTING_TABLE.get());
 
+        dropSelf(ModBlocks.WISTERIA_LOG.get());
+        dropSelf(ModBlocks.WISTERIA_WOOD.get());
+        dropSelf(ModBlocks.STRIPPED_WISTERIA_LOG.get());
+        dropSelf(ModBlocks.STRIPPED_WISTERIA_WOOD.get());
+        dropSelf(ModBlocks.WISTERIA_PLANKS.get());
+        dropSelf(ModBlocks.BLUE_WISTERIA_SAPLING.get());
+        add(ModBlocks.WISTERIA_LEAVES.get(), block ->
+                createLeavesDrops(block, ModBlocks.BLUE_WISTERIA_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
+        add(ModBlocks.BLUE_WISTERIA_LEAVES.get(), block ->
+                createLeavesDrops(block, ModBlocks.BLUE_WISTERIA_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
+        add(ModBlocks.BLUE_WISTERIA_BLOSSOMS.get(), block ->
+                createLeavesDrops(block, ModBlocks.BLUE_WISTERIA_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
+        dropSelf(ModBlocks.WISTERIA_STAIRS.get());
+        dropSelf(ModBlocks.WISTERIA_SLAB.get());
+        dropSelf(ModBlocks.WISTERIA_PRESSURE_PLATE.get());
+        dropSelf(ModBlocks.WISTERIA_BUTTON.get());
+        dropSelf(ModBlocks.WISTERIA_FENCE.get());
+        dropSelf(ModBlocks.WISTERIA_FENCE_GATE.get());
+        dropSelf(ModBlocks.WISTERIA_WALL.get());
+        dropSelf(ModBlocks.WISTERIA_DOOR.get());
+        dropSelf(ModBlocks.WISTERIA_TRAPDOOR.get());
+        //add crafting table
+
         add(ModBlocks.AEGIS_ORE.get(),
                 block -> createOreDrop(ModBlocks.AEGIS_ORE.get(), ModItems.AEGIS_INGOT.get())); //regular ore loot table.
 

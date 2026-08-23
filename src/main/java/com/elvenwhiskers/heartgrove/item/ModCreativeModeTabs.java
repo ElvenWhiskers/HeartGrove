@@ -48,6 +48,26 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.LARKSPUR_DOOR);
                         output.accept(ModBlocks.LARKSPUR_TRAPDOOR);
                         output.accept(ModBlocks.LARKSPUR_CRAFTING_TABLE);
+
+                        output.accept(ModBlocks.WISTERIA_LOG);
+                        output.accept(ModBlocks.WISTERIA_WOOD);
+                        output.accept(ModBlocks.STRIPPED_WISTERIA_LOG);
+                        output.accept(ModBlocks.STRIPPED_WISTERIA_WOOD);
+                        output.accept(ModBlocks.WISTERIA_PLANKS);
+                        output.accept(ModBlocks.WISTERIA_LEAVES);
+                        output.accept(ModBlocks.BLUE_WISTERIA_LEAVES);
+                        output.accept(ModBlocks.BLUE_WISTERIA_BLOSSOMS);
+                        output.accept(ModBlocks.BLUE_WISTERIA_SAPLING);
+                        output.accept(ModBlocks.WISTERIA_STAIRS);
+                        output.accept(ModBlocks.WISTERIA_SLAB);
+                        output.accept(ModBlocks.WISTERIA_PRESSURE_PLATE);
+                        output.accept(ModBlocks.WISTERIA_BUTTON);
+                        output.accept(ModBlocks.WISTERIA_FENCE);
+                        output.accept(ModBlocks.WISTERIA_FENCE_GATE);
+                        output.accept(ModBlocks.WISTERIA_WALL);
+                        output.accept(ModBlocks.WISTERIA_DOOR);
+                        output.accept(ModBlocks.WISTERIA_TRAPDOOR);
+                        //output.accept(ModBlocks.WISTERIA_CRAFTING_TABLE);
                     }).build());
 
 

@@ -69,6 +69,44 @@ public class ModBlocks {
     public static final DeferredBlock<CraftingTableBlock> LARKSPUR_CRAFTING_TABLE = registerBlock("larkspur_crafting_table",
             () -> new ModCraftingTable(BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE)));
 
+    public static final DeferredBlock<Block> WISTERIA_LOG = registerBlock("wisteria_log",
+            () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LOG)));
+    public static final DeferredBlock<Block> WISTERIA_WOOD = registerBlock("wisteria_wood",
+            () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD)));
+    public static final DeferredBlock<Block> STRIPPED_WISTERIA_LOG = registerBlock("stripped_wisteria_log",
+            () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_LOG)));
+    public static final DeferredBlock<Block> STRIPPED_WISTERIA_WOOD = registerBlock("stripped_wisteria_wood",
+            () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_LOG)));
+    public static final DeferredBlock<Block> WISTERIA_PLANKS = registerBlock("wisteria_planks",
+            () -> new ModFlammablePlanks(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
+    public static final DeferredBlock<Block> WISTERIA_LEAVES = registerBlock("wisteria_leaves",
+            () -> new ModFlammableLeaves(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES)));
+    public static final DeferredBlock<Block> BLUE_WISTERIA_LEAVES = registerBlock("blue_wisteria_leaves",
+            () -> new ModFlammableLeaves(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES)));
+    public static final DeferredBlock<Block> BLUE_WISTERIA_BLOSSOMS = registerBlock("blue_wisteria_blossoms",
+            () -> new ModFlammableLeaves(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES)));
+    public static final DeferredBlock<Block> BLUE_WISTERIA_SAPLING = registerBlock("blue_wisteria_sapling",
+            () -> new SaplingBlock(ModTreeGrowers.BLUE_WISTERIA,BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING)));
+    public static final DeferredBlock<StairBlock> WISTERIA_STAIRS = registerBlock("wisteria_stairs",
+            () -> new StairBlock(ModBlocks.WISTERIA_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.of().strength(2f)));
+    public static final DeferredBlock<SlabBlock> WISTERIA_SLAB = registerBlock("wisteria_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.of().strength(2f)));
+    public static final DeferredBlock<PressurePlateBlock> WISTERIA_PRESSURE_PLATE = registerBlock("wisteria_pressure_plate",
+            () -> new PressurePlateBlock(BlockSetType.OAK, BlockBehaviour.Properties.of().strength(2f)));
+    public static final DeferredBlock<ButtonBlock> WISTERIA_BUTTON = registerBlock("wisteria_button",
+            () -> new ButtonBlock(BlockSetType.OAK, 20, BlockBehaviour.Properties.of().strength(2f).noCollission()));
+    public static final DeferredBlock<FenceBlock> WISTERIA_FENCE = registerBlock("wisteria_fence",
+            () -> new FenceBlock(BlockBehaviour.Properties.of().strength(2f)));
+    public static final DeferredBlock<FenceGateBlock> WISTERIA_FENCE_GATE = registerBlock("wisteria_fence_gate",
+            () -> new FenceGateBlock(WoodType.OAK, BlockBehaviour.Properties.of().strength(2f)));
+    public static final DeferredBlock<WallBlock> WISTERIA_WALL = registerBlock("wisteria_wall",
+            () -> new WallBlock(BlockBehaviour.Properties.of().strength(2f)));
+    public static final DeferredBlock<DoorBlock> WISTERIA_DOOR = registerBlock("wisteria_door",
+            () -> new DoorBlock(BlockSetType.OAK, BlockBehaviour.Properties.of().strength(2f).noOcclusion()));
+    public static final DeferredBlock<TrapDoorBlock> WISTERIA_TRAPDOOR = registerBlock("wisteria_trapdoor",
+            () -> new TrapDoorBlock(BlockSetType.OAK, BlockBehaviour.Properties.of().strength(2f).noOcclusion()));
+    //crafting table
+
 
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {

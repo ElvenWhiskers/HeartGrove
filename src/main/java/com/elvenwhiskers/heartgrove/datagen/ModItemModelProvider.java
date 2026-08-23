@@ -25,6 +25,12 @@ public class ModItemModelProvider extends ItemModelProvider {
         fenceItem(ModBlocks.LARKSPUR_FENCE, ModBlocks.LARKSPUR_PLANKS);
         basicItem(ModBlocks.LARKSPUR_DOOR.asItem());
         wallItem(ModBlocks.LARKSPUR_WALL, ModBlocks.LARKSPUR_PLANKS);
+
+        saplingItem(ModBlocks.BLUE_WISTERIA_SAPLING);
+        fenceItem(ModBlocks.WISTERIA_FENCE, ModBlocks.WISTERIA_PLANKS);
+        basicItem(ModBlocks.WISTERIA_DOOR.asItem());
+        wallItem(ModBlocks.WISTERIA_WALL, ModBlocks.WISTERIA_PLANKS);
+
     }
 
     private ItemModelBuilder saplingItem(DeferredBlock<Block> item) {

@@ -6,13 +6,24 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.common.ItemAbility;
 
 import javax.annotation.Nullable;
+import java.util.Map;
 
 public class ModFlammableRotatedPillarBlock extends RotatedPillarBlock {
+    private static class Strippables {
+        private static final Map<Block, Block> MAP = Map.of(
+                ModBlocks.LARKSPUR_LOG.get(), ModBlocks.STRIPPED_LARKSPUR_LOG.get(),
+                ModBlocks.LARKSPUR_WOOD.get(), ModBlocks.STRIPPED_LARKSPUR_WOOD.get(),
+                ModBlocks.WISTERIA_LOG.get(), ModBlocks.STRIPPED_WISTERIA_LOG.get(),
+                ModBlocks.WISTERIA_WOOD.get(), ModBlocks.STRIPPED_WISTERIA_WOOD.get()
+        );
+    }
+
     public ModFlammableRotatedPillarBlock(Properties properties) {
         super(properties);
     }
@@ -35,12 +46,10 @@ public class ModFlammableRotatedPillarBlock extends RotatedPillarBlock {
     public @Nullable BlockState getToolModifiedState(BlockState state, UseOnContext context,
                                                      ItemAbility itemAbility, boolean simulate) {
         if(context.getItemInHand().getItem() instanceof AxeItem) {
-            if(state.is(ModBlocks.LARKSPUR_LOG)) {
-                return ModBlocks.STRIPPED_LARKSPUR_LOG.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
-            }
+            Block strippedBlock = Strippables.MAP.get(state.getBlock());
 
-            if(state.is(ModBlocks.LARKSPUR_WOOD)) {
-                return ModBlocks.STRIPPED_LARKSPUR_WOOD.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
+            if (strippedBlock != null) {
+                return strippedBlock.defaultBlockState().setValue(AXIS, state.getValue(AXIS));
             }
         }
 

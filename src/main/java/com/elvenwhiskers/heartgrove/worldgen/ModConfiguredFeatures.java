@@ -19,6 +19,7 @@ import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlace
 public class ModConfiguredFeatures {
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> LARKSPUR_KEY = registerKey("larkspur");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> BLUE_WISTERIA_KEY = registerKey("blue_wisteria");
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
 
@@ -27,6 +28,15 @@ public class ModConfiguredFeatures {
                 new ForkingTrunkPlacer(4, 4, 3),
 
                 BlockStateProvider.simple(ModBlocks.LARKSPUR_LEAVES.get()),
+                new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(3), 3),
+
+                new TwoLayersFeatureSize(1, 0, 2)).build());
+
+        register(context, BLUE_WISTERIA_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(ModBlocks.WISTERIA_LOG.get()),
+                new ForkingTrunkPlacer(4, 4, 3),
+
+                BlockStateProvider.simple(ModBlocks.WISTERIA_LEAVES.get()),
                 new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(3), 3),
 
                 new TwoLayersFeatureSize(1, 0, 2)).build());

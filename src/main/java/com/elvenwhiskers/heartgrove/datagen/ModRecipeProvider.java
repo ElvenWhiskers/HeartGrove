@@ -48,6 +48,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 ModBlocks.STRIPPED_LARKSPUR_LOG.get(),
                 ModBlocks.STRIPPED_LARKSPUR_WOOD.get());
 
+        treeParts(recipeOutput, RecipeCategory.MISC,
+                ModBlocks.WISTERIA_LOG.get(),
+                ModBlocks.WISTERIA_WOOD.get(),
+                ModBlocks.WISTERIA_PLANKS.get(),
+                ModBlocks.STRIPPED_WISTERIA_LOG.get(),
+                ModBlocks.STRIPPED_WISTERIA_WOOD.get());
+
         //Tree stuffs part 2:
         allShapeParts(recipeOutput,
                 ModBlocks.LARKSPUR_PLANKS.get(),
