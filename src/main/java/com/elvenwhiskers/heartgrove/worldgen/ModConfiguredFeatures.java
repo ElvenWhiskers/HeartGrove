@@ -2,6 +2,7 @@ package com.elvenwhiskers.heartgrove.worldgen;
 
 import com.elvenwhiskers.heartgrove.HeartGrove;
 import com.elvenwhiskers.heartgrove.block.ModBlocks;
+import com.elvenwhiskers.heartgrove.worldgen.tree.WisteriaFoliagePlacer;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
@@ -15,6 +16,7 @@ import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSi
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
 
 public class ModConfiguredFeatures {
 
@@ -34,10 +36,10 @@ public class ModConfiguredFeatures {
 
         register(context, BLUE_WISTERIA_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
                 BlockStateProvider.simple(ModBlocks.WISTERIA_LOG.get()),
-                new ForkingTrunkPlacer(4, 4, 3),
+                new StraightTrunkPlacer(5, 2, 0),
 
                 BlockStateProvider.simple(ModBlocks.WISTERIA_LEAVES.get()),
-                new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(3), 3),
+                new WisteriaFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0)),
 
                 new TwoLayersFeatureSize(1, 0, 2)).build());
     }

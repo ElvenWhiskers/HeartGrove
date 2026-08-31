@@ -3,6 +3,7 @@ package com.elvenwhiskers.heartgrove;
 import com.elvenwhiskers.heartgrove.block.ModBlocks;
 import com.elvenwhiskers.heartgrove.item.ModCreativeModeTabs;
 import com.elvenwhiskers.heartgrove.item.ModItems;
+import com.elvenwhiskers.heartgrove.worldgen.tree.ModFoliagePlacerTypes;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -46,6 +47,7 @@ public class HeartGrove {
         ModCreativeModeTabs.register(modEventBus);
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+        ModFoliagePlacerTypes.register(modEventBus);
 
         modEventBus.addListener(this::addCreative);
 
