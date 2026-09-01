@@ -54,6 +54,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                 createLeavesDrops(block, ModBlocks.BLUE_WISTERIA_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
         add(ModBlocks.BLUE_WISTERIA_BLOSSOMS.get(), block ->
                 createLeavesDrops(block, ModBlocks.BLUE_WISTERIA_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
+        dropSelf(ModBlocks.BLUE_WISTERIA_VINES.get());
         dropSelf(ModBlocks.WISTERIA_STAIRS.get());
         dropSelf(ModBlocks.WISTERIA_SLAB.get());
         dropSelf(ModBlocks.WISTERIA_PRESSURE_PLATE.get());

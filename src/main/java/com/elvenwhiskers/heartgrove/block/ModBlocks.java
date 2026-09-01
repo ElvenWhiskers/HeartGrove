@@ -80,6 +80,8 @@ public class ModBlocks {
             () -> new ModFlammableLeaves(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES)));
     public static final DeferredBlock<Block> BLUE_WISTERIA_LEAVES = registerBlock("blue_wisteria_leaves",
             () -> new DirectionalLeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES)));
+    public static final DeferredBlock<Block> BLUE_WISTERIA_VINES = registerBlock("blue_wisteria_vines",
+            () -> new WisteriaVineBlock(BlockBehaviour.Properties.of().noCollission().noOcclusion().randomTicks()));
     public static final DeferredBlock<Block> BLUE_WISTERIA_BLOSSOMS = registerBlock("blue_wisteria_blossoms",
             () -> new ModFlammableLeaves(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES)));
     public static final DeferredBlock<Block> BLUE_WISTERIA_SAPLING = registerBlock("blue_wisteria_sapling",

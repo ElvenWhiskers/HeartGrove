@@ -31,6 +31,13 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModBlocks.WISTERIA_DOOR.asItem());
         wallItem(ModBlocks.WISTERIA_WALL, ModBlocks.WISTERIA_PLANKS);
 
+        withExistingParent(ModBlocks.BLUE_WISTERIA_VINES.getId().getPath(),
+                "item/generated").texture("layer0",
+                ResourceLocation.fromNamespaceAndPath(
+                        HeartGrove.MOD_ID,
+                        "block/blue_wisteria_vines_bottom")
+        );
+
     }
 
     private ItemModelBuilder saplingItem(DeferredBlock<Block> item) {
@@ -50,5 +57,7 @@ public class ModItemModelProvider extends ItemModelProvider {
                 .texture("texture",  ResourceLocation.fromNamespaceAndPath(HeartGrove.MOD_ID,
                         "block/" + baseBlock.getId().getPath()));
     }
+
+
 
 }

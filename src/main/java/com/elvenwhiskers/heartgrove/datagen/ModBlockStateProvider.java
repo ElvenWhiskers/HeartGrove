@@ -2,6 +2,7 @@ package com.elvenwhiskers.heartgrove.datagen;
 
 import com.elvenwhiskers.heartgrove.HeartGrove;
 import com.elvenwhiskers.heartgrove.block.ModBlocks;
+import com.elvenwhiskers.heartgrove.block.custom.WisteriaVineBlock;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
@@ -41,9 +42,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
         leavesBlock(ModBlocks.LARKSPUR_LEAVES);
         saplingBlock(ModBlocks.LARKSPUR_SAPLING);
         leavesBlock(ModBlocks.WISTERIA_LEAVES);
-        //leavesBlock(ModBlocks.BLUE_WISTERIA_LEAVES);
         leavesBlock(ModBlocks.BLUE_WISTERIA_BLOSSOMS);
         saplingBlock(ModBlocks.BLUE_WISTERIA_SAPLING);
+        wisteriaVineBlock(ModBlocks.BLUE_WISTERIA_VINES);
 
         directionalLeavesBlock(ModBlocks.BLUE_WISTERIA_LEAVES, ModBlocks.WISTERIA_LEAVES, ModBlocks.BLUE_WISTERIA_BLOSSOMS);
 
@@ -132,5 +133,35 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         directionalBlock(blockRegistryObject.get(), model);
         simpleBlockItem(blockRegistryObject.get(), model);
+    }
+
+    private void wisteriaVineBlock(DeferredBlock<Block> blockRegistryObject) {
+
+        String blockName = BuiltInRegistries.BLOCK
+                .getKey(blockRegistryObject.get())
+                .getPath();
+
+        ModelFile normalModel = models().cross(
+                blockName,
+                blockTexture(blockRegistryObject.get())
+        ).renderType("cutout");
+
+        ModelFile bottomModel = models().cross(
+                blockName + "_bottom",
+                modLoc("block/" + blockName + "_bottom")
+        ).renderType("cutout");
+
+        getVariantBuilder(blockRegistryObject.get())
+                .partialState()
+                .with(WisteriaVineBlock.BOTTOM, false)
+                .modelForState()
+                .modelFile(normalModel)
+                .addModel()
+
+                .partialState()
+                .with(WisteriaVineBlock.BOTTOM, true)
+                .modelForState()
+                .modelFile(bottomModel)
+                .addModel();
     }
 }

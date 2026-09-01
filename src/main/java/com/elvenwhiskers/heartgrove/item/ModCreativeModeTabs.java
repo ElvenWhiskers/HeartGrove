@@ -58,6 +58,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.BLUE_WISTERIA_LEAVES);
                         output.accept(ModBlocks.BLUE_WISTERIA_BLOSSOMS);
                         output.accept(ModBlocks.BLUE_WISTERIA_SAPLING);
+                        output.accept(ModBlocks.BLUE_WISTERIA_VINES);
                         output.accept(ModBlocks.WISTERIA_STAIRS);
                         output.accept(ModBlocks.WISTERIA_SLAB);
                         output.accept(ModBlocks.WISTERIA_PRESSURE_PLATE);
