@@ -55,7 +55,7 @@ public class WisteriaFoliagePlacer extends FoliagePlacer{
             }
         }
 
-        for (int z = -3; z <= 3; z++) {
+        for (int z = -3; z <= 3; z++) { //3rd layer - y-1 - Full color
             int distanceFromCenter = Math.abs(z);
             int xReach = 3 - distanceFromCenter;
             for (int x = -xReach; x <= xReach; x++) {
@@ -66,6 +66,49 @@ public class WisteriaFoliagePlacer extends FoliagePlacer{
                 foliageSetter.set(leafPos, blossoms);
             }
         }
+
+        foliageSetter.set(center.offset(-2, -1, -2), blossoms);
+        foliageSetter.set(center.offset(2, -1, -2), blossoms);
+        foliageSetter.set(center.offset(-2, -1, 2), blossoms);
+        foliageSetter.set(center.offset(2, -1, 2), blossoms);
+
+        //4th layer - y-2 - full color
+        for (int z = -1; z <= 1; z++) {
+            for (int x = -3; x <= 3; x++) {
+
+                if (x == 0 && z == 0) {
+                    continue; //The log is here
+                }
+
+                BlockPos leafPos = center.offset(x, -2, z);
+                foliageSetter.set(leafPos, blossoms);
+            }
+        }
+
+        //Fourth layer - Y -2 - blossoms - skinny outer rows
+        for (int z = -3; z <= 3; z++) {
+
+            if (Math.abs(z) <= 1) {
+                continue;
+            }
+
+            for (int x = -1; x <= 1; x++) {
+                BlockPos leafPos = center.offset(x, -2, z);
+                foliageSetter.set(leafPos, blossoms);
+            }
+        }
+
+        //Fifth layer - Y -3 - blossoms - outer tips
+        foliageSetter.set(center.offset(0, -3, -3), blossoms);
+        foliageSetter.set(center.offset(-3, -3, 0), blossoms);
+        foliageSetter.set(center.offset(3, -3, 0), blossoms);
+        foliageSetter.set(center.offset(0, -3, 3), blossoms);
+
+        //Fifth layer - Y -3 - blossoms - inner pieces
+        foliageSetter.set(center.offset(-1, -3, -1), blossoms);
+        foliageSetter.set(center.offset(1, -3, -1), blossoms);
+        foliageSetter.set(center.offset(-1, -3, 1), blossoms);
+        foliageSetter.set(center.offset(1, -3, 1), blossoms);
 
     }
 
