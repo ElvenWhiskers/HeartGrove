@@ -55,86 +55,19 @@ public class WisteriaFoliagePlacer extends FoliagePlacer{
             }
         }
 
-        //Third layer - y -1 - blossoms
-        for (int x = -3; x <= 3; x++) { //part 1 3 log 3
-
-            if (x == 0) {
-                continue; //The log is here
-            }
-
-            BlockPos leafPos = center.offset(x, -1, 0);
-            foliageSetter.set(leafPos, blossoms);
-        }
-
-        for (int z = -1; z <= 1; z += 2) { // part 2 5 log 5
-            for (int x = -2; x <= 2; x++) {
-
+        for (int z = -3; z <= 3; z++) {
+            int distanceFromCenter = Math.abs(z);
+            int xReach = 3 - distanceFromCenter;
+            for (int x = -xReach; x <= xReach; x++) {
+                if (x == 0 && z == 0) {
+                    continue;
+                }
                 BlockPos leafPos = center.offset(x, -1, z);
                 foliageSetter.set(leafPos, blossoms);
             }
         }
 
-        //Third layer - blossoms - next outer rows
-        for (int z = -2; z <= 2; z += 4) {
-            for (int x = -1; x <= 1; x++) {
-
-                BlockPos leafPos = center.offset(x, -1, z);
-                foliageSetter.set(leafPos, blossoms);
-            }
-        }
-
-        //Third layer - blossoms - outer tips
-        BlockPos northTip = center.offset(0, -1, -3);
-        foliageSetter.set(northTip, blossoms);
-
-        BlockPos southTip = center.offset(0, -1, 3);
-        foliageSetter.set(southTip, blossoms);
-
     }
-
-    /*
-    @Override
-    protected void createFoliage(LevelSimulatedReader level, FoliageSetter foliageSetter, RandomSource random, TreeConfiguration config, int maxFreeTreeHeight, FoliageAttachment attachment, int foliageHeight, int foliageRadius, int offset
-    ) {
-        BlockPos center = attachment.pos(); //The spot where the leaves attach to the trunk
-
-        for (int z = -1; z <= 1; z++) { //first layer - small - 0
-            for (int x = -1; x <= 1; x++) {
-                if (Math.abs(x) == 1 && Math.abs(z) == 1) {
-                    continue;
-                }
-
-                BlockPos leafPos = center.offset(x, 0, z);
-                tryPlaceLeaf(level, foliageSetter, random, config, leafPos);
-            }
-        }
-
-        for (int z = -3; z <= 3; z++) { //second layer - very large - -1
-            for (int x = -3; x <= 3; x++) {
-
-                if (Math.abs(x) == 3 && Math.abs(z) == 3) {
-                    continue;
-                }
-
-                BlockPos leafPos = center.offset(x, -1, z);
-                tryPlaceLeaf(level, foliageSetter, random, config, leafPos);
-            }
-        }
-
-        for (int z = -2; z <= 2; z++) { //third layer - medium - -2
-            for (int x = -3; x <= 3; x++) {
-
-                if (Math.abs(x) == 3 && Math.abs(z) == 2) {
-                    continue;
-                }
-
-                BlockPos leafPos = center.offset(x, -2, z);
-                tryPlaceLeaf(level, foliageSetter, random, config, leafPos);
-            }
-        }
-
-    }
-     */
 
     @Override
     public int foliageHeight(RandomSource random, int height, TreeConfiguration config) {
