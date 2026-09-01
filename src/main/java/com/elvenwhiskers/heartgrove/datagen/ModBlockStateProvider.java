@@ -41,9 +41,11 @@ public class ModBlockStateProvider extends BlockStateProvider {
         leavesBlock(ModBlocks.LARKSPUR_LEAVES);
         saplingBlock(ModBlocks.LARKSPUR_SAPLING);
         leavesBlock(ModBlocks.WISTERIA_LEAVES);
-        leavesBlock(ModBlocks.BLUE_WISTERIA_LEAVES);
+        //leavesBlock(ModBlocks.BLUE_WISTERIA_LEAVES);
         leavesBlock(ModBlocks.BLUE_WISTERIA_BLOSSOMS);
         saplingBlock(ModBlocks.BLUE_WISTERIA_SAPLING);
+
+        directionalLeavesBlock(ModBlocks.BLUE_WISTERIA_LEAVES, ModBlocks.WISTERIA_LEAVES, ModBlocks.BLUE_WISTERIA_BLOSSOMS);
 
         //step 4: ideally
         //woodSet("larkspur");
@@ -112,5 +114,23 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlockWithItem(blockRegistryObject.get(),
                 models().singleTexture(BuiltInRegistries.BLOCK.getKey(blockRegistryObject.get()).getPath(), ResourceLocation.parse("minecraft:block/leaves"),
                         "all", blockTexture(blockRegistryObject.get())).renderType("cutout"));
+    }
+
+    private void directionalLeavesBlock(DeferredBlock<Block> blockRegistryObject, DeferredBlock<Block> topTextureBlock, DeferredBlock<Block> bottomTextureBlock) {
+        ModelFile model = models().cube(
+                        BuiltInRegistries.BLOCK.getKey(blockRegistryObject.get()).getPath(),
+
+                        blockTexture(bottomTextureBlock.get()),   // down
+                        blockTexture(topTextureBlock.get()),      // up
+                        blockTexture(blockRegistryObject.get()),  // north
+                        blockTexture(blockRegistryObject.get()),  // south
+                        blockTexture(blockRegistryObject.get()),  // west
+                        blockTexture(blockRegistryObject.get())   // east
+                )
+                .texture("particle", blockTexture(blockRegistryObject.get()))
+                .renderType("cutout");
+
+        directionalBlock(blockRegistryObject.get(), model);
+        simpleBlockItem(blockRegistryObject.get(), model);
     }
 }

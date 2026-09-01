@@ -1,10 +1,7 @@
 package com.elvenwhiskers.heartgrove.block;
 
 import com.elvenwhiskers.heartgrove.HeartGrove;
-import com.elvenwhiskers.heartgrove.block.custom.ModCraftingTable;
-import com.elvenwhiskers.heartgrove.block.custom.ModFlammableLeaves;
-import com.elvenwhiskers.heartgrove.block.custom.ModFlammablePlanks;
-import com.elvenwhiskers.heartgrove.block.custom.ModFlammableRotatedPillarBlock;
+import com.elvenwhiskers.heartgrove.block.custom.*;
 import com.elvenwhiskers.heartgrove.item.ModItems;
 import com.elvenwhiskers.heartgrove.worldgen.tree.ModTreeGrowers;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -82,7 +79,7 @@ public class ModBlocks {
     public static final DeferredBlock<Block> WISTERIA_LEAVES = registerBlock("wisteria_leaves",
             () -> new ModFlammableLeaves(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES)));
     public static final DeferredBlock<Block> BLUE_WISTERIA_LEAVES = registerBlock("blue_wisteria_leaves",
-            () -> new ModFlammableLeaves(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES)));
+            () -> new DirectionalLeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES)));
     public static final DeferredBlock<Block> BLUE_WISTERIA_BLOSSOMS = registerBlock("blue_wisteria_blossoms",
             () -> new ModFlammableLeaves(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES)));
     public static final DeferredBlock<Block> BLUE_WISTERIA_SAPLING = registerBlock("blue_wisteria_sapling",
