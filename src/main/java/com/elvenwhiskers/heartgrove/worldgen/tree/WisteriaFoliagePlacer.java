@@ -19,15 +19,20 @@ public class WisteriaFoliagePlacer extends FoliagePlacer{
     public static final MapCodec<WisteriaFoliagePlacer> CODEC =
             RecordCodecBuilder.mapCodec(instance ->
                     foliagePlacerParts(instance)
+                            .and(
+                                    WisteriaColor.CODEC
+                                            .optionalFieldOf("color", WisteriaColor.BLUE)
+                                            .forGetter(placer -> placer.wisteriaColor)
+                            )
                             .apply(instance, WisteriaFoliagePlacer::new)
             );
 
     private final WisteriaColor wisteriaColor;
 
 
-    public WisteriaFoliagePlacer(IntProvider radius, IntProvider offset) {
+    public WisteriaFoliagePlacer(IntProvider radius, IntProvider offset, WisteriaColor wisteriaColor) {
         super(radius, offset);
-        this.wisteriaColor = WisteriaColor.BLUE;
+        this.wisteriaColor = wisteriaColor;
     }
 
     @Override
