@@ -22,8 +22,12 @@ public class WisteriaFoliagePlacer extends FoliagePlacer{
                             .apply(instance, WisteriaFoliagePlacer::new)
             );
 
+    private final WisteriaColor wisteriaColor;
+
+
     public WisteriaFoliagePlacer(IntProvider radius, IntProvider offset) {
         super(radius, offset);
+        this.wisteriaColor = WisteriaColor.BLUE;
     }
 
     @Override
@@ -35,88 +39,67 @@ public class WisteriaFoliagePlacer extends FoliagePlacer{
     protected void createFoliage(LevelSimulatedReader level, FoliageSetter foliageSetter, RandomSource random, TreeConfiguration config, int maxFreeTreeHeight, FoliageAttachment attachment, int foliageHeight, int foliageRadius, int offset
     ) {
         BlockPos center = attachment.pos(); //The spot where the leaves attach to the trunk
-        BlockState transitionLeaves = ModBlocks.BLUE_WISTERIA_LEAVES.get().defaultBlockState();
-        BlockState blossoms = ModBlocks.BLUE_WISTERIA_BLOSSOMS.get().defaultBlockState();
+        BlockState transitionLeaves = wisteriaColor.transitionLeaves().get().defaultBlockState();
+        BlockState blossoms = wisteriaColor.blossoms().get().defaultBlockState();
         List<BlockPos> lowerBlossomPositions = new ArrayList<>();
 
 
-        for (int z = -1; z <= 1; z++) { //top layer - Y + 1 - all green
-            for (int x = -1; x <= 1; x++) {
+        //top layer - Y + 1 - all green
+        placeTopGreenLayer(level, foliageSetter, random, config, center);
 
-                BlockPos leafPos = center.offset(x, 1, z);
-                tryPlaceLeaf(level, foliageSetter, random, config, leafPos);
-            }
-        }
+        //second layer - Y 0 - Half green
+        placeTransitionLayer(center, foliageSetter, transitionLeaves);
 
-        for (int z = -2; z <= 2; z++) { //second layer - Y 0 - Half green
-            for (int x = -2; x <= 2; x++) {
-
-                if (Math.abs(x) == 2 && Math.abs(z) == 2) {
-                    continue;
-                }
-
-                BlockPos leafPos = center.offset(x, 0, z);
-                foliageSetter.set(leafPos, transitionLeaves);
-            }
-        }
-
-        for (int z = -3; z <= 3; z++) { //3rd layer - y-1 - Full color
-            int distanceFromCenter = Math.abs(z);
-            int xReach = 3 - distanceFromCenter;
-            for (int x = -xReach; x <= xReach; x++) {
-                if (x == 0 && z == 0) {
-                    continue;
-                }
-                BlockPos leafPos = center.offset(x, -1, z);
-                foliageSetter.set(leafPos, blossoms);
-            }
-        }
-
-        //extra pieces
-        BlockPos layer3NorthWest = center.offset(-2, -1, -2);
-        BlockPos layer3NorthEast = center.offset(2, -1, -2);
-        BlockPos layer3SouthWest = center.offset(-2, -1, 2);
-        BlockPos layer3SouthEast = center.offset(2, -1, 2);
-
-        foliageSetter.set(layer3NorthWest, blossoms);
-        foliageSetter.set(layer3NorthEast, blossoms);
-        foliageSetter.set(layer3SouthWest, blossoms);
-        foliageSetter.set(layer3SouthEast, blossoms);
-
-        lowerBlossomPositions.add(layer3NorthWest);
-        lowerBlossomPositions.add(layer3NorthEast);
-        lowerBlossomPositions.add(layer3SouthWest);
-        lowerBlossomPositions.add(layer3SouthEast);
+        //3rd layer - y-1 - Full color
+        placeUpperBlossomLayer(center, foliageSetter, blossoms, lowerBlossomPositions);
 
         //4th layer - y-2 - full color
-        for (int z = -1; z <= 1; z++) {
-            for (int x = -3; x <= 3; x++) {
+        placeLowerBlossomLayer(center, foliageSetter, blossoms, lowerBlossomPositions);
 
-                if (x == 0 && z == 0) {
-                    continue; //The log is here
-                }
+        //Fifth layer - Y -3 - blossoms - outer tips
+        placeBottomBlossomLayer(center, foliageSetter, blossoms, lowerBlossomPositions);
 
-                BlockPos leafPos = center.offset(x, -2, z);
-                foliageSetter.set(leafPos, blossoms);
-                lowerBlossomPositions.add(leafPos);
-            }
-        }
+        //vine layer
+        placeHangingVines(foliageSetter, random, lowerBlossomPositions);
+    }
 
-        //Fourth layer - Y -2 - blossoms - skinny outer rows
-        for (int z = -3; z <= 3; z++) {
+    @Override
+    public int foliageHeight(RandomSource random, int height, TreeConfiguration config) {
+        return 1;
+    }
 
-            if (Math.abs(z) <= 1) {
+    @Override
+    protected boolean shouldSkipLocation(RandomSource random, int localX, int localY, int localZ, int range, boolean large) {
+        return false;
+    }
+
+    private void placeHangingVines(FoliageSetter foliageSetter, RandomSource random, List<BlockPos> lowerBlossomPositions) {
+        for (BlockPos blossomPos : lowerBlossomPositions) {
+
+            BlockPos vinePos = blossomPos.below();
+
+            if (lowerBlossomPositions.contains(vinePos)) {
                 continue;
             }
 
-            for (int x = -1; x <= 1; x++) {
-                BlockPos leafPos = center.offset(x, -2, z);
-                foliageSetter.set(leafPos, blossoms);
-                lowerBlossomPositions.add(leafPos);
+            if (random.nextFloat() >= 0.5F) {
+                continue;
             }
-        }
 
-        //Fifth layer - Y -3 - blossoms - outer tips
+            BlockState vineState =
+                    wisteriaColor.vines().get()
+                            .defaultBlockState()
+                            .setValue(WisteriaVineBlock.BOTTOM, true)
+                            .setValue(
+                                    WisteriaVineBlock.GROWTH_REMAINING,
+                                    random.nextInt(7)
+                            );
+
+            foliageSetter.set(vinePos, vineState);
+        }
+    }
+
+    private void placeBottomBlossomLayer(BlockPos center, FoliageSetter foliageSetter, BlockState blossoms, List<BlockPos> lowerBlossomPositions) {
         BlockPos outerNorth = center.offset(0, -3, -3);
         BlockPos outerWest = center.offset(-3, -3, 0);
         BlockPos outerEast = center.offset(3, -3, 0);
@@ -132,7 +115,6 @@ public class WisteriaFoliagePlacer extends FoliagePlacer{
         lowerBlossomPositions.add(outerEast);
         lowerBlossomPositions.add(outerSouth);
 
-        //Fifth layer - Y -3 - blossoms - inner pieces
         BlockPos innerNorthWest = center.offset(-1, -3, -1);
         BlockPos innerNorthEast = center.offset(1, -3, -1);
         BlockPos innerSouthWest = center.offset(-1, -3, 1);
@@ -147,47 +129,98 @@ public class WisteriaFoliagePlacer extends FoliagePlacer{
         lowerBlossomPositions.add(innerNorthEast);
         lowerBlossomPositions.add(innerSouthWest);
         lowerBlossomPositions.add(innerSouthEast);
+    }
 
-        //vine layer
-        // Check every lower-canopy blossom.
-        // If there is no blossom directly beneath it,
-        // it is part of the exposed underside of the canopy.
-        for (BlockPos blossomPos : lowerBlossomPositions) {
+    private void placeLowerBlossomLayer(BlockPos center, FoliageSetter foliageSetter, BlockState blossoms, List<BlockPos> lowerBlossomPositions) {
+        // Three wide middle rows.
+        for (int z = -1; z <= 1; z++) {
+            for (int x = -3; x <= 3; x++) {
 
-            BlockPos vinePos = blossomPos.below();
+                // Leave room for the trunk in the center.
+                if (x == 0 && z == 0) {
+                    continue;
+                }
 
-            if (lowerBlossomPositions.contains(vinePos)) {
-                continue;
+                BlockPos leafPos = center.offset(x, -2, z);
+
+                foliageSetter.set(leafPos, blossoms);
+                lowerBlossomPositions.add(leafPos);
             }
-
-            // 50% chance for an exposed blossom to start a vine.
-            if (random.nextFloat() >= 0.5F) {
-                continue;
-            }
-
-            BlockState vineState =
-                    ModBlocks.BLUE_WISTERIA_VINES.get()
-                            .defaultBlockState()
-                            .setValue(WisteriaVineBlock.BOTTOM, true)
-                            .setValue(
-                                    WisteriaVineBlock.GROWTH_REMAINING,
-                                    random.nextInt(7)
-                            );
-
-            foliageSetter.set(vinePos, vineState);
         }
 
+        // Narrow outer rows.
+        for (int z = -3; z <= 3; z++) {
 
+            // The middle rows were already handled above.
+            if (Math.abs(z) <= 1) {
+                continue;
+            }
 
+            for (int x = -1; x <= 1; x++) {
+                BlockPos leafPos = center.offset(x, -2, z);
+
+                foliageSetter.set(leafPos, blossoms);
+                lowerBlossomPositions.add(leafPos);
+            }
+        }
     }
 
-    @Override
-    public int foliageHeight(RandomSource random, int height, TreeConfiguration config) {
-        return 1;
+    private void placeUpperBlossomLayer(BlockPos center, FoliageSetter foliageSetter, BlockState blossoms, List<BlockPos> lowerBlossomPositions) {
+        for (int z = -3; z <= 3; z++) {
+            int distanceFromCenter = Math.abs(z);
+            int xReach = 3 - distanceFromCenter;
+
+            for (int x = -xReach; x <= xReach; x++) {
+                if (x == 0 && z == 0) {
+                    continue;
+                }
+
+                BlockPos leafPos = center.offset(x, -1, z);
+                foliageSetter.set(leafPos, blossoms);
+            }
+        }
+
+        BlockPos layer3NorthWest = center.offset(-2, -1, -2);
+        BlockPos layer3NorthEast = center.offset(2, -1, -2);
+        BlockPos layer3SouthWest = center.offset(-2, -1, 2);
+        BlockPos layer3SouthEast = center.offset(2, -1, 2);
+
+        foliageSetter.set(layer3NorthWest, blossoms);
+        foliageSetter.set(layer3NorthEast, blossoms);
+        foliageSetter.set(layer3SouthWest, blossoms);
+        foliageSetter.set(layer3SouthEast, blossoms);
+
+        lowerBlossomPositions.add(layer3NorthWest);
+        lowerBlossomPositions.add(layer3NorthEast);
+        lowerBlossomPositions.add(layer3SouthWest);
+        lowerBlossomPositions.add(layer3SouthEast);
     }
 
-    @Override
-    protected boolean shouldSkipLocation(RandomSource random, int localX, int localY, int localZ, int range, boolean large) {
-        return false;
+    private void placeTransitionLayer(BlockPos center, FoliageSetter foliageSetter, BlockState transitionLeaves) {
+        for (int z = -2; z <= 2; z++) {
+            for (int x = -2; x <= 2; x++) {
+
+                // Skip the four outer corners.
+                if (Math.abs(x) == 2 && Math.abs(z) == 2) {
+                    continue;
+                }
+
+                BlockPos leafPos = center.offset(x, 0, z);
+                foliageSetter.set(leafPos, transitionLeaves);
+            }
+        }
     }
+
+    private void placeTopGreenLayer(LevelSimulatedReader level, FoliageSetter foliageSetter, RandomSource random, TreeConfiguration config, BlockPos center) {
+        for (int z = -1; z <= 1; z++) {
+            for (int x = -1; x <= 1; x++) {
+
+                BlockPos leafPos = center.offset(x, 1, z);
+                tryPlaceLeaf(level, foliageSetter, random, config, leafPos);
+            }
+        }
+    }
+
+
+
 }
