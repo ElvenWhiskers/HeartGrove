@@ -35,14 +35,13 @@ public class ModConfiguredFeatures {
 
                 new TwoLayersFeatureSize(1, 0, 2)).build());
 
-        register(context, BLUE_WISTERIA_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
-                BlockStateProvider.simple(ModBlocks.WISTERIA_LOG.get()),
-                new StraightTrunkPlacer(5, 2, 0),
+        registerWisteriaTree(
+                context,
+                BLUE_WISTERIA_KEY,
+                WisteriaColor.BLUE
+        );
 
-                BlockStateProvider.simple(ModBlocks.WISTERIA_LEAVES.get()),
-                new WisteriaFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0), WisteriaColor.BLUE),
 
-                new TwoLayersFeatureSize(1, 0, 2)).build());
     }
 
     public static ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name) {
@@ -53,4 +52,32 @@ public class ModConfiguredFeatures {
                                                                                           ResourceKey<ConfiguredFeature<?, ?>> key, F feature, FC configuration) {
         context.register(key, new ConfiguredFeature<>(feature, configuration));
     }
+
+    private static void registerWisteriaTree(
+            BootstrapContext<ConfiguredFeature<?, ?>> context,
+            ResourceKey<ConfiguredFeature<?, ?>> key,
+            WisteriaColor color
+    ) {
+        register(
+                context,
+                key,
+                Feature.TREE,
+                new TreeConfiguration.TreeConfigurationBuilder(
+                        BlockStateProvider.simple(ModBlocks.WISTERIA_LOG.get()),
+                        new StraightTrunkPlacer(5, 2, 0),
+
+                        BlockStateProvider.simple(ModBlocks.WISTERIA_LEAVES.get()),
+                        new WisteriaFoliagePlacer(
+                                ConstantInt.of(0),
+                                ConstantInt.of(0),
+                                color
+                        ),
+
+                        new TwoLayersFeatureSize(1, 0, 2)
+                ).build()
+        );
+    }
+
+
+
 }
