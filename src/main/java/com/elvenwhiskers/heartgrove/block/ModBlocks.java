@@ -106,6 +106,10 @@ public class ModBlocks {
             () -> new TrapDoorBlock(BlockSetType.OAK, BlockBehaviour.Properties.of().strength(2f).noOcclusion()));
     //crafting table
 
+    // Workstations
+    public static final DeferredBlock<Block> SAWMILL = registerBlock("sawmill",
+            () -> new SawmillBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE)));
+
 
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {

@@ -69,6 +69,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.WISTERIA_DOOR);
                         output.accept(ModBlocks.WISTERIA_TRAPDOOR);
                         //output.accept(ModBlocks.WISTERIA_CRAFTING_TABLE);
+                        output.accept(ModBlocks.SAWMILL);
                     }).build());
 
 

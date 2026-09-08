@@ -40,6 +40,9 @@
   "block.heartgrove.wisteria_wall": "Wisteria Wall",
   "block.heartgrove.wisteria_door": "Wisteria Door",
   "block.heartgrove.wisteria_trapdoor": "Wisteria Trapdoor",
+  "block.heartgrove.sawmill": "Sawmill",
+
+  "container.heartgrove.sawmill": "Sawmill",
 
   "creativetab.heartgrove.heartgrove_items": "Heartgrove Items",
   "creativetab.heartgrove.heartgrove_woods": "Heartgrove Woods"

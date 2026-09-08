@@ -65,6 +65,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.WISTERIA_DOOR.get());
         dropSelf(ModBlocks.WISTERIA_TRAPDOOR.get());
         //add crafting table
+        dropSelf(ModBlocks.SAWMILL.get());
 
         add(ModBlocks.AEGIS_ORE.get(),
                 block -> createOreDrop(ModBlocks.AEGIS_ORE.get(), ModItems.AEGIS_INGOT.get())); //regular ore loot table.
