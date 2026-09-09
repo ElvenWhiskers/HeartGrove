@@ -8,14 +8,19 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.Container;
 import com.elvenwhiskers.heartgrove.block.ModBlocks;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.inventory.DataSlot;
+
 
 public class SawmillMenu extends AbstractContainerMenu {
     private final Container inputContainer = new SimpleContainer(1);
     private final Container outputContainer = new SimpleContainer(1);
+    private final DataSlot selectedRecipe = DataSlot.standalone();
 
 
     public SawmillMenu(int containerId, Inventory playerInventory) {
         super(ModMenuTypes.SAWMILL_MENU.get(), containerId);
+        this.addDataSlot(this.selectedRecipe);
 
         //only input slot
         this.addSlot(new Slot(inputContainer, 0, 20, 33) {
@@ -77,40 +82,58 @@ public class SawmillMenu extends AbstractContainerMenu {
 
                 ItemStack inputStack = this.inputContainer.getItem(0);
 
-                // Temporary hardcoded test recipe:
-                // 1 Wisteria Log = 4 Wisteria Planks
                 if (!inputStack.is(ModBlocks.WISTERIA_LOG.get().asItem())) {
                     return ItemStack.EMPTY;
                 }
 
-                ItemStack plankResult = new ItemStack(ModBlocks.WISTERIA_PLANKS.get());
+                ItemStack resultStack;
+                int resultPerCraft;
 
-                int availableSpace = getPlayerInventorySpace(plankResult);
+                if (selectedRecipe.get() == 0) {
 
-                // Each log creates exactly 4 planks.
-                int craftsThatFit = availableSpace / 4;
+                    // Recipe 0:
+                    // 1 Wisteria Log = 4 Wisteria Planks
+                    resultStack = new ItemStack(ModBlocks.WISTERIA_PLANKS.get());
+                    resultPerCraft = 4;
 
-                // We cannot craft more times than we have logs.
-                int craftsToMake = Math.min(inputStack.getCount(), craftsThatFit);
+                } else if (selectedRecipe.get() == 1) {
+
+                    // Recipe 1:
+                    // 1 Wisteria Log = 8 Sticks
+                    resultStack = new ItemStack(Items.STICK);
+                    resultPerCraft = 8;
+
+                } else {
+                    return ItemStack.EMPTY;
+                }
+
+                int availableSpace = getPlayerInventorySpace(resultStack);
+
+                int craftsThatFit = availableSpace / resultPerCraft;
+
+                int craftsToMake = Math.min(
+                        inputStack.getCount(),
+                        craftsThatFit
+                );
 
                 if (craftsToMake <= 0) {
                     return ItemStack.EMPTY;
                 }
 
-                int totalPlanks = craftsToMake * 4;
+                int totalItems = craftsToMake * resultPerCraft;
 
                 ItemStack craftedStack =
-                        new ItemStack(ModBlocks.WISTERIA_PLANKS.get(), totalPlanks);
+                        new ItemStack(resultStack.getItem(), totalItems);
 
-                // Main inventory FIRST.
+                // Main inventory first.
                 this.moveItemStackTo(craftedStack, 2, 29, false);
 
-                // Anything that didn't fit there may use the hotbar.
+                // Hotbar second.
                 if (!craftedStack.isEmpty()) {
                     this.moveItemStackTo(craftedStack, 29, 38, false);
                 }
 
-                // Only consume the logs for crafts we successfully calculated.
+                // One log is consumed per completed craft.
                 this.inputContainer.removeItem(0, craftsToMake);
 
                 updateOutput();
@@ -197,15 +220,53 @@ public class SawmillMenu extends AbstractContainerMenu {
         ItemStack inputStack = this.inputContainer.getItem(0);
 
         if (inputStack.is(ModBlocks.WISTERIA_LOG.get().asItem())) {
-            this.outputContainer.setItem(
-                    0,
-                    new ItemStack(ModBlocks.WISTERIA_PLANKS.get(), 4)
-            );
+
+            if (selectedRecipe.get() == 0) {
+
+                // Recipe 0:
+                // 1 Wisteria Log = 4 Wisteria Planks
+                this.outputContainer.setItem(
+                        0,
+                        new ItemStack(ModBlocks.WISTERIA_PLANKS.get(), 4)
+                );
+
+            } else if (selectedRecipe.get() == 1) {
+
+                // Recipe 1:
+                // 1 Wisteria Log = 8 Sticks
+                this.outputContainer.setItem(
+                        0,
+                        new ItemStack(Items.STICK, 8)
+                );
+
+            } else {
+
+                // No valid recipe selected.
+                this.outputContainer.setItem(0, ItemStack.EMPTY);
+            }
+
         } else {
             this.outputContainer.setItem(0, ItemStack.EMPTY);
         }
 
         this.broadcastChanges();
+    }
+
+    @Override
+    public boolean clickMenuButton(Player player, int id) {
+
+        if (id == 0 || id == 1) {
+            this.selectedRecipe.set(id);
+            updateOutput();
+
+            return true;
+        }
+
+        return false;
+    }
+
+    public int getSelectedRecipe() {
+        return this.selectedRecipe.get();
     }
 
     //So items don't get voided and return to me lol.
