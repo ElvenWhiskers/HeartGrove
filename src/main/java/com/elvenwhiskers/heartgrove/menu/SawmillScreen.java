@@ -1,27 +1,42 @@
 package com.elvenwhiskers.heartgrove.menu;
 
 import com.elvenwhiskers.heartgrove.HeartGrove;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.client.Minecraft;
-import com.elvenwhiskers.heartgrove.block.ModBlocks;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
+import com.elvenwhiskers.heartgrove.menu.sawmill.SawmillRecipe;
+import java.util.List;
 
 public class SawmillScreen extends AbstractContainerScreen<SawmillMenu> {
 
-    private static final ResourceLocation TEXTURE =
-            ResourceLocation.fromNamespaceAndPath(
-                    HeartGrove.MOD_ID,
-                    "textures/gui/container/sawmill.png"
-            );
+    private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(
+            HeartGrove.MOD_ID,
+            "textures/gui/container/sawmill.png"
+    );
+
+    // Temporary recipe layout.
+    private static final int RECIPE_X = 52;
+    private static final int RECIPE_Y = 14;
+    private static final int RECIPE_SIZE = 18;
+    private static final int RECIPE_SPACING = 20;
+
+    private static final int RECIPE_COLUMNS = 3;
+    private static final int RECIPE_ROWS = 2;
+    private static final int MAX_VISIBLE_RECIPES = RECIPE_COLUMNS * RECIPE_ROWS;
+
 
     public SawmillScreen(SawmillMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title);
     }
+
+
+    // --------------------------------------------------
+    // Screen rendering
+    // --------------------------------------------------
 
     @Override
     protected void renderBg(GuiGraphics guiGraphics, float partialTick, int mouseX, int mouseY) {
@@ -34,107 +49,114 @@ public class SawmillScreen extends AbstractContainerScreen<SawmillMenu> {
                 this.imageWidth,
                 this.imageHeight
         );
-        ItemStack plankIcon = new ItemStack(ModBlocks.WISTERIA_PLANKS.get());
-        ItemStack stickIcon = new ItemStack(Items.STICK);
 
-        guiGraphics.renderItem(
-                plankIcon,
-                this.leftPos + 53,
-                this.topPos + 15
-        );
-
-        guiGraphics.renderItem(
-                stickIcon,
-                this.leftPos + 73,
-                this.topPos + 15
-        );
-
-        int recipeX = this.leftPos + 52;
-        int recipeY = this.topPos + 14;
-
-// Hover highlight for recipe 0.
-        if (mouseX >= recipeX && mouseX < recipeX + 18
-                && mouseY >= recipeY && mouseY < recipeY + 18) {
-
-            guiGraphics.fill(
-                    recipeX,
-                    recipeY,
-                    recipeX + 18,
-                    recipeY + 18,
-                    0x40FFFFFF
-            );
+        if (!this.menu.hasValidInput()) {
+            return;
         }
 
-// Hover highlight for recipe 1.
-        if (mouseX >= recipeX + 20 && mouseX < recipeX + 38
-                && mouseY >= recipeY && mouseY < recipeY + 18) {
-
-            guiGraphics.fill(
-                    recipeX + 20,
-                    recipeY,
-                    recipeX + 38,
-                    recipeY + 18,
-                    0x40FFFFFF
-            );
-        }
-
-        // Selected highlight.
-        if (this.menu.getSelectedRecipe() == 0) {
-
-            guiGraphics.fill(
-                    recipeX,
-                    recipeY,
-                    recipeX + 18,
-                    recipeY + 18,
-                    0x60FFFFFF
-            );
-
-        } else if (this.menu.getSelectedRecipe() == 1) {
-
-            guiGraphics.fill(
-                    recipeX + 20,
-                    recipeY,
-                    recipeX + 38,
-                    recipeY + 18,
-                    0x60FFFFFF
-            );
-        }
-
+        renderRecipeIcons(guiGraphics);
+        renderRecipeHighlights(guiGraphics, mouseX, mouseY);
     }
 
+
+    private void renderRecipeIcons(GuiGraphics guiGraphics) {
+        List<SawmillRecipe> recipes = this.menu.getAvailableRecipes();
+
+        for (int index = 0; index < recipes.size(); index++) {
+            SawmillRecipe recipe = recipes.get(index);
+
+            guiGraphics.renderItem(
+                    new ItemStack(recipe.getOutput()),
+                    getRecipeX(index) + 1,
+                    getRecipeY(index) + 1
+            );
+        }
+    }
+
+
+    private void renderRecipeHighlights(GuiGraphics guiGraphics, int mouseX, int mouseY) {
+        List<SawmillRecipe> recipes = this.menu.getAvailableRecipes();
+        int selectedRecipe = this.menu.getSelectedRecipe();
+
+        for (int index = 0; index < recipes.size(); index++) {
+            int recipeX = getRecipeX(index);
+            int recipeY = getRecipeY(index);
+
+            if (isMouseOverRecipe(mouseX, mouseY, index)) {
+                guiGraphics.fill(
+                        recipeX,
+                        recipeY,
+                        recipeX + RECIPE_SIZE,
+                        recipeY + RECIPE_SIZE,
+                        0x40FFFFFF
+                );
+            }
+
+            if (selectedRecipe == index) {
+                guiGraphics.fill(
+                        recipeX,
+                        recipeY,
+                        recipeX + RECIPE_SIZE,
+                        recipeY + RECIPE_SIZE,
+                        0x60FFFFFF
+                );
+            }
+        }
+    }
+
+
+    // --------------------------------------------------
+    // Recipe interaction
+    // --------------------------------------------------
+
+    private int getRecipeX(int recipeIndex) {
+        int column = recipeIndex % RECIPE_COLUMNS;
+
+        return this.leftPos + RECIPE_X + column * RECIPE_SPACING;
+    }
+
+
+    private int getRecipeY(int recipeIndex) {
+        int row = recipeIndex / RECIPE_COLUMNS;
+
+        return this.topPos + RECIPE_Y + row * RECIPE_SPACING;
+    }
+
+
+    private boolean isMouseOverRecipe(double mouseX, double mouseY, int recipeIndex) {
+        int recipeX = getRecipeX(recipeIndex);
+        int recipeY = getRecipeY(recipeIndex);
+
+        return mouseX >= recipeX
+                && mouseX < recipeX + RECIPE_SIZE
+                && mouseY >= recipeY
+                && mouseY < recipeY + RECIPE_SIZE;
+    }
 
 
     @Override
     public boolean mouseClicked(double mouseX, double mouseY, int button) {
-
-        // Temporary recipe button positions.
-        int recipeX = this.leftPos + 52;
-        int recipeY = this.topPos + 14;
-
-        // Recipe 0 button area.
-        if (mouseX >= recipeX && mouseX < recipeX + 18
-                && mouseY >= recipeY && mouseY < recipeY + 18) {
-
-            Minecraft.getInstance().gameMode.handleInventoryButtonClick(
-                    this.menu.containerId,
-                    0
-            );
-
-            return true;
+        if (!this.menu.hasValidInput()) {
+            return super.mouseClicked(mouseX, mouseY, button);
         }
 
-        // Recipe 1 button area.
-        if (mouseX >= recipeX + 20 && mouseX < recipeX + 38
-                && mouseY >= recipeY && mouseY < recipeY + 18) {
+        List<SawmillRecipe> recipes = this.menu.getAvailableRecipes();
 
-            Minecraft.getInstance().gameMode.handleInventoryButtonClick(
-                    this.menu.containerId,
-                    1
-            );
-
-            return true;
+        for (int index = 0; index < recipes.size(); index++) {
+            if (isMouseOverRecipe(mouseX, mouseY, index)) {
+                selectRecipe(index);
+                return true;
+            }
         }
 
         return super.mouseClicked(mouseX, mouseY, button);
+    }
+
+
+    private void selectRecipe(int recipeId) {
+        Minecraft.getInstance().gameMode.handleInventoryButtonClick(
+                this.menu.containerId,
+                recipeId
+        );
     }
 }

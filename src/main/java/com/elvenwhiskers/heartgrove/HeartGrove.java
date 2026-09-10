@@ -4,6 +4,7 @@ import com.elvenwhiskers.heartgrove.block.ModBlocks;
 import com.elvenwhiskers.heartgrove.item.ModCreativeModeTabs;
 import com.elvenwhiskers.heartgrove.item.ModItems;
 import com.elvenwhiskers.heartgrove.menu.ModMenuTypes;
+import com.elvenwhiskers.heartgrove.menu.sawmill.ModSawmillFamilies;
 import com.elvenwhiskers.heartgrove.worldgen.tree.ModFoliagePlacerTypes;
 import org.slf4j.Logger;
 import com.mojang.logging.LogUtils;
@@ -42,6 +43,8 @@ public class HeartGrove {
         modEventBus.addListener(this::addCreative);
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+
+
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
