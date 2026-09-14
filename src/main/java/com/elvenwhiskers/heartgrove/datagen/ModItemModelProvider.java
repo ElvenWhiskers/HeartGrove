@@ -11,6 +11,10 @@ import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
+import com.elvenwhiskers.heartgrove.block.family.ModWoodFamilies;
+import com.elvenwhiskers.heartgrove.block.family.ModWoodFamily;
+import com.elvenwhiskers.heartgrove.block.family.ModNormalTreeFamily;
+import com.elvenwhiskers.heartgrove.block.family.ModNormalTreeFamilies;
 
 public class ModItemModelProvider extends ItemModelProvider {
     public ModItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
@@ -21,23 +25,28 @@ public class ModItemModelProvider extends ItemModelProvider {
     protected void registerModels() {
         basicItem(ModItems.AEGIS_INGOT.get());
         basicItem(ModItems.RAW_AEGIS.get());
-        saplingItem(ModBlocks.LARKSPUR_SAPLING);
-        fenceItem(ModBlocks.LARKSPUR_FENCE, ModBlocks.LARKSPUR_PLANKS);
-        basicItem(ModBlocks.LARKSPUR_DOOR.asItem());
-        wallItem(ModBlocks.LARKSPUR_WALL, ModBlocks.LARKSPUR_PLANKS);
 
+        for (ModWoodFamily family : ModWoodFamilies.ALL) {
+            woodFamilyItems(family);
+        }
+
+        for (ModNormalTreeFamily tree : ModNormalTreeFamilies.ALL) {
+            normalTreeItems(tree);
+        }
+
+        // Wisteria-specific
         saplingItem(ModBlocks.BLUE_WISTERIA_SAPLING);
-        fenceItem(ModBlocks.WISTERIA_FENCE, ModBlocks.WISTERIA_PLANKS);
-        basicItem(ModBlocks.WISTERIA_DOOR.asItem());
-        wallItem(ModBlocks.WISTERIA_WALL, ModBlocks.WISTERIA_PLANKS);
 
-        withExistingParent(ModBlocks.BLUE_WISTERIA_VINES.getId().getPath(),
-                "item/generated").texture("layer0",
+        withExistingParent(
+                ModBlocks.BLUE_WISTERIA_VINES.getId().getPath(),
+                "item/generated"
+        ).texture(
+                "layer0",
                 ResourceLocation.fromNamespaceAndPath(
                         HeartGrove.MOD_ID,
-                        "block/blue_wisteria_vines_bottom")
+                        "block/blue_wisteria_vines_bottom"
+                )
         );
-
     }
 
     private ItemModelBuilder saplingItem(DeferredBlock<Block> item) {
@@ -58,6 +67,24 @@ public class ModItemModelProvider extends ItemModelProvider {
                         "block/" + baseBlock.getId().getPath()));
     }
 
+    private void woodFamilyItems(ModWoodFamily family) {
+        fenceItem(
+                family.getFence(),
+                family.getPlanks()
+        );
 
+        basicItem(
+                family.getDoor().asItem()
+        );
+
+        wallItem(
+                family.getWall(),
+                family.getPlanks()
+        );
+    }
+
+    private void normalTreeItems(ModNormalTreeFamily tree) {
+        saplingItem(tree.getSapling());
+    }
 
 }

@@ -12,6 +12,10 @@ import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
+import com.elvenwhiskers.heartgrove.block.family.ModWoodFamily;
+import com.elvenwhiskers.heartgrove.block.family.ModWoodFamilies;
+import com.elvenwhiskers.heartgrove.block.family.ModNormalTreeFamily;
+import com.elvenwhiskers.heartgrove.block.family.ModNormalTreeFamilies;
 
 public class ModBlockStateProvider extends BlockStateProvider {
     public ModBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
@@ -24,23 +28,14 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         blockWithItem(ModBlocks.AEGIS_ORE);
 
-        //blockItem(ModBlocks.LARKSPUR_CRAFTING_TABLE);
+        for (ModWoodFamily family : ModWoodFamilies.ALL) {
+            woodSet(family);
+        }
 
+        for (ModNormalTreeFamily tree : ModNormalTreeFamilies.ALL) {
+            normalTreeBlocks(tree);
+        }
 
-        //step 1: logset
-        logSet(ModBlocks.LARKSPUR_LOG, ModBlocks.LARKSPUR_WOOD, ModBlocks.STRIPPED_LARKSPUR_LOG, ModBlocks.STRIPPED_LARKSPUR_WOOD);
-        logSet(ModBlocks.WISTERIA_LOG, ModBlocks.WISTERIA_WOOD, ModBlocks.STRIPPED_WISTERIA_LOG, ModBlocks.STRIPPED_WISTERIA_WOOD);
-
-        //step 2: plankShapes
-        plankShapes(ModBlocks.LARKSPUR_PLANKS, ModBlocks.LARKSPUR_STAIRS, ModBlocks.LARKSPUR_SLAB, ModBlocks.LARKSPUR_PRESSURE_PLATE, ModBlocks.LARKSPUR_BUTTON, ModBlocks.LARKSPUR_FENCE, ModBlocks.LARKSPUR_FENCE_GATE, ModBlocks.LARKSPUR_WALL);
-        plankShapes(ModBlocks.WISTERIA_PLANKS, ModBlocks.WISTERIA_STAIRS, ModBlocks.WISTERIA_SLAB, ModBlocks.WISTERIA_PRESSURE_PLATE, ModBlocks.WISTERIA_BUTTON, ModBlocks.WISTERIA_FENCE, ModBlocks.WISTERIA_FENCE_GATE, ModBlocks.WISTERIA_WALL);
-
-        //step 3: doorSet
-        doorSet(ModBlocks.LARKSPUR_DOOR, ModBlocks.LARKSPUR_TRAPDOOR);
-        doorSet(ModBlocks.WISTERIA_DOOR, ModBlocks.WISTERIA_TRAPDOOR);
-
-        leavesBlock(ModBlocks.LARKSPUR_LEAVES);
-        saplingBlock(ModBlocks.LARKSPUR_SAPLING);
         leavesBlock(ModBlocks.WISTERIA_LEAVES);
         leavesBlock(ModBlocks.BLUE_WISTERIA_BLOSSOMS);
         saplingBlock(ModBlocks.BLUE_WISTERIA_SAPLING);
@@ -48,16 +43,34 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         directionalLeavesBlock(ModBlocks.BLUE_WISTERIA_LEAVES, ModBlocks.WISTERIA_LEAVES, ModBlocks.BLUE_WISTERIA_BLOSSOMS);
 
-        //step 4: ideally
-        //woodSet("larkspur");
-
         //Other blocks
         ModelFile testModel = models().orientable("larkspur_crafting_table", modLoc("block/larkspur_crafting_table_side"), modLoc("block/larkspur_crafting_table_front"), modLoc("block/larkspur_crafting_table_top"));
         simpleBlockWithItem(ModBlocks.LARKSPUR_CRAFTING_TABLE.get(), testModel);
     }
 
-    private void woodSet(){
+    private void woodSet(ModWoodFamily family) {
+        logSet(
+                family.getLog(),
+                family.getWood(),
+                family.getStrippedLog(),
+                family.getStrippedWood()
+        );
 
+        plankShapes(
+                family.getPlanks(),
+                family.getStairs(),
+                family.getSlab(),
+                family.getPressurePlate(),
+                family.getButton(),
+                family.getFence(),
+                family.getFenceGate(),
+                family.getWall()
+        );
+
+        doorSet(
+                family.getDoor(),
+                family.getTrapdoor()
+        );
     }
 
     private void logSet(DeferredBlock<?> log, DeferredBlock<?> wood, DeferredBlock<?> sLog, DeferredBlock<?> sWood){
@@ -81,11 +94,16 @@ public class ModBlockStateProvider extends BlockStateProvider {
         pressurePlateBlock((PressurePlateBlock) pressurePlate.get(), blockTexture(planks.get()));
         blockItem(pressurePlate);
         buttonBlock((ButtonBlock) button.get(), blockTexture(planks.get()));
-        blockItem(button);
+        buttonItem(button, planks);
         fenceBlock((FenceBlock) fence.get(), blockTexture(planks.get()));
         fenceGateBlock((FenceGateBlock) fenceGate.get(), blockTexture(planks.get()));
         blockItem(fenceGate);
         wallBlock((WallBlock) wall.get(), blockTexture(planks.get()));
+    }
+
+    private void normalTreeBlocks(ModNormalTreeFamily tree) {
+        leavesBlock(tree.getLeaves());
+        saplingBlock(tree.getSapling());
     }
 
     private void blockWithItem(DeferredBlock<?> deferredBlock) {
@@ -100,6 +118,18 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     private void blockItem(DeferredBlock<?> deferredBlock) {
         simpleBlockItem(deferredBlock.get(), new ModelFile.UncheckedModelFile("heartgrove:block/" + deferredBlock.getId().getPath()));
+    }
+
+    private void buttonItem(DeferredBlock<?> button, DeferredBlock<?> planks) {
+        simpleBlockItem(
+                button.get(),
+                models().singleTexture(
+                        button.getId().getPath() + "_inventory",
+                        mcLoc("block/button_inventory"),
+                        "texture",
+                        blockTexture(planks.get())
+                )
+        );
     }
 
     private void blockItem(DeferredBlock<?> deferredBlock, String appendix) {

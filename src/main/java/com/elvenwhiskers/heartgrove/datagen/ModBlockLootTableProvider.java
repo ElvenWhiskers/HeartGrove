@@ -10,6 +10,10 @@ import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.fml.common.Mod;
+import com.elvenwhiskers.heartgrove.block.family.ModWoodFamilies;
+import com.elvenwhiskers.heartgrove.block.family.ModWoodFamily;
+import com.elvenwhiskers.heartgrove.block.family.ModNormalTreeFamily;
+import com.elvenwhiskers.heartgrove.block.family.ModNormalTreeFamilies;
 
 import java.util.Set;
 
@@ -19,34 +23,22 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         super(Set.of(), FeatureFlags.REGISTRY.allFlags(), registries);
     }
 
+
+
     @Override
     protected void generate() {
         dropSelf(ModBlocks.AEGIS_BLOCK.get()); //drop self for just regular drops self. obviously.
 
-        dropSelf(ModBlocks.LARKSPUR_LOG.get());
-        dropSelf(ModBlocks.LARKSPUR_WOOD.get());
-        dropSelf(ModBlocks.STRIPPED_LARKSPUR_LOG.get());
-        dropSelf(ModBlocks.STRIPPED_LARKSPUR_WOOD.get());
-        dropSelf(ModBlocks.LARKSPUR_PLANKS.get());
-        dropSelf(ModBlocks.LARKSPUR_SAPLING.get());
-        add(ModBlocks.LARKSPUR_LEAVES.get(), block ->
-                createLeavesDrops(block, ModBlocks.LARKSPUR_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
-        dropSelf(ModBlocks.LARKSPUR_STAIRS.get());
-        dropSelf(ModBlocks.LARKSPUR_SLAB.get());
-        dropSelf(ModBlocks.LARKSPUR_PRESSURE_PLATE.get());
-        dropSelf(ModBlocks.LARKSPUR_BUTTON.get());
-        dropSelf(ModBlocks.LARKSPUR_FENCE.get());
-        dropSelf(ModBlocks.LARKSPUR_FENCE_GATE.get());
-        dropSelf(ModBlocks.LARKSPUR_WALL.get());
-        dropSelf(ModBlocks.LARKSPUR_DOOR.get());
-        dropSelf(ModBlocks.LARKSPUR_TRAPDOOR.get());
+        for (ModWoodFamily family : ModWoodFamilies.ALL) {
+            dropWoodFamily(family);
+        }
+
+        for (ModNormalTreeFamily tree : ModNormalTreeFamilies.ALL) {
+            dropNormalTree(tree);
+        }
+
         dropSelf(ModBlocks.LARKSPUR_CRAFTING_TABLE.get());
 
-        dropSelf(ModBlocks.WISTERIA_LOG.get());
-        dropSelf(ModBlocks.WISTERIA_WOOD.get());
-        dropSelf(ModBlocks.STRIPPED_WISTERIA_LOG.get());
-        dropSelf(ModBlocks.STRIPPED_WISTERIA_WOOD.get());
-        dropSelf(ModBlocks.WISTERIA_PLANKS.get());
         dropSelf(ModBlocks.BLUE_WISTERIA_SAPLING.get());
         add(ModBlocks.WISTERIA_LEAVES.get(), block ->
                 createLeavesDrops(block, ModBlocks.BLUE_WISTERIA_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
@@ -55,21 +47,44 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         add(ModBlocks.BLUE_WISTERIA_BLOSSOMS.get(), block ->
                 createLeavesDrops(block, ModBlocks.BLUE_WISTERIA_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
         dropSelf(ModBlocks.BLUE_WISTERIA_VINES.get());
-        dropSelf(ModBlocks.WISTERIA_STAIRS.get());
-        dropSelf(ModBlocks.WISTERIA_SLAB.get());
-        dropSelf(ModBlocks.WISTERIA_PRESSURE_PLATE.get());
-        dropSelf(ModBlocks.WISTERIA_BUTTON.get());
-        dropSelf(ModBlocks.WISTERIA_FENCE.get());
-        dropSelf(ModBlocks.WISTERIA_FENCE_GATE.get());
-        dropSelf(ModBlocks.WISTERIA_WALL.get());
-        dropSelf(ModBlocks.WISTERIA_DOOR.get());
-        dropSelf(ModBlocks.WISTERIA_TRAPDOOR.get());
         //add crafting table
+
         dropSelf(ModBlocks.SAWMILL.get());
 
         add(ModBlocks.AEGIS_ORE.get(),
                 block -> createOreDrop(ModBlocks.AEGIS_ORE.get(), ModItems.AEGIS_INGOT.get())); //regular ore loot table.
 
+    }
+
+    private void dropWoodFamily(ModWoodFamily family) {
+        dropSelf(family.getLog().get());
+        dropSelf(family.getWood().get());
+        dropSelf(family.getStrippedLog().get());
+        dropSelf(family.getStrippedWood().get());
+        dropSelf(family.getPlanks().get());
+
+        dropSelf(family.getStairs().get());
+        dropSelf(family.getSlab().get());
+        dropSelf(family.getPressurePlate().get());
+        dropSelf(family.getButton().get());
+        dropSelf(family.getFence().get());
+        dropSelf(family.getFenceGate().get());
+        dropSelf(family.getWall().get());
+        dropSelf(family.getDoor().get());
+        dropSelf(family.getTrapdoor().get());
+    }
+
+    private void dropNormalTree(ModNormalTreeFamily tree) {
+        dropSelf(tree.getSapling().get());
+
+        add(
+                tree.getLeaves().get(),
+                block -> createLeavesDrops(
+                        block,
+                        tree.getSapling().get(),
+                        NORMAL_LEAVES_SAPLING_CHANCES
+                )
+        );
     }
 
     @Override
