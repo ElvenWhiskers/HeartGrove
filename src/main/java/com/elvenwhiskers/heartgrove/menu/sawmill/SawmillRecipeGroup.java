@@ -7,7 +7,10 @@ public enum SawmillRecipeGroup {
     FENCE(1, 1, 2),
     SLAB(1, 1, 3),
     STAIRS(2, 1, 4),
-    WALL(1, 1, 5);
+    WALL(1, 1, 5),
+    BUTTON(1, 1, 6),
+    PRESSURE_PLATE(2, 1, 7),
+    FENCE_GATE(2, 1, 8);
 
     private final int plankCost;
     private final int outputCount;

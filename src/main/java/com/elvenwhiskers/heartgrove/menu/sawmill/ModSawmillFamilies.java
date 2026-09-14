@@ -34,10 +34,40 @@ public class ModSawmillFamilies {
             SawmillRecipeGroup.FENCE
     );
 
+    public static final SawmillRecipe WISTERIA_SLAB = new SawmillRecipe(
+            ModBlocks.WISTERIA_SLAB.get().asItem(),
+            SawmillMaterialForm.PLANK,
+            SawmillRecipeGroup.SLAB
+    );
+
     public static final SawmillRecipe WISTERIA_STAIRS = new SawmillRecipe(
             ModBlocks.WISTERIA_STAIRS.get().asItem(),
             SawmillMaterialForm.PLANK,
             SawmillRecipeGroup.STAIRS
+    );
+
+    public static final SawmillRecipe WISTERIA_WALL = new SawmillRecipe(
+            ModBlocks.WISTERIA_WALL.get().asItem(),
+            SawmillMaterialForm.PLANK,
+            SawmillRecipeGroup.WALL
+    );
+
+    public static final SawmillRecipe WISTERIA_BUTTON = new SawmillRecipe(
+            ModBlocks.WISTERIA_BUTTON.get().asItem(),
+            SawmillMaterialForm.PLANK,
+            SawmillRecipeGroup.BUTTON
+    );
+
+    public static final SawmillRecipe WISTERIA_PRESSURE_PLATE = new SawmillRecipe(
+            ModBlocks.WISTERIA_PRESSURE_PLATE.get().asItem(),
+            SawmillMaterialForm.PLANK,
+            SawmillRecipeGroup.PRESSURE_PLATE
+    );
+
+    public static final SawmillRecipe WISTERIA_FENCE_GATE = new SawmillRecipe(
+            ModBlocks.WISTERIA_FENCE_GATE.get().asItem(),
+            SawmillMaterialForm.PLANK,
+            SawmillRecipeGroup.FENCE_GATE
     );
 
     public static final SawmillFamilyCatalog WISTERIA_CATALOG = new SawmillFamilyCatalog(
@@ -46,7 +76,12 @@ public class ModSawmillFamilies {
                     WISTERIA_PLANKS,
                     WISTERIA_STICKS,
                     WISTERIA_PLANK_FENCE,
-                    WISTERIA_STAIRS
+                    WISTERIA_SLAB,
+                    WISTERIA_STAIRS,
+                    WISTERIA_WALL,
+                    WISTERIA_BUTTON,
+                    WISTERIA_PRESSURE_PLATE,
+                    WISTERIA_FENCE_GATE
             )
     );
 

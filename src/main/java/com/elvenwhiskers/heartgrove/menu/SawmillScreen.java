@@ -25,7 +25,7 @@ public class SawmillScreen extends AbstractContainerScreen<SawmillMenu> {
     private static final int RECIPE_SPACING = 20;
 
     private static final int RECIPE_COLUMNS = 3;
-    private static final int RECIPE_ROWS = 2;
+    private static final int RECIPE_ROWS = 3;
     private static final int MAX_VISIBLE_RECIPES = RECIPE_COLUMNS * RECIPE_ROWS;
 
 
@@ -61,8 +61,9 @@ public class SawmillScreen extends AbstractContainerScreen<SawmillMenu> {
 
     private void renderRecipeIcons(GuiGraphics guiGraphics) {
         List<SawmillRecipe> recipes = this.menu.getAvailableRecipes();
+        int visibleRecipes = Math.min(recipes.size(), MAX_VISIBLE_RECIPES);
 
-        for (int index = 0; index < recipes.size(); index++) {
+        for (int index = 0; index < visibleRecipes; index++) {
             SawmillRecipe recipe = recipes.get(index);
 
             guiGraphics.renderItem(
@@ -76,9 +77,10 @@ public class SawmillScreen extends AbstractContainerScreen<SawmillMenu> {
 
     private void renderRecipeHighlights(GuiGraphics guiGraphics, int mouseX, int mouseY) {
         List<SawmillRecipe> recipes = this.menu.getAvailableRecipes();
+        int visibleRecipes = Math.min(recipes.size(), MAX_VISIBLE_RECIPES);
         int selectedRecipe = this.menu.getSelectedRecipe();
 
-        for (int index = 0; index < recipes.size(); index++) {
+        for (int index = 0; index < visibleRecipes; index++) {
             int recipeX = getRecipeX(index);
             int recipeY = getRecipeY(index);
 
@@ -141,8 +143,9 @@ public class SawmillScreen extends AbstractContainerScreen<SawmillMenu> {
         }
 
         List<SawmillRecipe> recipes = this.menu.getAvailableRecipes();
+        int visibleRecipes = Math.min(recipes.size(), MAX_VISIBLE_RECIPES);
 
-        for (int index = 0; index < recipes.size(); index++) {
+        for (int index = 0; index < visibleRecipes; index++) {
             if (isMouseOverRecipe(mouseX, mouseY, index)) {
                 selectRecipe(index);
                 return true;
