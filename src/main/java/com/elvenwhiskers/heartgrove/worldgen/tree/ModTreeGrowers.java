@@ -13,4 +13,7 @@ public class ModTreeGrowers {
     public static final TreeGrower BLUE_WISTERIA = new TreeGrower(HeartGrove.MOD_ID + ":blue_wisteria",
             Optional.empty(), Optional.of(ModConfiguredFeatures.BLUE_WISTERIA_KEY), Optional.empty());
 
+    public static final TreeGrower FROSTBELL_BLOSSOM = new TreeGrower(HeartGrove.MOD_ID + ":frostbell_blossom",
+            Optional.empty(), Optional.of(ModConfiguredFeatures.FROSTBELL_BLOSSOM_KEY), Optional.empty());
+
 }

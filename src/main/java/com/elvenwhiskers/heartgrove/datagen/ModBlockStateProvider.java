@@ -3,6 +3,7 @@ package com.elvenwhiskers.heartgrove.datagen;
 import com.elvenwhiskers.heartgrove.HeartGrove;
 import com.elvenwhiskers.heartgrove.block.ModBlocks;
 import com.elvenwhiskers.heartgrove.block.custom.WisteriaVineBlock;
+import com.elvenwhiskers.heartgrove.block.family.*;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
@@ -12,10 +13,6 @@ import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
-import com.elvenwhiskers.heartgrove.block.family.ModWoodFamily;
-import com.elvenwhiskers.heartgrove.block.family.ModWoodFamilies;
-import com.elvenwhiskers.heartgrove.block.family.ModNormalTreeFamily;
-import com.elvenwhiskers.heartgrove.block.family.ModNormalTreeFamilies;
 
 public class ModBlockStateProvider extends BlockStateProvider {
     public ModBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
@@ -34,6 +31,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         for (ModNormalTreeFamily tree : ModNormalTreeFamilies.ALL) {
             normalTreeBlocks(tree);
+        }
+
+        for (ModVanillaWoodSet vanillaSet : ModVanillaWoodSets.ALL) {
+            vanillaWoodSetBlocks(vanillaSet);
         }
 
         leavesBlock(ModBlocks.WISTERIA_LEAVES);
@@ -194,4 +195,15 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 .modelFile(bottomModel)
                 .addModel();
     }
+
+    private void vanillaWoodSetBlocks(ModVanillaWoodSet vanillaSet) {
+        signBlock(
+                vanillaSet.getSign().get(),
+                vanillaSet.getWallSign().get(),
+                blockTexture(vanillaSet.getWoodFamily().getPlanks().get())
+        );
+    }
+
+
+
 }

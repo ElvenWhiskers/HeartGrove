@@ -12,6 +12,8 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
+import com.elvenwhiskers.heartgrove.block.family.ModVanillaWoodSet;
+import com.elvenwhiskers.heartgrove.block.family.ModVanillaWoodSets;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -89,6 +91,11 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 ModBlocks.LARKSPUR.getPlanks().get(),
                 ModBlocks.LARKSPUR_CRAFTING_TABLE.get()
         );
+
+        // Optional vanilla-style wood sets
+        for (ModVanillaWoodSet vanillaSet : ModVanillaWoodSets.ALL) {
+            vanillaWoodSetRecipes(recipeOutput, vanillaSet);
+        }
     }
 
 
@@ -375,6 +382,30 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                                 "_from_" +
                                 getItemName(planks)
                 );
+    }
+
+    private static void vanillaWoodSetRecipes(
+            RecipeOutput recipeOutput,
+            ModVanillaWoodSet vanillaSet
+    ) {
+        ItemLike planks = vanillaSet.getWoodFamily().getPlanks().get();
+        ItemLike sign = vanillaSet.getSignItem().get();
+
+        ShapedRecipeBuilder.shaped(
+                        RecipeCategory.DECORATIONS,
+                        sign,
+                        3
+                )
+                .pattern("PPP")
+                .pattern("PPP")
+                .pattern(" S ")
+                .define('P', planks)
+                .define('S', Items.STICK)
+                .unlockedBy(
+                        "has_" + getItemName(planks),
+                        has(planks)
+                )
+                .save(recipeOutput);
     }
 
 

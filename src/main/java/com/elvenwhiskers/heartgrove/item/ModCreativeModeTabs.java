@@ -2,6 +2,7 @@ package com.elvenwhiskers.heartgrove.item;
 
 import com.elvenwhiskers.heartgrove.HeartGrove;
 import com.elvenwhiskers.heartgrove.block.ModBlocks;
+import com.elvenwhiskers.heartgrove.block.family.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -31,49 +32,74 @@ public class ModCreativeModeTabs {
                     .withTabsBefore(ResourceLocation.fromNamespaceAndPath(HeartGrove.MOD_ID, "heartgrove_items_tab"))
                     .title(Component.translatable("creativetab.heartgrove.heartgrove_woods"))
                     .displayItems((itemDisplayParameters, output) -> {
-                        output.accept(ModBlocks.LARKSPUR_LOG);
-                        output.accept(ModBlocks.LARKSPUR_WOOD);
-                        output.accept(ModBlocks.STRIPPED_LARKSPUR_LOG);
-                        output.accept(ModBlocks.STRIPPED_LARKSPUR_WOOD);
-                        output.accept(ModBlocks.LARKSPUR_PLANKS);
-                        output.accept(ModBlocks.LARKSPUR_LEAVES);
-                        output.accept(ModBlocks.LARKSPUR_SAPLING);
-                        output.accept(ModBlocks.LARKSPUR_STAIRS);
-                        output.accept(ModBlocks.LARKSPUR_SLAB);
-                        output.accept(ModBlocks.LARKSPUR_PRESSURE_PLATE);
-                        output.accept(ModBlocks.LARKSPUR_BUTTON);
-                        output.accept(ModBlocks.LARKSPUR_FENCE);
-                        output.accept(ModBlocks.LARKSPUR_FENCE_GATE);
-                        output.accept(ModBlocks.LARKSPUR_WALL);
-                        output.accept(ModBlocks.LARKSPUR_DOOR);
-                        output.accept(ModBlocks.LARKSPUR_TRAPDOOR);
+
+                        // Baseline wood families
+                        for (ModWoodFamily family : ModWoodFamilies.ALL) {
+                            addWoodFamily(output, family);
+                        }
+
+                        // Normal tree biology
+                        for (ModNormalTreeFamily tree : ModNormalTreeFamilies.ALL) {
+                            addNormalTree(output, tree);
+                        }
+
+                        for (ModVanillaWoodSet vanillaSet : ModVanillaWoodSets.ALL) {
+                            addVanillaWoodSet(output, vanillaSet);
+                        }
+
+                        // Larkspur-specific extras
                         output.accept(ModBlocks.LARKSPUR_CRAFTING_TABLE);
 
-                        output.accept(ModBlocks.WISTERIA_LOG);
-                        output.accept(ModBlocks.WISTERIA_WOOD);
-                        output.accept(ModBlocks.STRIPPED_WISTERIA_LOG);
-                        output.accept(ModBlocks.STRIPPED_WISTERIA_WOOD);
-                        output.accept(ModBlocks.WISTERIA_PLANKS);
+                        // Wisteria-specific biology
                         output.accept(ModBlocks.WISTERIA_LEAVES);
                         output.accept(ModBlocks.BLUE_WISTERIA_LEAVES);
                         output.accept(ModBlocks.BLUE_WISTERIA_BLOSSOMS);
                         output.accept(ModBlocks.BLUE_WISTERIA_SAPLING);
                         output.accept(ModBlocks.BLUE_WISTERIA_VINES);
-                        output.accept(ModBlocks.WISTERIA_STAIRS);
-                        output.accept(ModBlocks.WISTERIA_SLAB);
-                        output.accept(ModBlocks.WISTERIA_PRESSURE_PLATE);
-                        output.accept(ModBlocks.WISTERIA_BUTTON);
-                        output.accept(ModBlocks.WISTERIA_FENCE);
-                        output.accept(ModBlocks.WISTERIA_FENCE_GATE);
-                        output.accept(ModBlocks.WISTERIA_WALL);
-                        output.accept(ModBlocks.WISTERIA_DOOR);
-                        output.accept(ModBlocks.WISTERIA_TRAPDOOR);
-                        //output.accept(ModBlocks.WISTERIA_CRAFTING_TABLE);
+
+                        // Workstations
                         output.accept(ModBlocks.SAWMILL);
+
                     }).build());
 
 
     public static void register(IEventBus eventBus) {
         CREATIVE_MODE_TAB.register(eventBus);
+    }
+
+    private static void addWoodFamily(
+            CreativeModeTab.Output output,
+            ModWoodFamily family
+    ) {
+        output.accept(family.getLog());
+        output.accept(family.getWood());
+        output.accept(family.getStrippedLog());
+        output.accept(family.getStrippedWood());
+        output.accept(family.getPlanks());
+
+        output.accept(family.getStairs());
+        output.accept(family.getSlab());
+        output.accept(family.getPressurePlate());
+        output.accept(family.getButton());
+        output.accept(family.getFence());
+        output.accept(family.getFenceGate());
+        output.accept(family.getWall());
+        output.accept(family.getDoor());
+        output.accept(family.getTrapdoor());
+    }
+
+    private static void addVanillaWoodSet(
+            CreativeModeTab.Output output,
+            ModVanillaWoodSet vanillaSet
+    ) {
+        output.accept(vanillaSet.getSignItem());
+    }
+
+    private static void addNormalTree(
+            CreativeModeTab.Output output,
+            ModNormalTreeFamily tree
+    ) {
+        output.accept(tree.getLeaves());
+        output.accept(tree.getSapling());
     }
 }

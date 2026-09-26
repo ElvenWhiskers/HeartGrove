@@ -9,7 +9,8 @@ public class ModWoodFamilies {
 
     public static final List<ModWoodFamily> ALL = List.of(
             ModBlocks.LARKSPUR,
-            ModBlocks.WISTERIA
+            ModBlocks.WISTERIA,
+            ModBlocks.FROSTBELL_BLOSSOM
     );
 
 }

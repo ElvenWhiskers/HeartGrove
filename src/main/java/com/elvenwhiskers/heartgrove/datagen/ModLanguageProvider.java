@@ -2,13 +2,10 @@ package com.elvenwhiskers.heartgrove.datagen;
 
 import com.elvenwhiskers.heartgrove.HeartGrove;
 import com.elvenwhiskers.heartgrove.block.ModBlocks;
-import com.elvenwhiskers.heartgrove.block.family.ModWoodFamilies;
-import com.elvenwhiskers.heartgrove.block.family.ModWoodFamily;
+import com.elvenwhiskers.heartgrove.block.family.*;
 import com.elvenwhiskers.heartgrove.item.ModItems;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
-import com.elvenwhiskers.heartgrove.block.family.ModNormalTreeFamily;
-import com.elvenwhiskers.heartgrove.block.family.ModNormalTreeFamilies;
 
 public class ModLanguageProvider extends LanguageProvider {
 
@@ -29,6 +26,8 @@ public class ModLanguageProvider extends LanguageProvider {
         addBlock(ModBlocks.AEGIS_ORE, "Aegis Ore");
 
 
+
+
         // Standard wood families
         for (ModWoodFamily family : ModWoodFamilies.ALL) {
             addWoodFamilyTranslations(family);
@@ -36,6 +35,10 @@ public class ModLanguageProvider extends LanguageProvider {
 
         for (ModNormalTreeFamily tree : ModNormalTreeFamilies.ALL) {
             addNormalTreeTranslations(tree);
+        }
+
+        for (ModVanillaWoodSet vanillaSet : ModVanillaWoodSets.ALL) {
+            addVanillaWoodSetTranslations(vanillaSet);
         }
 
 
@@ -111,6 +114,15 @@ public class ModLanguageProvider extends LanguageProvider {
 
         addBlock(tree.getLeaves(), name + " Leaves");
         addBlock(tree.getSapling(), name + " Sapling");
+    }
+
+    private void addVanillaWoodSetTranslations(ModVanillaWoodSet vanillaSet) {
+        String name = titleCase(vanillaSet.getWoodFamily().getName());
+
+        addItem(
+                vanillaSet.getSignItem(),
+                name + " Sign"
+        );
     }
 
 

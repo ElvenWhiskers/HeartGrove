@@ -18,11 +18,13 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
-
 import com.elvenwhiskers.heartgrove.menu.SawmillScreen;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
+import com.elvenwhiskers.heartgrove.block.entity.ModBlockEntities;
+import net.minecraft.client.renderer.blockentity.SignRenderer;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 
 @Mod(HeartGrove.MOD_ID)
 public class HeartGrove {
@@ -37,6 +39,7 @@ public class HeartGrove {
         ModCreativeModeTabs.register(modEventBus);
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+        ModBlockEntities.BLOCK_ENTITIES.register(modEventBus);
         ModFoliagePlacerTypes.register(modEventBus);
         ModMenuTypes.register(modEventBus);
 
@@ -80,6 +83,14 @@ public class HeartGrove {
             event.register(
                     ModMenuTypes.SAWMILL_MENU.get(),
                     SawmillScreen::new
+            );
+        }
+
+        @SubscribeEvent
+        public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
+            event.registerBlockEntityRenderer(
+                    ModBlockEntities.SIGN.get(),
+                    SignRenderer::new
             );
         }
     }

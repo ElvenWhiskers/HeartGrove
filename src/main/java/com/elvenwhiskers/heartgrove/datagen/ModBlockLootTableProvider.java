@@ -5,15 +5,14 @@ import com.elvenwhiskers.heartgrove.item.ModItems;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;
-import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.flag.FeatureFlags;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.neoforged.fml.common.Mod;
 import com.elvenwhiskers.heartgrove.block.family.ModWoodFamilies;
 import com.elvenwhiskers.heartgrove.block.family.ModWoodFamily;
 import com.elvenwhiskers.heartgrove.block.family.ModNormalTreeFamily;
 import com.elvenwhiskers.heartgrove.block.family.ModNormalTreeFamilies;
+import com.elvenwhiskers.heartgrove.block.family.ModVanillaWoodSet;
+import com.elvenwhiskers.heartgrove.block.family.ModVanillaWoodSets;
 
 import java.util.Set;
 
@@ -36,6 +35,11 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         for (ModNormalTreeFamily tree : ModNormalTreeFamilies.ALL) {
             dropNormalTree(tree);
         }
+
+        for (ModVanillaWoodSet vanillaSet : ModVanillaWoodSets.ALL) {
+            dropVanillaWoodSet(vanillaSet);
+        }
+
 
         dropSelf(ModBlocks.LARKSPUR_CRAFTING_TABLE.get());
 
@@ -84,6 +88,18 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                         tree.getSapling().get(),
                         NORMAL_LEAVES_SAPLING_CHANCES
                 )
+        );
+    }
+
+    private void dropVanillaWoodSet(ModVanillaWoodSet vanillaSet) {
+        dropOther(
+                vanillaSet.getSign().get(),
+                vanillaSet.getSignItem().get()
+        );
+
+        dropOther(
+                vanillaSet.getWallSign().get(),
+                vanillaSet.getSignItem().get()
         );
     }
 

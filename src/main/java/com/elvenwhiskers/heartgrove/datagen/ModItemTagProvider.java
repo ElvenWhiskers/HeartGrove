@@ -10,6 +10,8 @@ import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 import net.neoforged.neoforge.common.Tags;
+import com.elvenwhiskers.heartgrove.block.family.ModVanillaWoodSet;
+import com.elvenwhiskers.heartgrove.block.family.ModVanillaWoodSets;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -68,5 +70,14 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 BlockTags.COMPLETES_FIND_TREE_TUTORIAL,
                 ItemTags.COMPLETES_FIND_TREE_TUTORIAL
         );
+
+        for (ModVanillaWoodSet vanillaSet : ModVanillaWoodSets.ALL) {
+            addVanillaWoodSetTags(vanillaSet);
+        }
+    }
+
+    private void addVanillaWoodSetTags(ModVanillaWoodSet vanillaSet) {
+        tag(ItemTags.SIGNS)
+                .add(vanillaSet.getSignItem().get());
     }
 }

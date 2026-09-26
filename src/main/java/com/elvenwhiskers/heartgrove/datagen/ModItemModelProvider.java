@@ -3,6 +3,7 @@ package com.elvenwhiskers.heartgrove.datagen;
 
 import com.elvenwhiskers.heartgrove.HeartGrove;
 import com.elvenwhiskers.heartgrove.block.ModBlocks;
+import com.elvenwhiskers.heartgrove.block.family.*;
 import com.elvenwhiskers.heartgrove.item.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
@@ -11,10 +12,6 @@ import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
-import com.elvenwhiskers.heartgrove.block.family.ModWoodFamilies;
-import com.elvenwhiskers.heartgrove.block.family.ModWoodFamily;
-import com.elvenwhiskers.heartgrove.block.family.ModNormalTreeFamily;
-import com.elvenwhiskers.heartgrove.block.family.ModNormalTreeFamilies;
 
 public class ModItemModelProvider extends ItemModelProvider {
     public ModItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
@@ -26,12 +23,18 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.AEGIS_INGOT.get());
         basicItem(ModItems.RAW_AEGIS.get());
 
+
+
         for (ModWoodFamily family : ModWoodFamilies.ALL) {
             woodFamilyItems(family);
         }
 
         for (ModNormalTreeFamily tree : ModNormalTreeFamilies.ALL) {
             normalTreeItems(tree);
+        }
+
+        for (ModVanillaWoodSet vanillaSet : ModVanillaWoodSets.ALL) {
+            vanillaWoodSetItems(vanillaSet);
         }
 
         // Wisteria-specific
@@ -81,6 +84,10 @@ public class ModItemModelProvider extends ItemModelProvider {
                 family.getWall(),
                 family.getPlanks()
         );
+    }
+
+    private void vanillaWoodSetItems(ModVanillaWoodSet vanillaSet) {
+        basicItem(vanillaSet.getSignItem().get());
     }
 
     private void normalTreeItems(ModNormalTreeFamily tree) {

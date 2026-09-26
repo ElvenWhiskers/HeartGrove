@@ -2,6 +2,7 @@ package com.elvenwhiskers.heartgrove.block;
 
 import com.elvenwhiskers.heartgrove.HeartGrove;
 import com.elvenwhiskers.heartgrove.block.custom.*;
+import com.elvenwhiskers.heartgrove.block.family.*;
 import com.elvenwhiskers.heartgrove.item.ModItems;
 import com.elvenwhiskers.heartgrove.worldgen.tree.ModTreeGrowers;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -12,10 +13,6 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import com.elvenwhiskers.heartgrove.block.family.ModWoodFamily;
-import com.elvenwhiskers.heartgrove.block.family.ModWoodFamilyRegistrar;
-import com.elvenwhiskers.heartgrove.block.family.ModNormalTreeFamily;
-import com.elvenwhiskers.heartgrove.block.family.ModNormalTreeRegistrar;
 
 import java.util.function.Supplier;
 
@@ -23,14 +20,18 @@ public class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS =
             DeferredRegister.createBlocks(HeartGrove.MOD_ID);
 
-    public static final ModWoodFamily WISTERIA =
-            ModWoodFamilyRegistrar.register(BLOCKS, "wisteria");
-
-    public static final ModWoodFamily LARKSPUR =
-            ModWoodFamilyRegistrar.register(BLOCKS, "larkspur");
+    public static final ModWoodFamily WISTERIA = ModWoodFamilyRegistrar.register(BLOCKS, "wisteria");
+    public static final ModWoodFamily LARKSPUR = ModWoodFamilyRegistrar.register(BLOCKS, "larkspur");
+    public static final ModWoodFamily FROSTBELL_BLOSSOM = ModWoodFamilyRegistrar.register(BLOCKS, "frostbell_blossom");
 
     public static final ModNormalTreeFamily LARKSPUR_TREE =
             ModNormalTreeRegistrar.register(BLOCKS, "larkspur", LARKSPUR, ModTreeGrowers.LARKSPUR);
+    public static final ModNormalTreeFamily FROSTBELL_BLOSSOM_TREE =
+            ModNormalTreeRegistrar.register(BLOCKS, "frostbell_blossom", FROSTBELL_BLOSSOM, ModTreeGrowers.FROSTBELL_BLOSSOM);
+
+    public static final ModVanillaWoodSet FROSTBELL_BLOSSOM_VANILLA =
+            ModVanillaWoodSetRegistrar.register(BLOCKS, "frostbell_blossom", FROSTBELL_BLOSSOM, ModWoodTypes.FROSTBELL_BLOSSOM);
+
 
 
 

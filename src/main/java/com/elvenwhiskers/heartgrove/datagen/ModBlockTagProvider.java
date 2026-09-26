@@ -14,6 +14,8 @@ import org.jetbrains.annotations.Nullable;
 import net.neoforged.neoforge.common.Tags;
 import com.elvenwhiskers.heartgrove.block.family.ModNormalTreeFamily;
 import com.elvenwhiskers.heartgrove.block.family.ModNormalTreeFamilies;
+import com.elvenwhiskers.heartgrove.block.family.ModVanillaWoodSet;
+import com.elvenwhiskers.heartgrove.block.family.ModVanillaWoodSets;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -38,6 +40,10 @@ public class ModBlockTagProvider extends BlockTagsProvider {
 
         for (ModNormalTreeFamily tree : ModNormalTreeFamilies.ALL) {
             addNormalTreeTags(tree);
+        }
+
+        for (ModVanillaWoodSet vanillaSet : ModVanillaWoodSets.ALL) {
+            addVanillaWoodSetTags(vanillaSet);
         }
 
 
@@ -203,6 +209,8 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         tag(BlockTags.WOODEN_TRAPDOORS)
                 .add(family.getTrapdoor().get());
 
+
+
     }
 
     private void addNormalTreeTags(ModNormalTreeFamily tree) {
@@ -214,5 +222,22 @@ public class ModBlockTagProvider extends BlockTagsProvider {
 
         tag(BlockTags.SAPLINGS)
                 .add(tree.getSapling().get());
+    }
+
+    private void addVanillaWoodSetTags(ModVanillaWoodSet vanillaSet) {
+
+        // Tool behavior
+        tag(BlockTags.MINEABLE_WITH_AXE)
+                .add(
+                        vanillaSet.getSign().get(),
+                        vanillaSet.getWallSign().get()
+                );
+
+        // Sign behavior
+        tag(BlockTags.STANDING_SIGNS)
+                .add(vanillaSet.getSign().get());
+
+        tag(BlockTags.WALL_SIGNS)
+                .add(vanillaSet.getWallSign().get());
     }
 }
