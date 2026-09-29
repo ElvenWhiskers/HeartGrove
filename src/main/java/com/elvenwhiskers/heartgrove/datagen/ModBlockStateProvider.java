@@ -58,8 +58,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
         directionalLeavesBlock(ModBlocks.BLUE_WISTERIA_LEAVES, ModBlocks.WISTERIA_LEAVES, ModBlocks.BLUE_WISTERIA_BLOSSOMS);
 
         //Other blocks
-        ModelFile testModel = models().orientable("larkspur_crafting_table", modLoc("block/larkspur_crafting_table_side"), modLoc("block/larkspur_crafting_table_front"), modLoc("block/larkspur_crafting_table_top"));
-        simpleBlockWithItem(ModBlocks.LARKSPUR_CRAFTING_TABLE.get(), testModel);
+        ModelFile larkspurCraftingTable = models().orientable("larkspur_crafting_table", modLoc("block/larkspur_crafting_table_side"), modLoc("block/larkspur_crafting_table_front"), modLoc("block/larkspur_crafting_table_top"));
+        simpleBlockWithItem(ModBlocks.LARKSPUR_CRAFTING_TABLE.get(), larkspurCraftingTable);
     }
 
     private void woodSet(ModWoodFamily family) {
