@@ -1,10 +1,10 @@
-package com.elvenwhiskers.heartgrove.block.custom;
+package com.elvenwhiskers.heartgrove.block.custom.sign;
 
 import com.elvenwhiskers.heartgrove.block.entity.ModBlockEntities;
 import com.elvenwhiskers.heartgrove.block.entity.ModSignBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.StandingSignBlock;
+import net.minecraft.world.level.block.WallSignBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -15,9 +15,9 @@ import net.minecraft.world.level.block.state.properties.WoodType;
 
 import javax.annotation.Nullable;
 
-public class ModStandingSignBlock extends StandingSignBlock {
+public class ModWallSignBlock extends WallSignBlock {
 
-    public ModStandingSignBlock(
+    public ModWallSignBlock(
             WoodType type,
             BlockBehaviour.Properties properties
     ) {

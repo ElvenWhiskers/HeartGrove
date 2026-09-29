@@ -1,32 +1,35 @@
-package com.elvenwhiskers.heartgrove.block.custom;
+package com.elvenwhiskers.heartgrove.block.custom.wood;
 
-import com.elvenwhiskers.heartgrove.block.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.common.ItemAbility;
+import net.neoforged.neoforge.common.ItemAbilities;
 
 import javax.annotation.Nullable;
-import java.util.Map;
+import java.util.function.Supplier;
 
 public class ModFlammableRotatedPillarBlock extends RotatedPillarBlock {
-    private static class Strippables {
-        private static final Map<Block, Block> MAP = Map.of(
-                ModBlocks.LARKSPUR_LOG.get(), ModBlocks.STRIPPED_LARKSPUR_LOG.get(),
-                ModBlocks.LARKSPUR_WOOD.get(), ModBlocks.STRIPPED_LARKSPUR_WOOD.get(),
-                ModBlocks.WISTERIA_LOG.get(), ModBlocks.STRIPPED_WISTERIA_LOG.get(),
-                ModBlocks.WISTERIA_WOOD.get(), ModBlocks.STRIPPED_WISTERIA_WOOD.get()
-        );
-    }
+
+    @Nullable
+    private final Supplier<? extends Block> strippedBlock;
 
     public ModFlammableRotatedPillarBlock(Properties properties) {
-        super(properties);
+        this(properties, null);
     }
+
+    public ModFlammableRotatedPillarBlock(
+            Properties properties,
+            @Nullable Supplier<? extends Block> strippedBlock
+    ) {
+        super(properties);
+        this.strippedBlock = strippedBlock;
+    }
+
     @Override
     public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
         return true;
@@ -43,14 +46,16 @@ public class ModFlammableRotatedPillarBlock extends RotatedPillarBlock {
     }
 
     @Override
-    public @Nullable BlockState getToolModifiedState(BlockState state, UseOnContext context,
-                                                     ItemAbility itemAbility, boolean simulate) {
-        if(context.getItemInHand().getItem() instanceof AxeItem) {
-            Block strippedBlock = Strippables.MAP.get(state.getBlock());
-
-            if (strippedBlock != null) {
-                return strippedBlock.defaultBlockState().setValue(AXIS, state.getValue(AXIS));
-            }
+    public @Nullable BlockState getToolModifiedState(
+            BlockState state,
+            UseOnContext context,
+            ItemAbility itemAbility,
+            boolean simulate
+    ) {
+        if (itemAbility == ItemAbilities.AXE_STRIP && strippedBlock != null) {
+            return strippedBlock.get()
+                    .defaultBlockState()
+                    .setValue(AXIS, state.getValue(AXIS));
         }
 
         return super.getToolModifiedState(state, context, itemAbility, simulate);

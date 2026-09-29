@@ -2,7 +2,7 @@ package com.elvenwhiskers.heartgrove.datagen;
 
 import com.elvenwhiskers.heartgrove.HeartGrove;
 import com.elvenwhiskers.heartgrove.block.ModBlocks;
-import com.elvenwhiskers.heartgrove.block.family.wood.ModWoodFamilies;
+import com.elvenwhiskers.heartgrove.block.family.wood.ModWoodFamilyRegistrar;
 import com.elvenwhiskers.heartgrove.block.family.wood.ModWoodFamily;
 import com.elvenwhiskers.heartgrove.item.ModItems;
 import net.minecraft.core.HolderLookup;
@@ -13,7 +13,7 @@ import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
 import com.elvenwhiskers.heartgrove.block.family.vanilla.ModVanillaWoodSet;
-import com.elvenwhiskers.heartgrove.block.family.vanilla.ModVanillaWoodSets;
+import com.elvenwhiskers.heartgrove.block.family.vanilla.ModVanillaWoodSetRegistrar;
 import com.elvenwhiskers.heartgrove.block.custom.hedge.ModHedge;
 import com.elvenwhiskers.heartgrove.block.custom.hedge.ModHedgeRegistrar;
 
@@ -82,7 +82,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
 
         // Standard wood families
-        for (ModWoodFamily family : ModWoodFamilies.ALL) {
+        for (ModWoodFamily family : ModWoodFamilyRegistrar.getWoodFamilies()) {
             woodFamilyRecipes(recipeOutput, family);
         }
 
@@ -99,7 +99,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         }
 
         // Optional vanilla-style wood sets
-        for (ModVanillaWoodSet vanillaSet : ModVanillaWoodSets.ALL) {
+        for (ModVanillaWoodSet vanillaSet : ModVanillaWoodSetRegistrar.getVanillaWoodSets()) {
             vanillaWoodSetRecipes(recipeOutput, vanillaSet);
         }
     }

@@ -7,12 +7,12 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.block.Block;
-import com.elvenwhiskers.heartgrove.block.family.wood.ModWoodFamilies;
+import com.elvenwhiskers.heartgrove.block.family.wood.ModWoodFamilyRegistrar;
 import com.elvenwhiskers.heartgrove.block.family.wood.ModWoodFamily;
 import com.elvenwhiskers.heartgrove.block.family.tree.ModNormalTreeFamily;
-import com.elvenwhiskers.heartgrove.block.family.tree.ModNormalTreeFamilies;
+import com.elvenwhiskers.heartgrove.block.family.tree.ModNormalTreeRegistrar;
 import com.elvenwhiskers.heartgrove.block.family.vanilla.ModVanillaWoodSet;
-import com.elvenwhiskers.heartgrove.block.family.vanilla.ModVanillaWoodSets;
+import com.elvenwhiskers.heartgrove.block.family.vanilla.ModVanillaWoodSetRegistrar;
 import com.elvenwhiskers.heartgrove.block.custom.hedge.ModHedge;
 import com.elvenwhiskers.heartgrove.block.custom.hedge.ModHedgeRegistrar;
 
@@ -30,15 +30,15 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
     protected void generate() {
         dropSelf(ModBlocks.AEGIS_BLOCK.get()); //drop self for just regular drops self. obviously.
 
-        for (ModWoodFamily family : ModWoodFamilies.ALL) {
+        for (ModWoodFamily family : ModWoodFamilyRegistrar.getWoodFamilies()) {
             dropWoodFamily(family);
         }
 
-        for (ModNormalTreeFamily tree : ModNormalTreeFamilies.ALL) {
+        for (ModNormalTreeFamily tree : ModNormalTreeRegistrar.getTreeFamilies()) {
             dropNormalTree(tree);
         }
 
-        for (ModVanillaWoodSet vanillaSet : ModVanillaWoodSets.ALL) {
+        for (ModVanillaWoodSet vanillaSet : ModVanillaWoodSetRegistrar.getVanillaWoodSets()) {
             dropVanillaWoodSet(vanillaSet);
         }
 

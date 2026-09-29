@@ -2,11 +2,11 @@ package com.elvenwhiskers.heartgrove.item;
 
 import com.elvenwhiskers.heartgrove.HeartGrove;
 import com.elvenwhiskers.heartgrove.block.ModBlocks;
-import com.elvenwhiskers.heartgrove.block.family.tree.ModNormalTreeFamilies;
+import com.elvenwhiskers.heartgrove.block.family.tree.ModNormalTreeRegistrar;
 import com.elvenwhiskers.heartgrove.block.family.tree.ModNormalTreeFamily;
 import com.elvenwhiskers.heartgrove.block.family.vanilla.ModVanillaWoodSet;
-import com.elvenwhiskers.heartgrove.block.family.vanilla.ModVanillaWoodSets;
-import com.elvenwhiskers.heartgrove.block.family.wood.ModWoodFamilies;
+import com.elvenwhiskers.heartgrove.block.family.vanilla.ModVanillaWoodSetRegistrar;
+import com.elvenwhiskers.heartgrove.block.family.wood.ModWoodFamilyRegistrar;
 import com.elvenwhiskers.heartgrove.block.family.wood.ModWoodFamily;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -41,16 +41,16 @@ public class ModCreativeModeTabs {
                     .displayItems((itemDisplayParameters, output) -> {
 
                         // Baseline wood families
-                        for (ModWoodFamily family : ModWoodFamilies.ALL) {
+                        for (ModWoodFamily family : ModWoodFamilyRegistrar.getWoodFamilies()) {
                             addWoodFamily(output, family);
                         }
 
                         // Normal tree biology
-                        for (ModNormalTreeFamily tree : ModNormalTreeFamilies.ALL) {
+                        for (ModNormalTreeFamily tree : ModNormalTreeRegistrar.getTreeFamilies()) {
                             addNormalTree(output, tree);
                         }
 
-                        for (ModVanillaWoodSet vanillaSet : ModVanillaWoodSets.ALL) {
+                        for (ModVanillaWoodSet vanillaSet : ModVanillaWoodSetRegistrar.getVanillaWoodSets()) {
                             addVanillaWoodSet(output, vanillaSet);
                         }
 

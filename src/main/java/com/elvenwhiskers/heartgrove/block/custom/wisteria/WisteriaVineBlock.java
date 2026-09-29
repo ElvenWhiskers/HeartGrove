@@ -1,4 +1,4 @@
-package com.elvenwhiskers.heartgrove.block.custom;
+package com.elvenwhiskers.heartgrove.block.custom.wisteria;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.Direction;

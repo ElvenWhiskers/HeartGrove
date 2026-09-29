@@ -8,10 +8,8 @@ public class ModNormalTreeFamily {
 
     private final String name;
     private final ModWoodFamily woodFamily;
-
     private final DeferredBlock<Block> leaves;
     private final DeferredBlock<Block> sapling;
-
 
     public ModNormalTreeFamily(
             String name,
@@ -24,7 +22,6 @@ public class ModNormalTreeFamily {
         this.leaves = leaves;
         this.sapling = sapling;
     }
-
 
     public String getName() {
         return name;

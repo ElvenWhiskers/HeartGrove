@@ -1,6 +1,5 @@
 package com.elvenwhiskers.heartgrove.block.custom.hedge;
 
-import com.elvenwhiskers.heartgrove.block.custom.HedgeBlock;
 import com.elvenwhiskers.heartgrove.block.family.wood.ModWoodFamily;
 import com.elvenwhiskers.heartgrove.item.ModItems;
 import net.minecraft.world.item.BlockItem;

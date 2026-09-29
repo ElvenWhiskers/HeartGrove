@@ -1,6 +1,5 @@
 package com.elvenwhiskers.heartgrove.block.custom.hedge;
 
-import com.elvenwhiskers.heartgrove.block.custom.HedgeBlock;
 import com.elvenwhiskers.heartgrove.block.family.wood.ModWoodFamily;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.registries.DeferredBlock;

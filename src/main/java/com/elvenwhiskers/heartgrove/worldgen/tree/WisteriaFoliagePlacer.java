@@ -9,8 +9,7 @@ import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerTy
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
-import com.elvenwhiskers.heartgrove.block.ModBlocks;
-import com.elvenwhiskers.heartgrove.block.custom.WisteriaVineBlock;
+import com.elvenwhiskers.heartgrove.block.custom.wisteria.WisteriaVineBlock;
 import java.util.ArrayList;
 import java.util.List;
 

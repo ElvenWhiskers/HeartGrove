@@ -2,6 +2,9 @@ package com.elvenwhiskers.heartgrove.block;
 
 import com.elvenwhiskers.heartgrove.HeartGrove;
 import com.elvenwhiskers.heartgrove.block.custom.*;
+import com.elvenwhiskers.heartgrove.block.custom.wisteria.DirectionalLeavesBlock;
+import com.elvenwhiskers.heartgrove.block.custom.wisteria.WisteriaVineBlock;
+import com.elvenwhiskers.heartgrove.block.custom.wood.ModFlammableLeaves;
 import com.elvenwhiskers.heartgrove.block.family.tree.ModNormalTreeFamily;
 import com.elvenwhiskers.heartgrove.block.family.tree.ModNormalTreeRegistrar;
 import com.elvenwhiskers.heartgrove.block.family.vanilla.ModVanillaWoodSet;

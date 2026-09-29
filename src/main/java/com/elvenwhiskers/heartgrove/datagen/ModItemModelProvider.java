@@ -3,11 +3,11 @@ package com.elvenwhiskers.heartgrove.datagen;
 
 import com.elvenwhiskers.heartgrove.HeartGrove;
 import com.elvenwhiskers.heartgrove.block.ModBlocks;
-import com.elvenwhiskers.heartgrove.block.family.tree.ModNormalTreeFamilies;
+import com.elvenwhiskers.heartgrove.block.family.tree.ModNormalTreeRegistrar;
 import com.elvenwhiskers.heartgrove.block.family.tree.ModNormalTreeFamily;
 import com.elvenwhiskers.heartgrove.block.family.vanilla.ModVanillaWoodSet;
-import com.elvenwhiskers.heartgrove.block.family.vanilla.ModVanillaWoodSets;
-import com.elvenwhiskers.heartgrove.block.family.wood.ModWoodFamilies;
+import com.elvenwhiskers.heartgrove.block.family.vanilla.ModVanillaWoodSetRegistrar;
+import com.elvenwhiskers.heartgrove.block.family.wood.ModWoodFamilyRegistrar;
 import com.elvenwhiskers.heartgrove.block.family.wood.ModWoodFamily;
 import com.elvenwhiskers.heartgrove.item.ModItems;
 import net.minecraft.data.PackOutput;
@@ -33,15 +33,15 @@ public class ModItemModelProvider extends ItemModelProvider {
 
 
 
-        for (ModWoodFamily family : ModWoodFamilies.ALL) {
+        for (ModWoodFamily family : ModWoodFamilyRegistrar.getWoodFamilies()) {
             woodFamilyItems(family);
         }
 
-        for (ModNormalTreeFamily tree : ModNormalTreeFamilies.ALL) {
+        for (ModNormalTreeFamily tree : ModNormalTreeRegistrar.getTreeFamilies()) {
             normalTreeItems(tree);
         }
 
-        for (ModVanillaWoodSet vanillaSet : ModVanillaWoodSets.ALL) {
+        for (ModVanillaWoodSet vanillaSet : ModVanillaWoodSetRegistrar.getVanillaWoodSets()) {
             vanillaWoodSetItems(vanillaSet);
         }
 

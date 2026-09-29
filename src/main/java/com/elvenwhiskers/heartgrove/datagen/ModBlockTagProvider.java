@@ -5,7 +5,7 @@ import com.elvenwhiskers.heartgrove.HeartGrove;
 import com.elvenwhiskers.heartgrove.block.ModBlocks;
 import com.elvenwhiskers.heartgrove.block.custom.hedge.ModHedge;
 import com.elvenwhiskers.heartgrove.block.custom.hedge.ModHedgeRegistrar;
-import com.elvenwhiskers.heartgrove.block.family.wood.ModWoodFamilies;
+import com.elvenwhiskers.heartgrove.block.family.wood.ModWoodFamilyRegistrar;
 import com.elvenwhiskers.heartgrove.block.family.wood.ModWoodFamily;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -15,9 +15,9 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 import net.neoforged.neoforge.common.Tags;
 import com.elvenwhiskers.heartgrove.block.family.tree.ModNormalTreeFamily;
-import com.elvenwhiskers.heartgrove.block.family.tree.ModNormalTreeFamilies;
+import com.elvenwhiskers.heartgrove.block.family.tree.ModNormalTreeRegistrar;
 import com.elvenwhiskers.heartgrove.block.family.vanilla.ModVanillaWoodSet;
-import com.elvenwhiskers.heartgrove.block.family.vanilla.ModVanillaWoodSets;
+import com.elvenwhiskers.heartgrove.block.family.vanilla.ModVanillaWoodSetRegistrar;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -36,15 +36,15 @@ public class ModBlockTagProvider extends BlockTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider provider) {
 
-        for (ModWoodFamily family : ModWoodFamilies.ALL) {
+        for (ModWoodFamily family : ModWoodFamilyRegistrar.getWoodFamilies()) {
             addWoodFamilyTags(family);
         }
 
-        for (ModNormalTreeFamily tree : ModNormalTreeFamilies.ALL) {
+        for (ModNormalTreeFamily tree : ModNormalTreeRegistrar.getTreeFamilies()) {
             addNormalTreeTags(tree);
         }
 
-        for (ModVanillaWoodSet vanillaSet : ModVanillaWoodSets.ALL) {
+        for (ModVanillaWoodSet vanillaSet : ModVanillaWoodSetRegistrar.getVanillaWoodSets()) {
             addVanillaWoodSetTags(vanillaSet);
         }
 

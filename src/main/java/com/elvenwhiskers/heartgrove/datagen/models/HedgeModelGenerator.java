@@ -4,12 +4,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
 import net.neoforged.neoforge.client.model.generators.BlockModelProvider;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
-import com.elvenwhiskers.heartgrove.HeartGrove;
-import com.elvenwhiskers.heartgrove.block.custom.HedgeBlock;
+import com.elvenwhiskers.heartgrove.block.custom.hedge.HedgeBlock;
 import net.neoforged.neoforge.client.model.generators.MultiPartBlockStateBuilder;
 import com.elvenwhiskers.heartgrove.block.custom.hedge.ModHedge;
-
-import static net.minecraft.client.gui.components.ImageWidget.texture;
 
 public class HedgeModelGenerator {
 

@@ -1,4 +1,4 @@
-package com.elvenwhiskers.heartgrove.block.custom;
+package com.elvenwhiskers.heartgrove.block.custom.hedge;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

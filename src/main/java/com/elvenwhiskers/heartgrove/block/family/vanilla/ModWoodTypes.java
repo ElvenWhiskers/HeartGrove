@@ -12,5 +12,4 @@ public class ModWoodTypes {
                     BlockSetType.CHERRY
             )
     );
-
 }

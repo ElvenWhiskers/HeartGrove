@@ -1,7 +1,7 @@
 package com.elvenwhiskers.heartgrove.block.family.vanilla;
 
-import com.elvenwhiskers.heartgrove.block.custom.ModStandingSignBlock;
-import com.elvenwhiskers.heartgrove.block.custom.ModWallSignBlock;
+import com.elvenwhiskers.heartgrove.block.custom.sign.ModStandingSignBlock;
+import com.elvenwhiskers.heartgrove.block.custom.sign.ModWallSignBlock;
 import com.elvenwhiskers.heartgrove.block.family.wood.ModWoodFamily;
 import net.minecraft.world.item.SignItem;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -10,7 +10,6 @@ import net.neoforged.neoforge.registries.DeferredItem;
 public class ModVanillaWoodSet {
 
     private final ModWoodFamily woodFamily;
-
     private final DeferredBlock<ModStandingSignBlock> sign;
     private final DeferredBlock<ModWallSignBlock> wallSign;
     private final DeferredItem<SignItem> signItem;

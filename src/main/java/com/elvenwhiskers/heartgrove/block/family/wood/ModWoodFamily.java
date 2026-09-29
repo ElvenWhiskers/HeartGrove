@@ -1,8 +1,16 @@
 package com.elvenwhiskers.heartgrove.block.family.wood;
 
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.ButtonBlock;
+import net.minecraft.world.level.block.DoorBlock;
+import net.minecraft.world.level.block.FenceBlock;
+import net.minecraft.world.level.block.FenceGateBlock;
+import net.minecraft.world.level.block.PressurePlateBlock;
+import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.StairBlock;
+import net.minecraft.world.level.block.TrapDoorBlock;
+import net.minecraft.world.level.block.WallBlock;
 import net.neoforged.neoforge.registries.DeferredBlock;
-
 
 public class ModWoodFamily {
 
@@ -23,7 +31,6 @@ public class ModWoodFamily {
     private final DeferredBlock<WallBlock> wall;
     private final DeferredBlock<DoorBlock> door;
     private final DeferredBlock<TrapDoorBlock> trapdoor;
-
 
     public ModWoodFamily(
             String name,
@@ -59,76 +66,61 @@ public class ModWoodFamily {
         this.trapdoor = trapdoor;
     }
 
-
     public String getName() {
         return name;
     }
-
 
     public DeferredBlock<Block> getLog() {
         return log;
     }
 
-
     public DeferredBlock<Block> getWood() {
         return wood;
     }
-
 
     public DeferredBlock<Block> getStrippedLog() {
         return strippedLog;
     }
 
-
     public DeferredBlock<Block> getStrippedWood() {
         return strippedWood;
     }
-
 
     public DeferredBlock<Block> getPlanks() {
         return planks;
     }
 
-
     public DeferredBlock<StairBlock> getStairs() {
         return stairs;
     }
-
 
     public DeferredBlock<SlabBlock> getSlab() {
         return slab;
     }
 
-
     public DeferredBlock<PressurePlateBlock> getPressurePlate() {
         return pressurePlate;
     }
-
 
     public DeferredBlock<ButtonBlock> getButton() {
         return button;
     }
 
-
     public DeferredBlock<FenceBlock> getFence() {
         return fence;
     }
-
 
     public DeferredBlock<FenceGateBlock> getFenceGate() {
         return fenceGate;
     }
 
-
     public DeferredBlock<WallBlock> getWall() {
         return wall;
     }
 
-
     public DeferredBlock<DoorBlock> getDoor() {
         return door;
     }
-
 
     public DeferredBlock<TrapDoorBlock> getTrapdoor() {
         return trapdoor;

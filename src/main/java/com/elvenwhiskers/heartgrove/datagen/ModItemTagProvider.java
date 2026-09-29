@@ -11,7 +11,7 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 import net.neoforged.neoforge.common.Tags;
 import com.elvenwhiskers.heartgrove.block.family.vanilla.ModVanillaWoodSet;
-import com.elvenwhiskers.heartgrove.block.family.vanilla.ModVanillaWoodSets;
+import com.elvenwhiskers.heartgrove.block.family.vanilla.ModVanillaWoodSetRegistrar;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -71,7 +71,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 ItemTags.COMPLETES_FIND_TREE_TUTORIAL
         );
 
-        for (ModVanillaWoodSet vanillaSet : ModVanillaWoodSets.ALL) {
+        for (ModVanillaWoodSet vanillaSet : ModVanillaWoodSetRegistrar.getVanillaWoodSets()) {
             addVanillaWoodSetTags(vanillaSet);
         }
     }

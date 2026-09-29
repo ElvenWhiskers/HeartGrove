@@ -1,40 +1,41 @@
 package com.elvenwhiskers.heartgrove.block.family.wood;
 
-import com.elvenwhiskers.heartgrove.block.custom.ModFlammablePlanks;
-import com.elvenwhiskers.heartgrove.block.custom.ModFlammableRotatedPillarBlock;
+import com.elvenwhiskers.heartgrove.block.custom.wood.ModFlammablePlanks;
+import com.elvenwhiskers.heartgrove.block.custom.wood.ModFlammableRotatedPillarBlock;
 import com.elvenwhiskers.heartgrove.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.ButtonBlock;
+import net.minecraft.world.level.block.DoorBlock;
+import net.minecraft.world.level.block.FenceBlock;
+import net.minecraft.world.level.block.FenceGateBlock;
+import net.minecraft.world.level.block.PressurePlateBlock;
+import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.StairBlock;
+import net.minecraft.world.level.block.TrapDoorBlock;
+import net.minecraft.world.level.block.WallBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Supplier;
-
 
 public class ModWoodFamilyRegistrar {
 
+    // Registered wood families are automatically collected for DataGen and creative tabs.
+    private static final List<ModWoodFamily> WOOD_FAMILIES = new ArrayList<>();
+
+    public static List<ModWoodFamily> getWoodFamilies() {
+        return List.copyOf(WOOD_FAMILIES);
+    }
+
     public static ModWoodFamily register(DeferredRegister.Blocks blocks, String name) {
-
-        DeferredBlock<Block> log = registerBlock(
-                blocks,
-                name + "_log",
-                () -> new ModFlammableRotatedPillarBlock(
-                        BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LOG)
-                )
-        );
-
-        DeferredBlock<Block> wood = registerBlock(
-                blocks,
-                name + "_wood",
-                () -> new ModFlammableRotatedPillarBlock(
-                        BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD)
-                )
-        );
-
         DeferredBlock<Block> strippedLog = registerBlock(
                 blocks,
                 "stripped_" + name + "_log",
@@ -48,6 +49,24 @@ public class ModWoodFamilyRegistrar {
                 "stripped_" + name + "_wood",
                 () -> new ModFlammableRotatedPillarBlock(
                         BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_WOOD)
+                )
+        );
+
+        DeferredBlock<Block> log = registerBlock(
+                blocks,
+                name + "_log",
+                () -> new ModFlammableRotatedPillarBlock(
+                        BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LOG),
+                        strippedLog::get
+                )
+        );
+
+        DeferredBlock<Block> wood = registerBlock(
+                blocks,
+                name + "_wood",
+                () -> new ModFlammableRotatedPillarBlock(
+                        BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD),
+                        strippedWood::get
                 )
         );
 
@@ -138,7 +157,7 @@ public class ModWoodFamilyRegistrar {
                 )
         );
 
-        return new ModWoodFamily(
+        ModWoodFamily woodFamily = new ModWoodFamily(
                 name,
                 log,
                 wood,
@@ -155,8 +174,11 @@ public class ModWoodFamilyRegistrar {
                 door,
                 trapdoor
         );
-    }
 
+        WOOD_FAMILIES.add(woodFamily);
+
+        return woodFamily;
+    }
 
     private static <T extends Block> DeferredBlock<T> registerBlock(
             DeferredRegister.Blocks blocks,
