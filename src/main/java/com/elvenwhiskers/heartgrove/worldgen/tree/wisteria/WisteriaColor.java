@@ -1,4 +1,4 @@
-package com.elvenwhiskers.heartgrove.worldgen.tree;
+package com.elvenwhiskers.heartgrove.worldgen.tree.wisteria;
 
 import com.elvenwhiskers.heartgrove.block.ModBlocks;
 import net.minecraft.util.StringRepresentable;

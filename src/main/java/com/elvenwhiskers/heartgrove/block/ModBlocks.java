@@ -13,7 +13,7 @@ import com.elvenwhiskers.heartgrove.block.family.vanilla.ModWoodTypes;
 import com.elvenwhiskers.heartgrove.block.family.wood.ModWoodFamily;
 import com.elvenwhiskers.heartgrove.block.family.wood.ModWoodFamilyRegistrar;
 import com.elvenwhiskers.heartgrove.item.ModItems;
-import com.elvenwhiskers.heartgrove.worldgen.tree.ModTreeGrowers;
+import com.elvenwhiskers.heartgrove.worldgen.tree.wisteria.WisteriaTreeGrowers;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -24,6 +24,7 @@ import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import com.elvenwhiskers.heartgrove.block.custom.hedge.ModHedge;
 import com.elvenwhiskers.heartgrove.block.custom.hedge.ModHedgeRegistrar;
+import com.elvenwhiskers.heartgrove.worldgen.tree.normal.ModTreeShapes;
 
 import java.util.function.Supplier;
 
@@ -36,9 +37,10 @@ public class ModBlocks {
     public static final ModWoodFamily FROSTBELL_BLOSSOM = ModWoodFamilyRegistrar.register(BLOCKS, "frostbell_blossom");
 
     public static final ModNormalTreeFamily LARKSPUR_TREE =
-            ModNormalTreeRegistrar.register(BLOCKS, "larkspur", LARKSPUR, ModTreeGrowers.LARKSPUR);
+            ModNormalTreeRegistrar.register(BLOCKS, "larkspur", LARKSPUR, ModTreeShapes.LARKSPUR);
+
     public static final ModNormalTreeFamily FROSTBELL_BLOSSOM_TREE =
-            ModNormalTreeRegistrar.register(BLOCKS, "frostbell_blossom", FROSTBELL_BLOSSOM, ModTreeGrowers.FROSTBELL_BLOSSOM);
+            ModNormalTreeRegistrar.register(BLOCKS, "frostbell_blossom", FROSTBELL_BLOSSOM, ModTreeShapes.FROSTBELL_BLOSSOM);
 
     public static final ModVanillaWoodSet FROSTBELL_BLOSSOM_VANILLA =
             ModVanillaWoodSetRegistrar.register(BLOCKS, "frostbell_blossom", FROSTBELL_BLOSSOM, ModWoodTypes.FROSTBELL_BLOSSOM);
@@ -105,7 +107,7 @@ public class ModBlocks {
     public static final DeferredBlock<Block> BLUE_WISTERIA_BLOSSOMS = registerBlock("blue_wisteria_blossoms",
             () -> new ModFlammableLeaves(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES)));
     public static final DeferredBlock<Block> BLUE_WISTERIA_SAPLING = registerBlock("blue_wisteria_sapling",
-            () -> new SaplingBlock(ModTreeGrowers.BLUE_WISTERIA,BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING)));
+            () -> new SaplingBlock(WisteriaTreeGrowers.BLUE_WISTERIA,BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING)));
 
     public static final DeferredBlock<CraftingTableBlock> LARKSPUR_CRAFTING_TABLE = registerBlock("larkspur_crafting_table",
             () -> new ModCraftingTable(BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE)));

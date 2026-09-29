@@ -4,8 +4,7 @@ import com.elvenwhiskers.heartgrove.block.ModBlocks;
 import com.elvenwhiskers.heartgrove.item.ModCreativeModeTabs;
 import com.elvenwhiskers.heartgrove.item.ModItems;
 import com.elvenwhiskers.heartgrove.menu.ModMenuTypes;
-import com.elvenwhiskers.heartgrove.menu.sawmill.ModSawmillFamilies;
-import com.elvenwhiskers.heartgrove.worldgen.tree.ModFoliagePlacerTypes;
+import com.elvenwhiskers.heartgrove.worldgen.tree.wisteria.WisteriaFoliagePlacerTypes;
 import org.slf4j.Logger;
 import com.mojang.logging.LogUtils;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -40,7 +39,7 @@ public class HeartGrove {
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModBlockEntities.BLOCK_ENTITIES.register(modEventBus);
-        ModFoliagePlacerTypes.register(modEventBus);
+        WisteriaFoliagePlacerTypes.register(modEventBus);
         ModMenuTypes.register(modEventBus);
 
         modEventBus.addListener(this::addCreative);

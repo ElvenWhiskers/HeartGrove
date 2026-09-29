@@ -12,9 +12,16 @@ import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import com.elvenwhiskers.heartgrove.HeartGrove;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import com.elvenwhiskers.heartgrove.worldgen.tree.normal.ModTreeShape;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Supplier;
 
 public class ModNormalTreeRegistrar {
@@ -30,8 +37,20 @@ public class ModNormalTreeRegistrar {
             DeferredRegister.Blocks blocks,
             String name,
             ModWoodFamily woodFamily,
-            TreeGrower treeGrower
+            ModTreeShape treeShape
     ) {
+        ResourceKey<ConfiguredFeature<?, ?>> configuredFeatureKey = ResourceKey.create(
+                Registries.CONFIGURED_FEATURE,
+                ResourceLocation.fromNamespaceAndPath(HeartGrove.MOD_ID, name)
+        );
+
+        TreeGrower treeGrower = new TreeGrower(
+                HeartGrove.MOD_ID + ":" + name,
+                Optional.empty(),
+                Optional.of(configuredFeatureKey),
+                Optional.empty()
+        );
+
         DeferredBlock<Block> leaves = registerBlock(
                 blocks,
                 name + "_leaves",
@@ -53,7 +72,9 @@ public class ModNormalTreeRegistrar {
                 name,
                 woodFamily,
                 leaves,
-                sapling
+                sapling,
+                configuredFeatureKey,
+                treeShape
         );
 
         TREE_FAMILIES.add(treeFamily);

@@ -1,4 +1,4 @@
-package com.elvenwhiskers.heartgrove.worldgen.tree;
+package com.elvenwhiskers.heartgrove.worldgen.tree.wisteria;
 
 import com.elvenwhiskers.heartgrove.HeartGrove;
 import net.minecraft.core.registries.Registries;
@@ -7,7 +7,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.bus.api.IEventBus;
 
-public class ModFoliagePlacerTypes {
+public class WisteriaFoliagePlacerTypes {
     public static final DeferredRegister<FoliagePlacerType<?>> FOLIAGE_PLACER_TYPES =
             DeferredRegister.create(Registries.FOLIAGE_PLACER_TYPE, HeartGrove.MOD_ID);
 
