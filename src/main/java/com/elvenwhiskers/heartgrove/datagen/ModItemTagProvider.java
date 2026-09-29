@@ -10,8 +10,8 @@ import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 import net.neoforged.neoforge.common.Tags;
-import com.elvenwhiskers.heartgrove.block.family.ModVanillaWoodSet;
-import com.elvenwhiskers.heartgrove.block.family.ModVanillaWoodSets;
+import com.elvenwhiskers.heartgrove.block.family.vanilla.ModVanillaWoodSet;
+import com.elvenwhiskers.heartgrove.block.family.vanilla.ModVanillaWoodSets;
 
 import java.util.concurrent.CompletableFuture;
 

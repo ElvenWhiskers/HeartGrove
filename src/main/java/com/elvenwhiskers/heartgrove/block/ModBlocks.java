@@ -2,7 +2,13 @@ package com.elvenwhiskers.heartgrove.block;
 
 import com.elvenwhiskers.heartgrove.HeartGrove;
 import com.elvenwhiskers.heartgrove.block.custom.*;
-import com.elvenwhiskers.heartgrove.block.family.*;
+import com.elvenwhiskers.heartgrove.block.family.tree.ModNormalTreeFamily;
+import com.elvenwhiskers.heartgrove.block.family.tree.ModNormalTreeRegistrar;
+import com.elvenwhiskers.heartgrove.block.family.vanilla.ModVanillaWoodSet;
+import com.elvenwhiskers.heartgrove.block.family.vanilla.ModVanillaWoodSetRegistrar;
+import com.elvenwhiskers.heartgrove.block.family.vanilla.ModWoodTypes;
+import com.elvenwhiskers.heartgrove.block.family.wood.ModWoodFamily;
+import com.elvenwhiskers.heartgrove.block.family.wood.ModWoodFamilyRegistrar;
 import com.elvenwhiskers.heartgrove.item.ModItems;
 import com.elvenwhiskers.heartgrove.worldgen.tree.ModTreeGrowers;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -13,7 +19,8 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import com.elvenwhiskers.heartgrove.block.custom.HedgeBlock;
+import com.elvenwhiskers.heartgrove.block.custom.hedge.ModHedge;
+import com.elvenwhiskers.heartgrove.block.custom.hedge.ModHedgeRegistrar;
 
 import java.util.function.Supplier;
 
@@ -33,10 +40,11 @@ public class ModBlocks {
     public static final ModVanillaWoodSet FROSTBELL_BLOSSOM_VANILLA =
             ModVanillaWoodSetRegistrar.register(BLOCKS, "frostbell_blossom", FROSTBELL_BLOSSOM, ModWoodTypes.FROSTBELL_BLOSSOM);
 
-    public static final DeferredBlock<HedgeBlock> FROSTBELL_BLOSSOM_HEDGE =
-            registerBlock("frostbell_blossom_hedge", () -> new HedgeBlock(
-                            BlockBehaviour.Properties.ofFullCopy(
-                                    FROSTBELL_BLOSSOM_TREE.getLeaves().get())));
+    public static final ModHedge FROSTBELL_BLOSSOM_HEDGE_SET =
+            ModHedgeRegistrar.register(BLOCKS, "frostbell_blossom", FROSTBELL_BLOSSOM_TREE.getLeaves(), FROSTBELL_BLOSSOM);
+
+    public static final ModHedge LARKSPUR_HEDGE_SET =
+            ModHedgeRegistrar.register(BLOCKS, "larkspur", LARKSPUR_TREE.getLeaves(), LARKSPUR);
 
 
 

@@ -1,6 +1,7 @@
-package com.elvenwhiskers.heartgrove.block.family;
+package com.elvenwhiskers.heartgrove.block.family.tree;
 
 import com.elvenwhiskers.heartgrove.block.custom.ModFlammableLeaves;
+import com.elvenwhiskers.heartgrove.block.family.wood.ModWoodFamily;
 import com.elvenwhiskers.heartgrove.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;

@@ -7,12 +7,14 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.block.Block;
-import com.elvenwhiskers.heartgrove.block.family.ModWoodFamilies;
-import com.elvenwhiskers.heartgrove.block.family.ModWoodFamily;
-import com.elvenwhiskers.heartgrove.block.family.ModNormalTreeFamily;
-import com.elvenwhiskers.heartgrove.block.family.ModNormalTreeFamilies;
-import com.elvenwhiskers.heartgrove.block.family.ModVanillaWoodSet;
-import com.elvenwhiskers.heartgrove.block.family.ModVanillaWoodSets;
+import com.elvenwhiskers.heartgrove.block.family.wood.ModWoodFamilies;
+import com.elvenwhiskers.heartgrove.block.family.wood.ModWoodFamily;
+import com.elvenwhiskers.heartgrove.block.family.tree.ModNormalTreeFamily;
+import com.elvenwhiskers.heartgrove.block.family.tree.ModNormalTreeFamilies;
+import com.elvenwhiskers.heartgrove.block.family.vanilla.ModVanillaWoodSet;
+import com.elvenwhiskers.heartgrove.block.family.vanilla.ModVanillaWoodSets;
+import com.elvenwhiskers.heartgrove.block.custom.hedge.ModHedge;
+import com.elvenwhiskers.heartgrove.block.custom.hedge.ModHedgeRegistrar;
 
 import java.util.Set;
 
@@ -40,7 +42,9 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
             dropVanillaWoodSet(vanillaSet);
         }
 
-        dropSelf(ModBlocks.FROSTBELL_BLOSSOM_HEDGE.get());
+        for (ModHedge hedge : ModHedgeRegistrar.getHedges()) {
+            dropSelf(hedge.getHedge().get());
+        }
 
         dropSelf(ModBlocks.LARKSPUR_CRAFTING_TABLE.get());
 

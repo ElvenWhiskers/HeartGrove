@@ -1,4 +1,4 @@
-package com.elvenwhiskers.heartgrove.block.family;
+package com.elvenwhiskers.heartgrove.block.family.vanilla;
 
 import com.elvenwhiskers.heartgrove.HeartGrove;
 import net.minecraft.world.level.block.state.properties.BlockSetType;

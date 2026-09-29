@@ -7,6 +7,7 @@ import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import com.elvenwhiskers.heartgrove.HeartGrove;
 import com.elvenwhiskers.heartgrove.block.custom.HedgeBlock;
 import net.neoforged.neoforge.client.model.generators.MultiPartBlockStateBuilder;
+import com.elvenwhiskers.heartgrove.block.custom.hedge.ModHedge;
 
 import static net.minecraft.client.gui.components.ImageWidget.texture;
 
@@ -18,6 +19,44 @@ public class HedgeModelGenerator {
     public HedgeModelGenerator(BlockStateProvider blockStates) {
         this.blockStates = blockStates;
         this.models = blockStates.models();
+    }
+
+    public void createHedge(ModHedge hedge) {
+        String name = hedge.getHedge().getId().getPath();
+
+        ResourceLocation leavesTexture =
+                blockStates.blockTexture(hedge.getLeaves().get());
+
+        ResourceLocation woodTexture =
+                blockStates.blockTexture(hedge.getWoodFamily().getLog().get());
+
+        createHedgeBlockState(
+                name,
+                hedge.getHedge().get()
+        );
+
+        createIsolatedHedge(
+                name,
+                leavesTexture,
+                woodTexture
+        );
+
+        createHedgeFoliageModels(
+                name,
+                leavesTexture,
+                true
+        );
+
+        createHedgeFoliageModels(
+                name,
+                leavesTexture,
+                false
+        );
+
+        createHedgeWoodModels(
+                name,
+                woodTexture
+        );
     }
 
     public BlockModelBuilder createIsolatedHedge(

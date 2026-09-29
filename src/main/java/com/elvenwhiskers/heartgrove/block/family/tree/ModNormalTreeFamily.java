@@ -1,5 +1,6 @@
-package com.elvenwhiskers.heartgrove.block.family;
+package com.elvenwhiskers.heartgrove.block.family.tree;
 
+import com.elvenwhiskers.heartgrove.block.family.wood.ModWoodFamily;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.registries.DeferredBlock;
 

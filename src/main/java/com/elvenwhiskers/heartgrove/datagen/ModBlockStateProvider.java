@@ -3,17 +3,23 @@ package com.elvenwhiskers.heartgrove.datagen;
 import com.elvenwhiskers.heartgrove.HeartGrove;
 import com.elvenwhiskers.heartgrove.block.ModBlocks;
 import com.elvenwhiskers.heartgrove.block.custom.WisteriaVineBlock;
-import com.elvenwhiskers.heartgrove.block.family.*;
+import com.elvenwhiskers.heartgrove.block.family.tree.ModNormalTreeFamilies;
+import com.elvenwhiskers.heartgrove.block.family.tree.ModNormalTreeFamily;
+import com.elvenwhiskers.heartgrove.block.family.vanilla.ModVanillaWoodSet;
+import com.elvenwhiskers.heartgrove.block.family.vanilla.ModVanillaWoodSets;
+import com.elvenwhiskers.heartgrove.block.family.wood.ModWoodFamilies;
+import com.elvenwhiskers.heartgrove.block.family.wood.ModWoodFamily;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
-import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import com.elvenwhiskers.heartgrove.datagen.models.HedgeModelGenerator;
+import com.elvenwhiskers.heartgrove.block.custom.hedge.ModHedge;
+import com.elvenwhiskers.heartgrove.block.custom.hedge.ModHedgeRegistrar;
 
 public class ModBlockStateProvider extends BlockStateProvider {
     public ModBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
@@ -40,33 +46,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         HedgeModelGenerator hedgeModels = new HedgeModelGenerator(this);
 
-        hedgeModels.createHedgeBlockState(
-                "frostbell_blossom_hedge",
-                ModBlocks.FROSTBELL_BLOSSOM_HEDGE.get()
-        );
-
-        hedgeModels.createIsolatedHedge(
-                "frostbell_blossom_hedge",
-                blockTexture(ModBlocks.FROSTBELL_BLOSSOM_TREE.getLeaves().get()),
-                blockTexture(ModBlocks.FROSTBELL_BLOSSOM.getLog().get())
-        );
-
-        hedgeModels.createHedgeFoliageModels(
-                "frostbell_blossom_hedge",
-                blockTexture(ModBlocks.FROSTBELL_BLOSSOM_TREE.getLeaves().get()),
-                true
-        );
-
-        hedgeModels.createHedgeFoliageModels(
-                "frostbell_blossom_hedge",
-                blockTexture(ModBlocks.FROSTBELL_BLOSSOM_TREE.getLeaves().get()),
-                false
-        );
-
-        hedgeModels.createHedgeWoodModels(
-                "frostbell_blossom_hedge",
-                blockTexture(ModBlocks.FROSTBELL_BLOSSOM.getLog().get())
-        );
+        for (ModHedge hedge : ModHedgeRegistrar.getHedges()) {
+            hedgeModels.createHedge(hedge);
+        }
 
         leavesBlock(ModBlocks.WISTERIA_LEAVES);
         leavesBlock(ModBlocks.BLUE_WISTERIA_BLOSSOMS);

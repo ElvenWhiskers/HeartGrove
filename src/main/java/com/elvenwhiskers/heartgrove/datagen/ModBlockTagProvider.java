@@ -3,8 +3,10 @@ package com.elvenwhiskers.heartgrove.datagen;
 
 import com.elvenwhiskers.heartgrove.HeartGrove;
 import com.elvenwhiskers.heartgrove.block.ModBlocks;
-import com.elvenwhiskers.heartgrove.block.family.ModWoodFamilies;
-import com.elvenwhiskers.heartgrove.block.family.ModWoodFamily;
+import com.elvenwhiskers.heartgrove.block.custom.hedge.ModHedge;
+import com.elvenwhiskers.heartgrove.block.custom.hedge.ModHedgeRegistrar;
+import com.elvenwhiskers.heartgrove.block.family.wood.ModWoodFamilies;
+import com.elvenwhiskers.heartgrove.block.family.wood.ModWoodFamily;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
@@ -12,10 +14,10 @@ import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 import net.neoforged.neoforge.common.Tags;
-import com.elvenwhiskers.heartgrove.block.family.ModNormalTreeFamily;
-import com.elvenwhiskers.heartgrove.block.family.ModNormalTreeFamilies;
-import com.elvenwhiskers.heartgrove.block.family.ModVanillaWoodSet;
-import com.elvenwhiskers.heartgrove.block.family.ModVanillaWoodSets;
+import com.elvenwhiskers.heartgrove.block.family.tree.ModNormalTreeFamily;
+import com.elvenwhiskers.heartgrove.block.family.tree.ModNormalTreeFamilies;
+import com.elvenwhiskers.heartgrove.block.family.vanilla.ModVanillaWoodSet;
+import com.elvenwhiskers.heartgrove.block.family.vanilla.ModVanillaWoodSets;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -46,6 +48,11 @@ public class ModBlockTagProvider extends BlockTagsProvider {
             addVanillaWoodSetTags(vanillaSet);
         }
 
+        for (ModHedge hedge : ModHedgeRegistrar.getHedges()) {
+            tag(BlockTags.MINEABLE_WITH_AXE)
+                    .add(hedge.getHedge().get());
+        }
+
 
         // Ores / mineral blocks
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
@@ -56,7 +63,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.AEGIS_ORE.get());
 
 
-        // Larkspur-specific tree blocks
+        // Special wooden / decorative blocks
         tag(BlockTags.MINEABLE_WITH_AXE)
                 .add(ModBlocks.LARKSPUR_CRAFTING_TABLE.get());
 
@@ -76,6 +83,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
 
         tag(BlockTags.SAPLINGS)
                 .add(ModBlocks.BLUE_WISTERIA_SAPLING.get());
+
 
 
         // Workstations

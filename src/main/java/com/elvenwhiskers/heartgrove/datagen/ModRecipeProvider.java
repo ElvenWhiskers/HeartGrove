@@ -2,8 +2,8 @@ package com.elvenwhiskers.heartgrove.datagen;
 
 import com.elvenwhiskers.heartgrove.HeartGrove;
 import com.elvenwhiskers.heartgrove.block.ModBlocks;
-import com.elvenwhiskers.heartgrove.block.family.ModWoodFamilies;
-import com.elvenwhiskers.heartgrove.block.family.ModWoodFamily;
+import com.elvenwhiskers.heartgrove.block.family.wood.ModWoodFamilies;
+import com.elvenwhiskers.heartgrove.block.family.wood.ModWoodFamily;
 import com.elvenwhiskers.heartgrove.item.ModItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -12,8 +12,10 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
-import com.elvenwhiskers.heartgrove.block.family.ModVanillaWoodSet;
-import com.elvenwhiskers.heartgrove.block.family.ModVanillaWoodSets;
+import com.elvenwhiskers.heartgrove.block.family.vanilla.ModVanillaWoodSet;
+import com.elvenwhiskers.heartgrove.block.family.vanilla.ModVanillaWoodSets;
+import com.elvenwhiskers.heartgrove.block.custom.hedge.ModHedge;
+import com.elvenwhiskers.heartgrove.block.custom.hedge.ModHedgeRegistrar;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -91,6 +93,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 ModBlocks.LARKSPUR.getPlanks().get(),
                 ModBlocks.LARKSPUR_CRAFTING_TABLE.get()
         );
+
+        for (ModHedge hedge : ModHedgeRegistrar.getHedges()) {
+            hedgeRecipe(recipeOutput, hedge);
+        }
 
         // Optional vanilla-style wood sets
         for (ModVanillaWoodSet vanillaSet : ModVanillaWoodSets.ALL) {
@@ -451,6 +457,30 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 group,
                 "_from_smelting"
         );
+    }
+
+    private static void hedgeRecipe(
+            RecipeOutput recipeOutput,
+            ModHedge hedge
+    ) {
+        ItemLike leaves = hedge.getLeaves().get();
+        ItemLike log = hedge.getWoodFamily().getLog().get();
+
+        ShapedRecipeBuilder.shaped(
+                        RecipeCategory.DECORATIONS,
+                        hedge.getHedge().get(),
+                        6
+                )
+                .pattern("LLL")
+                .pattern("LLL")
+                .pattern(" B ")
+                .define('L', leaves)
+                .define('B', log)
+                .unlockedBy(
+                        "has_" + getItemName(leaves),
+                        has(leaves)
+                )
+                .save(recipeOutput);
     }
 
 

@@ -1,4 +1,4 @@
-package com.elvenwhiskers.heartgrove.block.family;
+package com.elvenwhiskers.heartgrove.block.family.wood;
 
 import com.elvenwhiskers.heartgrove.block.ModBlocks;
 

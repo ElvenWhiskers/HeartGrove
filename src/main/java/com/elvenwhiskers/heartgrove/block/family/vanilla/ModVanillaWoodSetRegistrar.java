@@ -1,5 +1,6 @@
-package com.elvenwhiskers.heartgrove.block.family;
+package com.elvenwhiskers.heartgrove.block.family.vanilla;
 
+import com.elvenwhiskers.heartgrove.block.family.wood.ModWoodFamily;
 import com.elvenwhiskers.heartgrove.item.ModItems;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SignItem;

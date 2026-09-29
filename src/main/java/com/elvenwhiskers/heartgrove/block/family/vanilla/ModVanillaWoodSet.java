@@ -1,7 +1,8 @@
-package com.elvenwhiskers.heartgrove.block.family;
+package com.elvenwhiskers.heartgrove.block.family.vanilla;
 
 import com.elvenwhiskers.heartgrove.block.custom.ModStandingSignBlock;
 import com.elvenwhiskers.heartgrove.block.custom.ModWallSignBlock;
+import com.elvenwhiskers.heartgrove.block.family.wood.ModWoodFamily;
 import net.minecraft.world.item.SignItem;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;

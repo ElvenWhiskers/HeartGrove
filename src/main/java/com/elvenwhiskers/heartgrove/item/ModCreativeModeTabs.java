@@ -2,7 +2,12 @@ package com.elvenwhiskers.heartgrove.item;
 
 import com.elvenwhiskers.heartgrove.HeartGrove;
 import com.elvenwhiskers.heartgrove.block.ModBlocks;
-import com.elvenwhiskers.heartgrove.block.family.*;
+import com.elvenwhiskers.heartgrove.block.family.tree.ModNormalTreeFamilies;
+import com.elvenwhiskers.heartgrove.block.family.tree.ModNormalTreeFamily;
+import com.elvenwhiskers.heartgrove.block.family.vanilla.ModVanillaWoodSet;
+import com.elvenwhiskers.heartgrove.block.family.vanilla.ModVanillaWoodSets;
+import com.elvenwhiskers.heartgrove.block.family.wood.ModWoodFamilies;
+import com.elvenwhiskers.heartgrove.block.family.wood.ModWoodFamily;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -10,6 +15,8 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import com.elvenwhiskers.heartgrove.block.custom.hedge.ModHedge;
+import com.elvenwhiskers.heartgrove.block.custom.hedge.ModHedgeRegistrar;
 
 import java.util.function.Supplier;
 
@@ -47,7 +54,10 @@ public class ModCreativeModeTabs {
                             addVanillaWoodSet(output, vanillaSet);
                         }
 
-                        output.accept(ModBlocks.FROSTBELL_BLOSSOM_HEDGE.get());
+                        // Hedges
+                        for (ModHedge hedge : ModHedgeRegistrar.getHedges()) {
+                            addHedge(output, hedge);
+                        }
 
                         // Larkspur-specific extras
                         output.accept(ModBlocks.LARKSPUR_CRAFTING_TABLE);
@@ -103,5 +113,12 @@ public class ModCreativeModeTabs {
     ) {
         output.accept(tree.getLeaves());
         output.accept(tree.getSapling());
+    }
+
+    private static void addHedge(
+            CreativeModeTab.Output output,
+            ModHedge hedge
+    ) {
+        output.accept(hedge.getHedge());
     }
 }

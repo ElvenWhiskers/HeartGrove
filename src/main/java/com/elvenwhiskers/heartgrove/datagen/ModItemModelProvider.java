@@ -3,7 +3,12 @@ package com.elvenwhiskers.heartgrove.datagen;
 
 import com.elvenwhiskers.heartgrove.HeartGrove;
 import com.elvenwhiskers.heartgrove.block.ModBlocks;
-import com.elvenwhiskers.heartgrove.block.family.*;
+import com.elvenwhiskers.heartgrove.block.family.tree.ModNormalTreeFamilies;
+import com.elvenwhiskers.heartgrove.block.family.tree.ModNormalTreeFamily;
+import com.elvenwhiskers.heartgrove.block.family.vanilla.ModVanillaWoodSet;
+import com.elvenwhiskers.heartgrove.block.family.vanilla.ModVanillaWoodSets;
+import com.elvenwhiskers.heartgrove.block.family.wood.ModWoodFamilies;
+import com.elvenwhiskers.heartgrove.block.family.wood.ModWoodFamily;
 import com.elvenwhiskers.heartgrove.item.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
@@ -13,6 +18,8 @@ import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
+import com.elvenwhiskers.heartgrove.block.custom.hedge.ModHedge;
+import com.elvenwhiskers.heartgrove.block.custom.hedge.ModHedgeRegistrar;
 
 public class ModItemModelProvider extends ItemModelProvider {
     public ModItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
@@ -38,10 +45,9 @@ public class ModItemModelProvider extends ItemModelProvider {
             vanillaWoodSetItems(vanillaSet);
         }
 
-        getBuilder(ModBlocks.FROSTBELL_BLOSSOM_HEDGE.getId().getPath())
-                .parent(new ModelFile.UncheckedModelFile(
-                        modLoc("block/frostbell_blossom_hedge")
-                ));
+        for (ModHedge hedge : ModHedgeRegistrar.getHedges()) {
+            hedgeItem(hedge);
+        }
 
         // Wisteria-specific
         saplingItem(ModBlocks.BLUE_WISTERIA_SAPLING);
@@ -90,6 +96,15 @@ public class ModItemModelProvider extends ItemModelProvider {
                 family.getWall(),
                 family.getPlanks()
         );
+    }
+
+    private void hedgeItem(ModHedge hedge) {
+        String name = hedge.getHedge().getId().getPath();
+
+        getBuilder(name)
+                .parent(new ModelFile.UncheckedModelFile(
+                        modLoc("block/" + name)
+                ));
     }
 
     private void vanillaWoodSetItems(ModVanillaWoodSet vanillaSet) {
