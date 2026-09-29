@@ -13,6 +13,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import com.elvenwhiskers.heartgrove.block.custom.HedgeBlock;
 
 import java.util.function.Supplier;
 
@@ -31,6 +32,13 @@ public class ModBlocks {
 
     public static final ModVanillaWoodSet FROSTBELL_BLOSSOM_VANILLA =
             ModVanillaWoodSetRegistrar.register(BLOCKS, "frostbell_blossom", FROSTBELL_BLOSSOM, ModWoodTypes.FROSTBELL_BLOSSOM);
+
+    public static final DeferredBlock<HedgeBlock> FROSTBELL_BLOSSOM_HEDGE =
+            registerBlock("frostbell_blossom_hedge", () -> new HedgeBlock(
+                            BlockBehaviour.Properties.ofFullCopy(
+                                    FROSTBELL_BLOSSOM_TREE.getLeaves().get())));
+
+
 
 
 

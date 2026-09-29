@@ -40,6 +40,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
             dropVanillaWoodSet(vanillaSet);
         }
 
+        dropSelf(ModBlocks.FROSTBELL_BLOSSOM_HEDGE.get());
 
         dropSelf(ModBlocks.LARKSPUR_CRAFTING_TABLE.get());
 

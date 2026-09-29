@@ -13,6 +13,7 @@ import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
+import com.elvenwhiskers.heartgrove.datagen.models.HedgeModelGenerator;
 
 public class ModBlockStateProvider extends BlockStateProvider {
     public ModBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
@@ -36,6 +37,36 @@ public class ModBlockStateProvider extends BlockStateProvider {
         for (ModVanillaWoodSet vanillaSet : ModVanillaWoodSets.ALL) {
             vanillaWoodSetBlocks(vanillaSet);
         }
+
+        HedgeModelGenerator hedgeModels = new HedgeModelGenerator(this);
+
+        hedgeModels.createHedgeBlockState(
+                "frostbell_blossom_hedge",
+                ModBlocks.FROSTBELL_BLOSSOM_HEDGE.get()
+        );
+
+        hedgeModels.createIsolatedHedge(
+                "frostbell_blossom_hedge",
+                blockTexture(ModBlocks.FROSTBELL_BLOSSOM_TREE.getLeaves().get()),
+                blockTexture(ModBlocks.FROSTBELL_BLOSSOM.getLog().get())
+        );
+
+        hedgeModels.createHedgeFoliageModels(
+                "frostbell_blossom_hedge",
+                blockTexture(ModBlocks.FROSTBELL_BLOSSOM_TREE.getLeaves().get()),
+                true
+        );
+
+        hedgeModels.createHedgeFoliageModels(
+                "frostbell_blossom_hedge",
+                blockTexture(ModBlocks.FROSTBELL_BLOSSOM_TREE.getLeaves().get()),
+                false
+        );
+
+        hedgeModels.createHedgeWoodModels(
+                "frostbell_blossom_hedge",
+                blockTexture(ModBlocks.FROSTBELL_BLOSSOM.getLog().get())
+        );
 
         leavesBlock(ModBlocks.WISTERIA_LEAVES);
         leavesBlock(ModBlocks.BLUE_WISTERIA_BLOSSOMS);

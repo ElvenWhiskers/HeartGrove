@@ -41,6 +41,11 @@ public class ModLanguageProvider extends LanguageProvider {
             addVanillaWoodSetTranslations(vanillaSet);
         }
 
+        add(
+                ModBlocks.FROSTBELL_BLOSSOM_HEDGE.get(),
+                "Frostbell Blossom Hedge"
+        );
+
 
         // Larkspur-specific
         addBlock(ModBlocks.LARKSPUR_CRAFTING_TABLE, "Larkspur Crafting Table");

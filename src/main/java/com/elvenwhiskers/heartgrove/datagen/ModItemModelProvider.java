@@ -10,6 +10,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
 
@@ -36,6 +37,11 @@ public class ModItemModelProvider extends ItemModelProvider {
         for (ModVanillaWoodSet vanillaSet : ModVanillaWoodSets.ALL) {
             vanillaWoodSetItems(vanillaSet);
         }
+
+        getBuilder(ModBlocks.FROSTBELL_BLOSSOM_HEDGE.getId().getPath())
+                .parent(new ModelFile.UncheckedModelFile(
+                        modLoc("block/frostbell_blossom_hedge")
+                ));
 
         // Wisteria-specific
         saplingItem(ModBlocks.BLUE_WISTERIA_SAPLING);

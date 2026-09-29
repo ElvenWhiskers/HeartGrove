@@ -47,6 +47,8 @@ public class ModCreativeModeTabs {
                             addVanillaWoodSet(output, vanillaSet);
                         }
 
+                        output.accept(ModBlocks.FROSTBELL_BLOSSOM_HEDGE.get());
+
                         // Larkspur-specific extras
                         output.accept(ModBlocks.LARKSPUR_CRAFTING_TABLE);
 
