@@ -1,23 +1,23 @@
 package com.elvenwhiskers.heartgrove.menu.sawmill;
 
 import com.elvenwhiskers.heartgrove.block.ModBlocks;
-import java.util.List;
-
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+
+import java.util.List;
 
 public class ModSawmillFamilies {
 
     public static final SawmillWoodFamily WISTERIA = new SawmillWoodFamily(
-            ModBlocks.WISTERIA_PLANKS.get().asItem(),
-            ModBlocks.WISTERIA_LOG.get().asItem(),
-            ModBlocks.STRIPPED_WISTERIA_LOG.get().asItem(),
-            ModBlocks.WISTERIA_WOOD.get().asItem(),
-            ModBlocks.STRIPPED_WISTERIA_WOOD.get().asItem()
+            ModBlocks.WISTERIA.getPlanks().get().asItem(),
+            ModBlocks.WISTERIA.getLog().get().asItem(),
+            ModBlocks.WISTERIA.getStrippedLog().get().asItem(),
+            ModBlocks.WISTERIA.getWood().get().asItem(),
+            ModBlocks.WISTERIA.getStrippedWood().get().asItem()
     );
 
     public static final SawmillRecipe WISTERIA_PLANKS = new SawmillRecipe(
-            ModBlocks.WISTERIA_PLANKS.get().asItem(),
+            ModBlocks.WISTERIA.getPlanks().get().asItem(),
             SawmillMaterialForm.PLANK,
             SawmillRecipeGroup.PLANK
     );
@@ -29,43 +29,43 @@ public class ModSawmillFamilies {
     );
 
     public static final SawmillRecipe WISTERIA_PLANK_FENCE = new SawmillRecipe(
-            ModBlocks.WISTERIA_FENCE.get().asItem(),
+            ModBlocks.WISTERIA.getFence().get().asItem(),
             SawmillMaterialForm.PLANK,
             SawmillRecipeGroup.FENCE
     );
 
     public static final SawmillRecipe WISTERIA_SLAB = new SawmillRecipe(
-            ModBlocks.WISTERIA_SLAB.get().asItem(),
+            ModBlocks.WISTERIA.getSlab().get().asItem(),
             SawmillMaterialForm.PLANK,
             SawmillRecipeGroup.SLAB
     );
 
     public static final SawmillRecipe WISTERIA_STAIRS = new SawmillRecipe(
-            ModBlocks.WISTERIA_STAIRS.get().asItem(),
+            ModBlocks.WISTERIA.getStairs().get().asItem(),
             SawmillMaterialForm.PLANK,
             SawmillRecipeGroup.STAIRS
     );
 
     public static final SawmillRecipe WISTERIA_WALL = new SawmillRecipe(
-            ModBlocks.WISTERIA_WALL.get().asItem(),
+            ModBlocks.WISTERIA.getWall().get().asItem(),
             SawmillMaterialForm.PLANK,
             SawmillRecipeGroup.WALL
     );
 
     public static final SawmillRecipe WISTERIA_BUTTON = new SawmillRecipe(
-            ModBlocks.WISTERIA_BUTTON.get().asItem(),
+            ModBlocks.WISTERIA.getButton().get().asItem(),
             SawmillMaterialForm.PLANK,
             SawmillRecipeGroup.BUTTON
     );
 
     public static final SawmillRecipe WISTERIA_PRESSURE_PLATE = new SawmillRecipe(
-            ModBlocks.WISTERIA_PRESSURE_PLATE.get().asItem(),
+            ModBlocks.WISTERIA.getPressurePlate().get().asItem(),
             SawmillMaterialForm.PLANK,
             SawmillRecipeGroup.PRESSURE_PLATE
     );
 
     public static final SawmillRecipe WISTERIA_FENCE_GATE = new SawmillRecipe(
-            ModBlocks.WISTERIA_FENCE_GATE.get().asItem(),
+            ModBlocks.WISTERIA.getFenceGate().get().asItem(),
             SawmillMaterialForm.PLANK,
             SawmillRecipeGroup.FENCE_GATE
     );
@@ -92,8 +92,8 @@ public class ModSawmillFamilies {
     );
 
     public static void debugCatalog() {
-        printRecipes("Wisteria Log", ModBlocks.WISTERIA_LOG.get().asItem());
-        printRecipes("Wisteria Planks", ModBlocks.WISTERIA_PLANKS.get().asItem());
+        printRecipes("Wisteria Log", ModBlocks.WISTERIA.getLog().get().asItem());
+        printRecipes("Wisteria Planks", ModBlocks.WISTERIA.getPlanks().get().asItem());
         printRecipes("Potato", Items.POTATO);
     }
 
@@ -104,5 +104,4 @@ public class ModSawmillFamilies {
             System.out.println(recipe.getOutput());
         }
     }
-
 }

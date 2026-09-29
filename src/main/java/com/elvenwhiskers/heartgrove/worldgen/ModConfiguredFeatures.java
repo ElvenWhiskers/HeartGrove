@@ -2,6 +2,8 @@ package com.elvenwhiskers.heartgrove.worldgen;
 
 import com.elvenwhiskers.heartgrove.HeartGrove;
 import com.elvenwhiskers.heartgrove.block.ModBlocks;
+import com.elvenwhiskers.heartgrove.block.family.tree.ModNormalTreeFamily;
+import com.elvenwhiskers.heartgrove.block.family.tree.ModNormalTreeRegistrar;
 import com.elvenwhiskers.heartgrove.worldgen.tree.wisteria.WisteriaColor;
 import com.elvenwhiskers.heartgrove.worldgen.tree.wisteria.WisteriaFoliagePlacer;
 import net.minecraft.core.registries.Registries;
@@ -16,15 +18,13 @@ import net.minecraft.world.level.levelgen.feature.configurations.TreeConfigurati
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
-import com.elvenwhiskers.heartgrove.block.family.tree.ModNormalTreeFamily;
-import com.elvenwhiskers.heartgrove.block.family.tree.ModNormalTreeRegistrar;
 
 public class ModConfiguredFeatures {
 
-    public static final ResourceKey<ConfiguredFeature<?, ?>> BLUE_WISTERIA_KEY = registerKey("blue_wisteria");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> BLUE_WISTERIA_KEY =
+            registerKey("blue_wisteria");
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
-
         for (ModNormalTreeFamily treeFamily : ModNormalTreeRegistrar.getTreeFamilies()) {
             register(
                     context,
@@ -39,15 +39,21 @@ public class ModConfiguredFeatures {
                 BLUE_WISTERIA_KEY,
                 WisteriaColor.BLUE
         );
-
     }
 
     public static ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name) {
-        return ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(HeartGrove.MOD_ID, name));
+        return ResourceKey.create(
+                Registries.CONFIGURED_FEATURE,
+                ResourceLocation.fromNamespaceAndPath(HeartGrove.MOD_ID, name)
+        );
     }
 
-    private static <FC extends FeatureConfiguration, F extends Feature<FC>> void register(BootstrapContext<ConfiguredFeature<?, ?>> context,
-                                                                                          ResourceKey<ConfiguredFeature<?, ?>> key, F feature, FC configuration) {
+    private static <FC extends FeatureConfiguration, F extends Feature<FC>> void register(
+            BootstrapContext<ConfiguredFeature<?, ?>> context,
+            ResourceKey<ConfiguredFeature<?, ?>> key,
+            F feature,
+            FC configuration
+    ) {
         context.register(key, new ConfiguredFeature<>(feature, configuration));
     }
 
@@ -61,7 +67,7 @@ public class ModConfiguredFeatures {
                 key,
                 Feature.TREE,
                 new TreeConfiguration.TreeConfigurationBuilder(
-                        BlockStateProvider.simple(ModBlocks.WISTERIA_LOG.get()),
+                        BlockStateProvider.simple(ModBlocks.WISTERIA.getLog().get()),
                         new StraightTrunkPlacer(5, 2, 0),
 
                         BlockStateProvider.simple(ModBlocks.WISTERIA_LEAVES.get()),
@@ -76,4 +82,6 @@ public class ModConfiguredFeatures {
         );
     }
 
+    private ModConfiguredFeatures() {
+    }
 }
