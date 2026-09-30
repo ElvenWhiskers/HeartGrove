@@ -2,6 +2,7 @@ package com.elvenwhiskers.heartgrove.block.custom.hedge;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
@@ -47,11 +48,11 @@ public class HedgeBlock extends Block {
         LevelAccessor level = context.getLevel();
 
         return this.defaultBlockState()
-                .setValue(NORTH, isHedge(level, pos.north()))
-                .setValue(EAST, isHedge(level, pos.east()))
-                .setValue(SOUTH, isHedge(level, pos.south()))
-                .setValue(WEST, isHedge(level, pos.west()))
-                .setValue(BASE, !isHedge(level, pos.below()));
+                .setValue(NORTH, shouldConnectTo(level, pos.north(), Direction.NORTH))
+                .setValue(EAST, shouldConnectTo(level, pos.east(), Direction.EAST))
+                .setValue(SOUTH, shouldConnectTo(level, pos.south(), Direction.SOUTH))
+                .setValue(WEST, shouldConnectTo(level, pos.west(), Direction.WEST))
+                .setValue(BASE, !isHedge(level.getBlockState(pos.below())));
     }
 
     @Override
@@ -64,21 +65,61 @@ public class HedgeBlock extends Block {
             BlockPos neighborPos
     ) {
         if (direction == Direction.DOWN) {
-            return state.setValue(BASE, !(neighborState.getBlock() instanceof HedgeBlock));
+            return state.setValue(BASE, !isHedge(neighborState));
         }
 
         if (direction.getAxis().isHorizontal()) {
             return state.setValue(
                     getConnectionProperty(direction),
-                    neighborState.getBlock() instanceof HedgeBlock
+                    shouldConnectTo(neighborState, level, neighborPos, direction)
             );
         }
 
         return state;
     }
 
-    private static boolean isHedge(LevelAccessor level, BlockPos pos) {
-        return level.getBlockState(pos).getBlock() instanceof HedgeBlock;
+    private static boolean shouldConnectTo(
+            LevelAccessor level,
+            BlockPos neighborPos,
+            Direction direction
+    ) {
+        BlockState neighborState = level.getBlockState(neighborPos);
+
+        return shouldConnectTo(
+                neighborState,
+                level,
+                neighborPos,
+                direction
+        );
+    }
+
+    private static boolean shouldConnectTo(
+            BlockState neighborState,
+            BlockGetter level,
+            BlockPos neighborPos,
+            Direction direction
+    ) {
+        if (isHedge(neighborState)) {
+            return true;
+        }
+
+        if (neighborState.is(BlockTags.FENCES)) {
+            return true;
+        }
+
+        if (neighborState.is(BlockTags.WALLS)) {
+            return true;
+        }
+
+        return neighborState.isFaceSturdy(
+                level,
+                neighborPos,
+                direction.getOpposite()
+        );
+    }
+
+    private static boolean isHedge(BlockState state) {
+        return state.getBlock() instanceof HedgeBlock;
     }
 
     private static BooleanProperty getConnectionProperty(Direction direction) {
@@ -105,6 +146,19 @@ public class HedgeBlock extends Block {
                 WEST,
                 BASE
         );
+    }
+
+    @Override
+    protected boolean skipRendering(
+            BlockState state,
+            BlockState adjacentState,
+            Direction direction
+    ) {
+        if (adjacentState.getBlock() instanceof HedgeBlock) {
+            return true;
+        }
+
+        return super.skipRendering(state, adjacentState, direction);
     }
 
     @Override

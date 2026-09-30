@@ -51,6 +51,15 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         for (ModHedge hedge : ModHedgeRegistrar.getHedges()) {
             tag(BlockTags.MINEABLE_WITH_AXE)
                     .add(hedge.getHedge().get());
+
+            tag(BlockTags.FENCES)
+                    .add(hedge.getHedge().get());
+
+            tag(BlockTags.WOODEN_FENCES)
+                    .add(hedge.getHedge().get());
+
+            tag(BlockTags.WALLS)
+                    .add(hedge.getHedge().get());
         }
 
 

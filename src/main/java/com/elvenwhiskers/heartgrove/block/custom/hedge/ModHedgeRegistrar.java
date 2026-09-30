@@ -8,6 +8,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -24,6 +25,22 @@ public class ModHedgeRegistrar {
             DeferredRegister.Blocks blocks,
             String name,
             DeferredBlock<? extends Block> leaves,
+            ModWoodFamily woodFamily
+    ) {
+        return register(
+                blocks,
+                name,
+                leaves,
+                leaves,
+                woodFamily
+        );
+    }
+
+    public static ModHedge register(
+            DeferredRegister.Blocks blocks,
+            String name,
+            DeferredBlock<? extends Block> leaves,
+            DeferredBlock<? extends Block> sideLeaves,
             ModWoodFamily woodFamily
     ) {
         String hedgeName = name + "_hedge";
@@ -46,6 +63,7 @@ public class ModHedgeRegistrar {
         ModHedge modHedge = new ModHedge(
                 name,
                 leaves,
+                sideLeaves,
                 woodFamily,
                 hedge
         );

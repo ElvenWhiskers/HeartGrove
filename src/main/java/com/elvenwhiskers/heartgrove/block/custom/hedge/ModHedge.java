@@ -8,17 +8,20 @@ public class ModHedge {
 
     private final String name;
     private final DeferredBlock<? extends Block> leaves;
+    private final DeferredBlock<? extends Block> sideLeaves;
     private final ModWoodFamily woodFamily;
     private final DeferredBlock<HedgeBlock> hedge;
 
     public ModHedge(
             String name,
             DeferredBlock<? extends Block> leaves,
+            DeferredBlock<? extends Block> sideLeaves,
             ModWoodFamily woodFamily,
             DeferredBlock<HedgeBlock> hedge
     ) {
         this.name = name;
         this.leaves = leaves;
+        this.sideLeaves = sideLeaves;
         this.woodFamily = woodFamily;
         this.hedge = hedge;
     }
@@ -29,6 +32,10 @@ public class ModHedge {
 
     public DeferredBlock<? extends Block> getLeaves() {
         return leaves;
+    }
+
+    public DeferredBlock<? extends Block> getSideLeaves() {
+        return sideLeaves;
     }
 
     public ModWoodFamily getWoodFamily() {

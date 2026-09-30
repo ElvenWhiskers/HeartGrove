@@ -63,37 +63,6 @@ public class ModBlocks {
     public static final ModVanillaWoodSet FROSTBELL_BLOSSOM_VANILLA =
             ModVanillaWoodSetRegistrar.register(BLOCKS, "frostbell_blossom", FROSTBELL_BLOSSOM, ModWoodTypes.FROSTBELL_BLOSSOM);
 
-    // Hedges
-    public static final ModHedge FROSTBELL_BLOSSOM_HEDGE_SET =
-            ModHedgeRegistrar.register(BLOCKS, "frostbell_blossom", FROSTBELL_BLOSSOM_TREE.getLeaves(), FROSTBELL_BLOSSOM);
-
-    public static final ModHedge LARKSPUR_HEDGE_SET =
-            ModHedgeRegistrar.register(BLOCKS, "larkspur", LARKSPUR_TREE.getLeaves(), LARKSPUR);
-
-
-    // Aegis
-    public static final DeferredBlock<Block> AEGIS_BLOCK = registerBlock(
-            "aegis_block",
-            () -> new Block(
-                    BlockBehaviour.Properties.of()
-                            .strength(4f)
-                            .requiresCorrectToolForDrops()
-                            .sound(SoundType.AMETHYST)
-            )
-    );
-
-    public static final DeferredBlock<Block> AEGIS_ORE = registerBlock(
-            "aegis_ore",
-            () -> new DropExperienceBlock(
-                    UniformInt.of(2, 4),
-                    BlockBehaviour.Properties.of()
-                            .strength(3f)
-                            .requiresCorrectToolForDrops()
-                            .sound(SoundType.STONE)
-            )
-    );
-
-
     // Wisteria foliage
     public static final DeferredBlock<Block> WISTERIA_LEAVES = registerBlock(
             "wisteria_leaves",
@@ -133,6 +102,46 @@ public class ModBlocks {
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING)
             )
     );
+
+    // Hedges
+    public static final ModHedge FROSTBELL_BLOSSOM_HEDGE_SET =
+            ModHedgeRegistrar.register(BLOCKS, "frostbell_blossom", FROSTBELL_BLOSSOM_TREE.getLeaves(), FROSTBELL_BLOSSOM);
+
+    public static final ModHedge LARKSPUR_HEDGE_SET =
+            ModHedgeRegistrar.register(BLOCKS, "larkspur", LARKSPUR_TREE.getLeaves(), LARKSPUR);
+
+    public static final ModHedge WISTERIA_HEDGE_SET =
+            ModHedgeRegistrar.register(BLOCKS, "wisteria", WISTERIA_LEAVES, WISTERIA);
+
+    public static final ModHedge BLUE_WISTERIA_BLOSSOM_HEDGE_SET =
+            ModHedgeRegistrar.register(BLOCKS, "blue_wisteria_blossom", BLUE_WISTERIA_BLOSSOMS, WISTERIA);
+
+    public static final ModHedge BLUE_WISTERIA_HEDGE_SET =
+            ModHedgeRegistrar.register(BLOCKS, "blue_wisteria", WISTERIA_LEAVES, BLUE_WISTERIA_LEAVES, WISTERIA);
+
+
+    // Aegis
+    public static final DeferredBlock<Block> AEGIS_BLOCK = registerBlock(
+            "aegis_block",
+            () -> new Block(
+                    BlockBehaviour.Properties.of()
+                            .strength(4f)
+                            .requiresCorrectToolForDrops()
+                            .sound(SoundType.AMETHYST)
+            )
+    );
+
+    public static final DeferredBlock<Block> AEGIS_ORE = registerBlock(
+            "aegis_ore",
+            () -> new DropExperienceBlock(
+                    UniformInt.of(2, 4),
+                    BlockBehaviour.Properties.of()
+                            .strength(3f)
+                            .requiresCorrectToolForDrops()
+                            .sound(SoundType.STONE)
+            )
+    );
+
 
 
     // Utility blocks

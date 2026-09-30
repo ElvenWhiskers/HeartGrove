@@ -1,12 +1,13 @@
 package com.elvenwhiskers.heartgrove.datagen.models;
 
+import com.elvenwhiskers.heartgrove.block.custom.hedge.HedgeBlock;
+import com.elvenwhiskers.heartgrove.block.custom.hedge.ModHedge;
+import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
 import net.neoforged.neoforge.client.model.generators.BlockModelProvider;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
-import com.elvenwhiskers.heartgrove.block.custom.hedge.HedgeBlock;
 import net.neoforged.neoforge.client.model.generators.MultiPartBlockStateBuilder;
-import com.elvenwhiskers.heartgrove.block.custom.hedge.ModHedge;
 
 public class HedgeModelGenerator {
 
@@ -24,6 +25,9 @@ public class HedgeModelGenerator {
         ResourceLocation leavesTexture =
                 blockStates.blockTexture(hedge.getLeaves().get());
 
+        ResourceLocation sideLeavesTexture =
+                blockStates.blockTexture(hedge.getSideLeaves().get());
+
         ResourceLocation woodTexture =
                 blockStates.blockTexture(hedge.getWoodFamily().getLog().get());
 
@@ -35,18 +39,21 @@ public class HedgeModelGenerator {
         createIsolatedHedge(
                 name,
                 leavesTexture,
+                sideLeavesTexture,
                 woodTexture
         );
 
         createHedgeFoliageModels(
                 name,
                 leavesTexture,
+                sideLeavesTexture,
                 true
         );
 
         createHedgeFoliageModels(
                 name,
                 leavesTexture,
+                sideLeavesTexture,
                 false
         );
 
@@ -59,11 +66,13 @@ public class HedgeModelGenerator {
     public BlockModelBuilder createIsolatedHedge(
             String name,
             ResourceLocation leavesTexture,
+            ResourceLocation sideLeavesTexture,
             ResourceLocation woodTexture
     ) {
         BlockModelBuilder model = models
                 .withExistingParent(name, "block/block")
                 .texture("leaves", leavesTexture)
+                .texture("side_leaves", sideLeavesTexture)
                 .texture("wood", woodTexture)
                 .texture("particle", leavesTexture)
                 .renderType("cutout");
@@ -74,7 +83,12 @@ public class HedgeModelGenerator {
         model.element()
                 .from(2, 2, 2)
                 .to(14, 16, 14)
-                .allFaces((direction, face) -> face.texture("#leaves"))
+                .face(Direction.UP).texture("#leaves").end()
+                .face(Direction.DOWN).texture("#leaves").end()
+                .face(Direction.NORTH).texture("#side_leaves").end()
+                .face(Direction.SOUTH).texture("#side_leaves").end()
+                .face(Direction.EAST).texture("#side_leaves").end()
+                .face(Direction.WEST).texture("#side_leaves").end()
                 .end();
 
         // Wooden foundation:
@@ -91,24 +105,93 @@ public class HedgeModelGenerator {
     private BlockModelBuilder createFoliagePiece(
             String name,
             ResourceLocation leavesTexture,
+            ResourceLocation sideLeavesTexture,
             float fromX,
             float fromY,
             float fromZ,
             float toX,
             float toY,
-            float toZ
+            float toZ,
+            Direction hiddenFace
     ) {
         BlockModelBuilder model = models
                 .withExistingParent(name, "block/block")
                 .texture("leaves", leavesTexture)
+                .texture("side_leaves", sideLeavesTexture)
                 .texture("particle", leavesTexture)
                 .renderType("cutout");
 
-        model.element()
+        var element = model.element()
                 .from(fromX, fromY, fromZ)
-                .to(toX, toY, toZ)
-                .allFaces((direction, face) -> face.texture("#leaves"))
-                .end();
+                .to(toX, toY, toZ);
+
+        if (hiddenFace != Direction.UP) {
+            var upFace = element.face(Direction.UP)
+                    .texture("#leaves");
+
+            if (toY == 16) {
+                upFace.cullface(Direction.UP);
+            }
+
+            upFace.end();
+        }
+
+        if (hiddenFace != Direction.DOWN) {
+            var downFace = element.face(Direction.DOWN)
+                    .texture("#leaves");
+
+            if (fromY == 0) {
+                downFace.cullface(Direction.DOWN);
+            }
+
+            downFace.end();
+        }
+
+        if (hiddenFace != Direction.NORTH) {
+            var northFace = element.face(Direction.NORTH)
+                    .texture("#side_leaves");
+
+            if (fromZ == 0) {
+                northFace.cullface(Direction.NORTH);
+            }
+
+            northFace.end();
+        }
+
+        if (hiddenFace != Direction.SOUTH) {
+            var southFace = element.face(Direction.SOUTH)
+                    .texture("#side_leaves");
+
+            if (toZ == 16) {
+                southFace.cullface(Direction.SOUTH);
+            }
+
+            southFace.end();
+        }
+
+        if (hiddenFace != Direction.EAST) {
+            var eastFace = element.face(Direction.EAST)
+                    .texture("#side_leaves");
+
+            if (toX == 16) {
+                eastFace.cullface(Direction.EAST);
+            }
+
+            eastFace.end();
+        }
+
+        if (hiddenFace != Direction.WEST) {
+            var westFace = element.face(Direction.WEST)
+                    .texture("#side_leaves");
+
+            if (fromX == 0) {
+                westFace.cullface(Direction.WEST);
+            }
+
+            westFace.end();
+        }
+
+        element.end();
 
         return model;
     }
@@ -116,49 +199,66 @@ public class HedgeModelGenerator {
     public void createHedgeFoliageModels(
             String name,
             ResourceLocation leavesTexture,
+            ResourceLocation sideLeavesTexture,
             boolean hasBase
     ) {
         float bottomY = hasBase ? 2 : 0;
         String suffix = hasBase ? "_base" : "_full";
 
         // Center of the hedge.
+        // No face is permanently hidden because the core can be exposed
+        // whenever there is no connection in that direction.
         createFoliagePiece(
                 name + "_foliage_core" + suffix,
                 leavesTexture,
+                sideLeavesTexture,
                 2, bottomY, 2,
-                14, 16, 14
+                14, 16, 14,
+                null
         );
 
         // Connection toward north.
+        // Its south face is permanently buried against the core.
         createFoliagePiece(
                 name + "_foliage_north" + suffix,
                 leavesTexture,
+                sideLeavesTexture,
                 2, bottomY, 0,
-                14, 16, 2
+                14, 16, 2,
+                Direction.SOUTH
         );
 
         // Connection toward east.
+        // Its west face is permanently buried against the core.
         createFoliagePiece(
                 name + "_foliage_east" + suffix,
                 leavesTexture,
+                sideLeavesTexture,
                 14, bottomY, 2,
-                16, 16, 14
+                16, 16, 14,
+                Direction.WEST
         );
 
         // Connection toward south.
+        // Its north face is permanently buried against the core.
         createFoliagePiece(
                 name + "_foliage_south" + suffix,
                 leavesTexture,
+                sideLeavesTexture,
                 2, bottomY, 14,
-                14, 16, 16
+                14, 16, 16,
+                Direction.NORTH
         );
 
         // Connection toward west.
+        // Its east face is permanently buried against the core.
         createFoliagePiece(
                 name + "_foliage_west" + suffix,
                 leavesTexture,
+                sideLeavesTexture,
                 0, bottomY, 2,
-                2, 16, 14
+                2, 16, 14,
+                Direction.EAST
         );
     }
 
@@ -254,7 +354,6 @@ public class HedgeModelGenerator {
                 .condition(HedgeBlock.BASE, false)
                 .end();
 
-
         // ----- NORTH -----
 
         builder.part()
@@ -270,7 +369,6 @@ public class HedgeModelGenerator {
                 .condition(HedgeBlock.BASE, false)
                 .condition(HedgeBlock.NORTH, true)
                 .end();
-
 
         // ----- EAST -----
 
@@ -288,7 +386,6 @@ public class HedgeModelGenerator {
                 .condition(HedgeBlock.EAST, true)
                 .end();
 
-
         // ----- SOUTH -----
 
         builder.part()
@@ -305,7 +402,6 @@ public class HedgeModelGenerator {
                 .condition(HedgeBlock.SOUTH, true)
                 .end();
 
-
         // ----- WEST -----
 
         builder.part()
@@ -321,7 +417,6 @@ public class HedgeModelGenerator {
                 .condition(HedgeBlock.BASE, false)
                 .condition(HedgeBlock.WEST, true)
                 .end();
-
 
         // ----- WOOD FOUNDATION -----
 
