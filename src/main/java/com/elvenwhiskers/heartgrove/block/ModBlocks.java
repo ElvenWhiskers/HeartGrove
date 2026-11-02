@@ -120,6 +120,82 @@ public class ModBlocks {
             ModHedgeRegistrar.register(BLOCKS, "blue_wisteria", WISTERIA_LEAVES, BLUE_WISTERIA_LEAVES, WISTERIA);
 
 
+    // Marble
+    public static final DeferredBlock<Block> MARBLE = registerBlock(
+            "marble",
+            () -> new Block(
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.CALCITE)
+            )
+    );
+
+    public static final DeferredBlock<Block> MARBLE_BRICKS = registerBlock(
+            "marble_bricks",
+            () -> new Block(
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BRICKS)
+            )
+    );
+
+    public static final DeferredBlock<Block> CHISELED_MARBLE = registerBlock(
+            "chiseled_marble",
+            () -> new Block(
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.CHISELED_STONE_BRICKS)
+            )
+    );
+
+    public static final DeferredBlock<Block> CRACKED_MARBLE_BRICKS = registerBlock(
+            "cracked_marble_bricks",
+            () -> new Block(
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.CRACKED_STONE_BRICKS)
+            )
+    );
+
+    // Golden Marble
+    public static final DeferredBlock<Block> GOLDEN_MARBLE = registerBlock(
+            "golden_marble",
+            () -> new Block(
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.CALCITE)
+            )
+    );
+
+    public static final DeferredBlock<Block> GOLDEN_CRACKED_MARBLE_BRICKS = registerBlock(
+            "golden_cracked_marble_bricks",
+            () -> new Block(
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.CRACKED_STONE_BRICKS)
+            )
+    );
+
+    // Brightstone
+    public static final DeferredBlock<Block> BRIGHTSTONE = registerBlock(
+            "brightstone",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE))
+    );
+
+    public static final DeferredBlock<Block> BRIGHTSTONE_BRICKS = registerBlock(
+            "brightstone_bricks",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BRICKS))
+    );
+
+    public static final DeferredBlock<Block> CRACKED_BRIGHTSTONE_BRICKS = registerBlock(
+            "cracked_brightstone_bricks",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.CRACKED_STONE_BRICKS))
+    );
+
+    public static final DeferredBlock<Block> MOSSY_BRIGHTSTONE_BRICKS = registerBlock(
+            "mossy_brightstone_bricks",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.MOSSY_STONE_BRICKS))
+    );
+
+    public static final DeferredBlock<Block> CHISELED_BRIGHTSTONE_BRICKS = registerBlock(
+            "chiseled_brightstone_bricks",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.CHISELED_STONE_BRICKS))
+    );
+
+    public static final DeferredBlock<Block> SMOOTH_BRIGHTSTONE = registerBlock(
+            "smooth_brightstone",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.SMOOTH_STONE))
+    );
+
+
     // Aegis
     public static final DeferredBlock<Block> AEGIS_BLOCK = registerBlock(
             "aegis_block",

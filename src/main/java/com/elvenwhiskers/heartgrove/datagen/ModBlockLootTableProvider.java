@@ -30,6 +30,24 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
     protected void generate() {
         dropSelf(ModBlocks.AEGIS_BLOCK.get()); //drop self for just regular drops self. obviously.
 
+        // Marble
+        dropSelf(ModBlocks.MARBLE.get());
+        dropSelf(ModBlocks.MARBLE_BRICKS.get());
+        dropSelf(ModBlocks.CHISELED_MARBLE.get());
+        dropSelf(ModBlocks.CRACKED_MARBLE_BRICKS.get());
+
+        // Golden Marble
+        dropSelf(ModBlocks.GOLDEN_MARBLE.get());
+        dropSelf(ModBlocks.GOLDEN_CRACKED_MARBLE_BRICKS.get());
+
+        // Brightstone
+        dropSelf(ModBlocks.BRIGHTSTONE.get());
+        dropSelf(ModBlocks.SMOOTH_BRIGHTSTONE.get());
+        dropSelf(ModBlocks.BRIGHTSTONE_BRICKS.get());
+        dropSelf(ModBlocks.CRACKED_BRIGHTSTONE_BRICKS.get());
+        dropSelf(ModBlocks.MOSSY_BRIGHTSTONE_BRICKS.get());
+        dropSelf(ModBlocks.CHISELED_BRIGHTSTONE_BRICKS.get());
+
         for (ModWoodFamily family : ModWoodFamilyRegistrar.getWoodFamilies()) {
             dropWoodFamily(family);
         }

@@ -62,6 +62,27 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                     .add(hedge.getHedge().get());
         }
 
+        // Brightstone
+        tag(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(
+                        ModBlocks.BRIGHTSTONE.get(),
+                        ModBlocks.SMOOTH_BRIGHTSTONE.get(),
+                        ModBlocks.BRIGHTSTONE_BRICKS.get(),
+                        ModBlocks.CRACKED_BRIGHTSTONE_BRICKS.get(),
+                        ModBlocks.MOSSY_BRIGHTSTONE_BRICKS.get(),
+                        ModBlocks.CHISELED_BRIGHTSTONE_BRICKS.get(),
+                        ModBlocks.GOLDEN_MARBLE.get(),
+                        ModBlocks.GOLDEN_CRACKED_MARBLE_BRICKS.get()
+                );
+
+        // Marble
+        tag(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(
+                        ModBlocks.MARBLE.get(),
+                        ModBlocks.MARBLE_BRICKS.get(),
+                        ModBlocks.CHISELED_MARBLE.get(),
+                        ModBlocks.CRACKED_MARBLE_BRICKS.get()
+                );
 
         // Ores / mineral blocks
         tag(BlockTags.MINEABLE_WITH_PICKAXE)

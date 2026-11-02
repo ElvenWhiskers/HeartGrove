@@ -32,6 +32,24 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.RAW_AEGIS);
                         output.accept(ModBlocks.AEGIS_BLOCK);
                         output.accept(ModBlocks.AEGIS_ORE);
+
+                        // Marble
+                        output.accept(ModBlocks.MARBLE);
+                        output.accept(ModBlocks.MARBLE_BRICKS);
+                        output.accept(ModBlocks.CHISELED_MARBLE);
+                        output.accept(ModBlocks.CRACKED_MARBLE_BRICKS);
+
+                        // Golden Marble
+                        output.accept(ModBlocks.GOLDEN_MARBLE);
+                        output.accept(ModBlocks.GOLDEN_CRACKED_MARBLE_BRICKS);
+
+                        // Brightstone
+                        output.accept(ModBlocks.BRIGHTSTONE);
+                        output.accept(ModBlocks.SMOOTH_BRIGHTSTONE);
+                        output.accept(ModBlocks.BRIGHTSTONE_BRICKS);
+                        output.accept(ModBlocks.CRACKED_BRIGHTSTONE_BRICKS);
+                        output.accept(ModBlocks.MOSSY_BRIGHTSTONE_BRICKS);
+                        output.accept(ModBlocks.CHISELED_BRIGHTSTONE_BRICKS);
                     }).build());
 
     public static final Supplier<CreativeModeTab> HEARTGROVE_WOODS_TAB = CREATIVE_MODE_TAB.register("heartgrove_woods_tab",

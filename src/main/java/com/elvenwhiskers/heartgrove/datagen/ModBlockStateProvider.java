@@ -32,6 +32,24 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         blockWithItem(ModBlocks.AEGIS_ORE);
 
+        // Marble
+        blockWithItem(ModBlocks.MARBLE);
+        blockWithItem(ModBlocks.MARBLE_BRICKS);
+        blockWithItem(ModBlocks.CHISELED_MARBLE);
+        blockWithItem(ModBlocks.CRACKED_MARBLE_BRICKS);
+
+        // Golden Marble
+        blockWithItem(ModBlocks.GOLDEN_MARBLE);
+        blockWithItem(ModBlocks.GOLDEN_CRACKED_MARBLE_BRICKS);
+
+        // Brightstone
+        blockWithItem(ModBlocks.BRIGHTSTONE);
+        blockWithItem(ModBlocks.SMOOTH_BRIGHTSTONE);
+        blockWithItem(ModBlocks.BRIGHTSTONE_BRICKS);
+        blockWithItem(ModBlocks.CRACKED_BRIGHTSTONE_BRICKS);
+        blockWithItem(ModBlocks.MOSSY_BRIGHTSTONE_BRICKS);
+        blockWithItem(ModBlocks.CHISELED_BRIGHTSTONE_BRICKS);
+
         for (ModWoodFamily family : ModWoodFamilyRegistrar.getWoodFamilies()) {
             woodSet(family);
         }

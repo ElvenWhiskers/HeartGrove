@@ -32,6 +32,24 @@ public class ModLanguageProvider extends LanguageProvider {
         addBlock(ModBlocks.AEGIS_BLOCK, "Aegis Block");
         addBlock(ModBlocks.AEGIS_ORE, "Aegis Ore");
 
+        // Marble
+        addBlock(ModBlocks.MARBLE, "Marble");
+        addBlock(ModBlocks.MARBLE_BRICKS, "Marble Bricks");
+        addBlock(ModBlocks.CRACKED_MARBLE_BRICKS, "Cracked Marble Bricks");
+        addBlock(ModBlocks.CHISELED_MARBLE, "Chisel Marble");
+
+        // Golden Marble
+        addBlock(ModBlocks.GOLDEN_MARBLE, "Golden Marble");
+        addBlock(ModBlocks.GOLDEN_CRACKED_MARBLE_BRICKS, "Golden Cracked Marble Bricks");
+
+        // Brightstone
+        addBlock(ModBlocks.BRIGHTSTONE, "Brightstone");
+        addBlock(ModBlocks.SMOOTH_BRIGHTSTONE, "Smooth Brightstone");
+        addBlock(ModBlocks.BRIGHTSTONE_BRICKS, "Brightstone Bricks");
+        addBlock(ModBlocks.CRACKED_BRIGHTSTONE_BRICKS, "Cracked Brightstone Bricks");
+        addBlock(ModBlocks.MOSSY_BRIGHTSTONE_BRICKS, "Mossy Brightstone Bricks");
+        addBlock(ModBlocks.CHISELED_BRIGHTSTONE_BRICKS, "Chiseled Brightstone Bricks");
+
 
 
 
