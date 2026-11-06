@@ -50,6 +50,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.CRACKED_BRIGHTSTONE_BRICKS);
                         output.accept(ModBlocks.MOSSY_BRIGHTSTONE_BRICKS);
                         output.accept(ModBlocks.CHISELED_BRIGHTSTONE_BRICKS);
+
+                        //unique items
+                        output.accept(ModItems.PALETTE_BRUSH);
                     }).build());
 
     public static final Supplier<CreativeModeTab> HEARTGROVE_WOODS_TAB = CREATIVE_MODE_TAB.register("heartgrove_woods_tab",

@@ -50,6 +50,11 @@ public class ModLanguageProvider extends LanguageProvider {
         addBlock(ModBlocks.MOSSY_BRIGHTSTONE_BRICKS, "Mossy Brightstone Bricks");
         addBlock(ModBlocks.CHISELED_BRIGHTSTONE_BRICKS, "Chiseled Brightstone Bricks");
 
+        //Unique items
+        addItem(ModItems.PALETTE_BRUSH, "Palette Brush");
+        add("tooltip.heartgrove.palette_brush",
+                "Places a random block from your hotbar.");
+
 
 
 

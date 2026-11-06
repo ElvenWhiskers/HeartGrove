@@ -30,6 +30,7 @@ public class ModItemModelProvider extends ItemModelProvider {
     protected void registerModels() {
         basicItem(ModItems.AEGIS_INGOT.get());
         basicItem(ModItems.RAW_AEGIS.get());
+        basicItem(ModItems.PALETTE_BRUSH.get());
 
 
 
