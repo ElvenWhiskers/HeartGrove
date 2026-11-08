@@ -53,6 +53,12 @@ public class ModCreativeModeTabs {
 
                         //unique items
                         output.accept(ModItems.PALETTE_BRUSH);
+
+                        // Glimmerite
+                        ModBlocks.GLIMMERITE.forEach((color, block) -> {
+                            output.accept(block.get());
+                        });
+
                     }).build());
 
     public static final Supplier<CreativeModeTab> HEARTGROVE_WOODS_TAB = CREATIVE_MODE_TAB.register("heartgrove_woods_tab",

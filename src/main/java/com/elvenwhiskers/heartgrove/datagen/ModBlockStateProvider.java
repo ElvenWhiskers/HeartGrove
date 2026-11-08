@@ -50,6 +50,11 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.MOSSY_BRIGHTSTONE_BRICKS);
         blockWithItem(ModBlocks.CHISELED_BRIGHTSTONE_BRICKS);
 
+        // Glimmerite
+        ModBlocks.GLIMMERITE.forEach((color, block) -> {
+            blockWithItem(block);
+        });
+
         for (ModWoodFamily family : ModWoodFamilyRegistrar.getWoodFamilies()) {
             woodSet(family);
         }

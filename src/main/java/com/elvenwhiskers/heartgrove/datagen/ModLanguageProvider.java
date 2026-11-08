@@ -55,6 +55,15 @@ public class ModLanguageProvider extends LanguageProvider {
         add("tooltip.heartgrove.palette_brush",
                 "Places a random block from your hotbar.");
 
+        // Glimmerite
+        ModBlocks.GLIMMERITE.forEach((color, block) -> {
+            String displayName = Character.toUpperCase(color.charAt(0))
+                    + color.substring(1)
+                    + " Glimmerite";
+
+            add(block.get(), displayName);
+        });
+
 
 
 

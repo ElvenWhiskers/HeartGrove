@@ -48,6 +48,16 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.MOSSY_BRIGHTSTONE_BRICKS.get());
         dropSelf(ModBlocks.CHISELED_BRIGHTSTONE_BRICKS.get());
 
+        // Prism (temporary loot tables)
+        dropSelf(ModBlocks.PRISM_ORE.get());
+        dropSelf(ModBlocks.PRISM_BLOCK.get());
+        dropSelf(ModBlocks.PRISM_GLASS.get());
+
+        // Glimmerite
+        ModBlocks.GLIMMERITE.forEach((color, block) -> {
+            dropSelf(block.get());
+        });
+
         for (ModWoodFamily family : ModWoodFamilyRegistrar.getWoodFamilies()) {
             dropWoodFamily(family);
         }

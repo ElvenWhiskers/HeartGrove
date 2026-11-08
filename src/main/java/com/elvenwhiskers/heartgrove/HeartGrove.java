@@ -24,6 +24,9 @@ import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import com.elvenwhiskers.heartgrove.block.entity.ModBlockEntities;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 
 @Mod(HeartGrove.MOD_ID)
 public class HeartGrove {
@@ -78,6 +81,18 @@ public class HeartGrove {
     public static class ClientModEvents {
 
         @SubscribeEvent
+        public static void onClientSetup(FMLClientSetupEvent event) {
+            event.enqueueWork(() -> {
+                ModBlocks.GLIMMERITE.forEach((color, block) -> {
+                    ItemBlockRenderTypes.setRenderLayer(
+                            block.get(),
+                            RenderType.translucent()
+                    );
+                });
+            });
+        }
+
+        @SubscribeEvent
         public static void registerScreens(RegisterMenuScreensEvent event) {
             event.register(
                     ModMenuTypes.SAWMILL_MENU.get(),
@@ -93,4 +108,5 @@ public class HeartGrove {
             );
         }
     }
+
 }

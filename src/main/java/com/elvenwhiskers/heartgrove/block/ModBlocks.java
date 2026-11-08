@@ -31,7 +31,9 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import com.elvenwhiskers.heartgrove.block.family.glimmerite.ModGlimmeriteRegistrar;
 
+import java.util.Map;
 import java.util.function.Supplier;
 
 public class ModBlocks {
@@ -195,6 +197,21 @@ public class ModBlocks {
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.SMOOTH_STONE))
     );
 
+    // Glimmerite
+    public static final Map<String, DeferredBlock<Block>> GLIMMERITE =
+            ModGlimmeriteRegistrar.register(BLOCKS);
+
+    static {
+        GLIMMERITE.forEach((color, block) -> {
+            String name = color + "_glimmerite";
+
+            ModItems.ITEMS.register(
+                    name,
+                    () -> new BlockItem(block.get(), new Item.Properties())
+            );
+        });
+    }
+
 
     // Aegis
     public static final DeferredBlock<Block> AEGIS_BLOCK = registerBlock(
@@ -206,6 +223,30 @@ public class ModBlocks {
                             .sound(SoundType.AMETHYST)
             )
     );
+
+
+    // Prism
+    public static final DeferredBlock<Block> PRISM_ORE = registerBlock(
+            "prism_ore",
+            () -> new Block(
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.COPPER_ORE)
+            )
+    );
+
+    public static final DeferredBlock<Block> PRISM_BLOCK = registerBlock(
+            "prism_block",
+            () -> new Block(
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.QUARTZ_BLOCK)
+            )
+    );
+
+    public static final DeferredBlock<Block> PRISM_GLASS = registerBlock(
+            "prism_glass",
+            () -> new Block(
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS)
+            )
+    );
+
 
     public static final DeferredBlock<Block> AEGIS_ORE = registerBlock(
             "aegis_ore",

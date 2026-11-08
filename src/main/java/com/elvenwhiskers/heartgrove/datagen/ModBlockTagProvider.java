@@ -60,6 +60,11 @@ public class ModBlockTagProvider extends BlockTagsProvider {
 
             tag(BlockTags.WALLS)
                     .add(hedge.getHedge().get());
+
+            // Glimmerite - mineable with pickaxes
+            ModBlocks.GLIMMERITE.forEach((color, block) -> {
+                tag(BlockTags.MINEABLE_WITH_PICKAXE).add(block.get());
+            });
         }
 
         // Brightstone
