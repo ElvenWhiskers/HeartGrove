@@ -20,6 +20,9 @@ import net.neoforged.neoforge.registries.DeferredBlock;
 import com.elvenwhiskers.heartgrove.datagen.models.HedgeModelGenerator;
 import com.elvenwhiskers.heartgrove.block.custom.hedge.ModHedge;
 import com.elvenwhiskers.heartgrove.block.custom.hedge.ModHedgeRegistrar;
+import com.elvenwhiskers.heartgrove.block.custom.glimmerite.GlimmeriteClusterBlock;
+import net.minecraft.core.Direction;
+import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 
 public class ModBlockStateProvider extends BlockStateProvider {
     public ModBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
@@ -83,6 +86,11 @@ public class ModBlockStateProvider extends BlockStateProvider {
         //Other blocks
         ModelFile larkspurCraftingTable = models().orientable("larkspur_crafting_table", modLoc("block/larkspur_crafting_table_side"), modLoc("block/larkspur_crafting_table_front"), modLoc("block/larkspur_crafting_table_top"));
         simpleBlockWithItem(ModBlocks.LARKSPUR_CRAFTING_TABLE.get(), larkspurCraftingTable);
+
+        // Blue Glimmerite Cluster
+        glimmeriteCluster(ModBlocks.BLUE_GLIMMERITE_CLUSTER.get());
+
+
     }
 
     private void woodSet(ModWoodFamily family) {
@@ -239,6 +247,46 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 blockTexture(vanillaSet.getWoodFamily().getPlanks().get())
         );
     }
+
+
+    private void glimmeriteCluster(
+            GlimmeriteClusterBlock block
+    ) {
+        var builder = getVariantBuilder(block);
+
+        for (int stage = 1; stage <= 3; stage++) {
+            var model = models().getExistingFile(
+                    modLoc("block/glimmerite/glimmerite_crystal_stage" + stage)
+            );
+
+            for (Direction facing : Direction.values()) {
+                int rotationX = switch (facing) {
+                    case UP -> 0;
+                    case DOWN -> 180;
+                    case NORTH, SOUTH, EAST, WEST -> 90;
+                };
+
+                int rotationY = switch (facing) {
+                    case NORTH -> 0;
+                    case EAST -> 90;
+                    case SOUTH -> 180;
+                    case WEST -> 270;
+                    default -> 0;
+                };
+
+                builder.partialState()
+                        .with(GlimmeriteClusterBlock.STAGE, stage)
+                        .with(GlimmeriteClusterBlock.FACING, facing)
+                        .setModels(new ConfiguredModel(
+                                model,
+                                rotationX,
+                                rotationY,
+                                false
+                        ));
+            }
+        }
+    }
+
 
 
 

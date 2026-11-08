@@ -32,6 +32,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import com.elvenwhiskers.heartgrove.block.family.glimmerite.ModGlimmeriteRegistrar;
+import com.elvenwhiskers.heartgrove.block.custom.glimmerite.GlimmeriteClusterBlock;
 
 import java.util.Map;
 import java.util.function.Supplier;
@@ -201,6 +202,10 @@ public class ModBlocks {
     public static final Map<String, DeferredBlock<Block>> GLIMMERITE =
             ModGlimmeriteRegistrar.register(BLOCKS);
 
+    // Glimmerite Clusters
+    public static final DeferredBlock<GlimmeriteClusterBlock> BLUE_GLIMMERITE_CLUSTER =
+            ModGlimmeriteRegistrar.registerCluster(BLOCKS, "blue");
+
     static {
         GLIMMERITE.forEach((color, block) -> {
             String name = color + "_glimmerite";
@@ -210,7 +215,18 @@ public class ModBlocks {
                     () -> new BlockItem(block.get(), new Item.Properties())
             );
         });
+
+        // Blue Glimmerite Cluster
+        ModItems.ITEMS.register(
+                "blue_glimmerite_cluster",
+                () -> new BlockItem(
+                        BLUE_GLIMMERITE_CLUSTER.get(),
+                        new Item.Properties()
+                )
+        );
     }
+
+
 
 
     // Aegis

@@ -1,0 +1,38 @@
+{
+	"format_version": "1.9.0",
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "heartgrove:block/blue_glimmerite",
+		"particle": "heartgrove:block/blue_glimmerite"
+	},
+	"elements": [
+		{
+			"name": "corner1",
+			"from": [5, 0, 6],
+			"to": [9, 2, 10],
+			"rotation": {"angle": 22.5, "axis": "y", "origin": [5, 0, 6]},
+			"faces": {
+				"north": {"uv": [0, 1, 4, 3], "texture": "#0"},
+				"east": {"uv": [0, 1, 4, 3], "texture": "#0"},
+				"south": {"uv": [0, 1, 4, 3], "texture": "#0"},
+				"west": {"uv": [0, 1, 4, 3], "texture": "#0"},
+				"up": {"uv": [0, 0, 4, 4], "texture": "#0"},
+				"down": {"uv": [0, 0, 4, 4], "texture": "#0"}
+			}
+		},
+		{
+			"name": "corner2",
+			"from": [9, 0, 6],
+			"to": [12, 1, 9],
+			"rotation": {"angle": -22.5, "axis": "y", "origin": [9, 0, 6]},
+			"faces": {
+				"north": {"uv": [1, 2, 4, 3], "texture": "#0"},
+				"east": {"uv": [1, 2, 4, 3], "texture": "#0"},
+				"south": {"uv": [0, 2, 3, 3], "texture": "#0"},
+				"west": {"uv": [0, 2, 3, 3], "texture": "#0"},
+				"up": {"uv": [0, 0, 3, 3], "texture": "#0"},
+				"down": {"uv": [0, 1, 3, 4], "texture": "#0"}
+			}
+		}
+	]
+}

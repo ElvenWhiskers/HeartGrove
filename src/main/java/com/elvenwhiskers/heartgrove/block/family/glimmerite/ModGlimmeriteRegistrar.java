@@ -6,6 +6,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import com.elvenwhiskers.heartgrove.block.custom.glimmerite.GlimmeriteClusterBlock;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -49,4 +50,20 @@ public final class ModGlimmeriteRegistrar {
 
         return java.util.Collections.unmodifiableMap(colors);
     }
+
+
+    public static DeferredBlock<GlimmeriteClusterBlock> registerCluster(
+            DeferredRegister.Blocks blocks,
+            String color
+    ) {
+        return blocks.register(
+                color + "_glimmerite_cluster",
+                () -> new GlimmeriteClusterBlock(
+                        BlockBehaviour.Properties.ofFullCopy(Blocks.AMETHYST_CLUSTER)
+                                .lightLevel(state -> 10)
+                                .noOcclusion()
+                )
+        );
+    }
+
 }

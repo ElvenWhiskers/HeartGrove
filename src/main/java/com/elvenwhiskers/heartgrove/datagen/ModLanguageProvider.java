@@ -64,6 +64,8 @@ public class ModLanguageProvider extends LanguageProvider {
             add(block.get(), displayName);
         });
 
+        add(ModBlocks.BLUE_GLIMMERITE_CLUSTER.get(), "Blue Glimmerite Cluster");
+
 
 
 

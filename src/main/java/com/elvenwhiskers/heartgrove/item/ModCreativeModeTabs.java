@@ -59,6 +59,9 @@ public class ModCreativeModeTabs {
                             output.accept(block.get());
                         });
 
+                        // Glimmerite Clusters
+                        output.accept(ModBlocks.BLUE_GLIMMERITE_CLUSTER.get());
+
                     }).build());
 
     public static final Supplier<CreativeModeTab> HEARTGROVE_WOODS_TAB = CREATIVE_MODE_TAB.register("heartgrove_woods_tab",

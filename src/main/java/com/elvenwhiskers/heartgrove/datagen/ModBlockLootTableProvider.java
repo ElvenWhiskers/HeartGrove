@@ -58,6 +58,9 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
             dropSelf(block.get());
         });
 
+        // Blue Glimmerite Cluster
+        dropSelf(ModBlocks.BLUE_GLIMMERITE_CLUSTER.get());
+
         for (ModWoodFamily family : ModWoodFamilyRegistrar.getWoodFamilies()) {
             dropWoodFamily(family);
         }

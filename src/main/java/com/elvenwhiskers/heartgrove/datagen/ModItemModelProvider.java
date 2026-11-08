@@ -12,6 +12,7 @@ import com.elvenwhiskers.heartgrove.block.family.wood.ModWoodFamily;
 import com.elvenwhiskers.heartgrove.item.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
@@ -63,6 +64,19 @@ public class ModItemModelProvider extends ItemModelProvider {
                         "block/blue_wisteria_vines_bottom"
                 )
         );
+
+        // Blue Glimmerite Cluster
+        withExistingParent(
+                "blue_glimmerite_cluster",
+                modLoc("block/glimmerite/glimmerite_crystal_stage1")
+        )
+                .transforms()
+                .transform(ItemDisplayContext.GUI)
+                .rotation(30, 225, 0)
+                .translation(0, 11, 0)
+                .scale(2.0f)
+                .end()
+                .end();
     }
 
     private ItemModelBuilder saplingItem(DeferredBlock<Block> item) {
