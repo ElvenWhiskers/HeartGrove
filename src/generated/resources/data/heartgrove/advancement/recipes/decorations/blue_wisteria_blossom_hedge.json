@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_blue_wisteria_blossoms": {
+      "conditions": {
+        "items": [
+          {
+            "items": "heartgrove:blue_wisteria_blossoms"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "heartgrove:blue_wisteria_blossom_hedge"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_blue_wisteria_blossoms"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "heartgrove:blue_wisteria_blossom_hedge"
+    ]
+  }
+}

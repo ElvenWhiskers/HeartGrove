@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "bottom=false": {
+      "model": "heartgrove:block/blue_wisteria_vines"
+    },
+    "bottom=true": {
+      "model": "heartgrove:block/blue_wisteria_vines_bottom"
+    }
+  }
+}

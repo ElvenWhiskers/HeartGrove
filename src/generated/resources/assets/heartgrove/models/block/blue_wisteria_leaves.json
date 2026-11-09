@@ -1,0 +1,13 @@
+{
+  "parent": "minecraft:block/cube",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "down": "heartgrove:block/blue_wisteria_blossoms",
+    "east": "heartgrove:block/blue_wisteria_leaves",
+    "north": "heartgrove:block/blue_wisteria_leaves",
+    "particle": "heartgrove:block/blue_wisteria_leaves",
+    "south": "heartgrove:block/blue_wisteria_leaves",
+    "up": "heartgrove:block/wisteria_leaves",
+    "west": "heartgrove:block/blue_wisteria_leaves"
+  }
+}

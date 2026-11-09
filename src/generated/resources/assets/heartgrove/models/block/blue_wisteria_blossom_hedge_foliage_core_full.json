@@ -1,0 +1,45 @@
+{
+  "parent": "minecraft:block/block",
+  "elements": [
+    {
+      "faces": {
+        "down": {
+          "cullface": "down",
+          "texture": "#leaves"
+        },
+        "east": {
+          "texture": "#side_leaves"
+        },
+        "north": {
+          "texture": "#side_leaves"
+        },
+        "south": {
+          "texture": "#side_leaves"
+        },
+        "up": {
+          "cullface": "up",
+          "texture": "#leaves"
+        },
+        "west": {
+          "texture": "#side_leaves"
+        }
+      },
+      "from": [
+        2,
+        0,
+        2
+      ],
+      "to": [
+        14,
+        16,
+        14
+      ]
+    }
+  ],
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "leaves": "heartgrove:block/blue_wisteria_blossoms",
+    "particle": "heartgrove:block/blue_wisteria_blossoms",
+    "side_leaves": "heartgrove:block/blue_wisteria_blossoms"
+  }
+}

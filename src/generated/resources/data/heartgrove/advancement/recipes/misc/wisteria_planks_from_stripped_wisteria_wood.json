@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_stripped_wisteria_wood": {
+      "conditions": {
+        "items": [
+          {
+            "items": "heartgrove:stripped_wisteria_wood"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "heartgrove:wisteria_planks_from_stripped_wisteria_wood"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_stripped_wisteria_wood"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "heartgrove:wisteria_planks_from_stripped_wisteria_wood"
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "heartgrove:block/frostbell_blossom_wood_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "heartgrove:block/frostbell_blossom_wood"
+    },
+    "axis=z": {
+      "model": "heartgrove:block/frostbell_blossom_wood_horizontal",
+      "x": 90
+    }
+  }
+}

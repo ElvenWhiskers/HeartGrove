@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_frostbell_blossom_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "heartgrove:frostbell_blossom_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "heartgrove:frostbell_blossom_wood_from_frostbell_blossom_log"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_frostbell_blossom_log"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "heartgrove:frostbell_blossom_wood_from_frostbell_blossom_log"
+    ]
+  }
+}

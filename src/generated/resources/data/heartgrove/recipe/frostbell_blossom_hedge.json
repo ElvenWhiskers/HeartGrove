@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "heartgrove:frostbell_blossom_log"
+    },
+    "L": {
+      "item": "heartgrove:frostbell_blossom_leaves"
+    }
+  },
+  "pattern": [
+    "LLL",
+    "LLL",
+    " B "
+  ],
+  "result": {
+    "count": 6,
+    "id": "heartgrove:frostbell_blossom_hedge"
+  }
+}

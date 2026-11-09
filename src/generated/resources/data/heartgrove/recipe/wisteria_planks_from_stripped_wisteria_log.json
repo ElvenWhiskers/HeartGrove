@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "heartgrove:stripped_wisteria_log"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "heartgrove:wisteria_planks"
+  }
+}

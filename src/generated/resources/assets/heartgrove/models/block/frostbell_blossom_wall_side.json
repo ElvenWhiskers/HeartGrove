@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_wall_side",
+  "textures": {
+    "wall": "heartgrove:block/frostbell_blossom_planks"
+  }
+}

@@ -1,0 +1,732 @@
+{
+  "variants": {
+    "distance=1,facing=down,persistent=false,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 180
+    },
+    "distance=1,facing=down,persistent=false,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 180
+    },
+    "distance=1,facing=down,persistent=true,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 180
+    },
+    "distance=1,facing=down,persistent=true,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 180
+    },
+    "distance=1,facing=east,persistent=false,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 90
+    },
+    "distance=1,facing=east,persistent=false,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 90
+    },
+    "distance=1,facing=east,persistent=true,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 90
+    },
+    "distance=1,facing=east,persistent=true,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 90
+    },
+    "distance=1,facing=north,persistent=false,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90
+    },
+    "distance=1,facing=north,persistent=false,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90
+    },
+    "distance=1,facing=north,persistent=true,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90
+    },
+    "distance=1,facing=north,persistent=true,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90
+    },
+    "distance=1,facing=south,persistent=false,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 180
+    },
+    "distance=1,facing=south,persistent=false,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 180
+    },
+    "distance=1,facing=south,persistent=true,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 180
+    },
+    "distance=1,facing=south,persistent=true,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 180
+    },
+    "distance=1,facing=up,persistent=false,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves"
+    },
+    "distance=1,facing=up,persistent=false,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves"
+    },
+    "distance=1,facing=up,persistent=true,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves"
+    },
+    "distance=1,facing=up,persistent=true,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves"
+    },
+    "distance=1,facing=west,persistent=false,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 270
+    },
+    "distance=1,facing=west,persistent=false,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 270
+    },
+    "distance=1,facing=west,persistent=true,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 270
+    },
+    "distance=1,facing=west,persistent=true,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 270
+    },
+    "distance=2,facing=down,persistent=false,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 180
+    },
+    "distance=2,facing=down,persistent=false,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 180
+    },
+    "distance=2,facing=down,persistent=true,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 180
+    },
+    "distance=2,facing=down,persistent=true,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 180
+    },
+    "distance=2,facing=east,persistent=false,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 90
+    },
+    "distance=2,facing=east,persistent=false,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 90
+    },
+    "distance=2,facing=east,persistent=true,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 90
+    },
+    "distance=2,facing=east,persistent=true,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 90
+    },
+    "distance=2,facing=north,persistent=false,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90
+    },
+    "distance=2,facing=north,persistent=false,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90
+    },
+    "distance=2,facing=north,persistent=true,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90
+    },
+    "distance=2,facing=north,persistent=true,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90
+    },
+    "distance=2,facing=south,persistent=false,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 180
+    },
+    "distance=2,facing=south,persistent=false,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 180
+    },
+    "distance=2,facing=south,persistent=true,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 180
+    },
+    "distance=2,facing=south,persistent=true,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 180
+    },
+    "distance=2,facing=up,persistent=false,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves"
+    },
+    "distance=2,facing=up,persistent=false,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves"
+    },
+    "distance=2,facing=up,persistent=true,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves"
+    },
+    "distance=2,facing=up,persistent=true,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves"
+    },
+    "distance=2,facing=west,persistent=false,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 270
+    },
+    "distance=2,facing=west,persistent=false,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 270
+    },
+    "distance=2,facing=west,persistent=true,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 270
+    },
+    "distance=2,facing=west,persistent=true,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 270
+    },
+    "distance=3,facing=down,persistent=false,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 180
+    },
+    "distance=3,facing=down,persistent=false,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 180
+    },
+    "distance=3,facing=down,persistent=true,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 180
+    },
+    "distance=3,facing=down,persistent=true,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 180
+    },
+    "distance=3,facing=east,persistent=false,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 90
+    },
+    "distance=3,facing=east,persistent=false,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 90
+    },
+    "distance=3,facing=east,persistent=true,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 90
+    },
+    "distance=3,facing=east,persistent=true,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 90
+    },
+    "distance=3,facing=north,persistent=false,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90
+    },
+    "distance=3,facing=north,persistent=false,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90
+    },
+    "distance=3,facing=north,persistent=true,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90
+    },
+    "distance=3,facing=north,persistent=true,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90
+    },
+    "distance=3,facing=south,persistent=false,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 180
+    },
+    "distance=3,facing=south,persistent=false,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 180
+    },
+    "distance=3,facing=south,persistent=true,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 180
+    },
+    "distance=3,facing=south,persistent=true,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 180
+    },
+    "distance=3,facing=up,persistent=false,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves"
+    },
+    "distance=3,facing=up,persistent=false,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves"
+    },
+    "distance=3,facing=up,persistent=true,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves"
+    },
+    "distance=3,facing=up,persistent=true,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves"
+    },
+    "distance=3,facing=west,persistent=false,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 270
+    },
+    "distance=3,facing=west,persistent=false,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 270
+    },
+    "distance=3,facing=west,persistent=true,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 270
+    },
+    "distance=3,facing=west,persistent=true,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 270
+    },
+    "distance=4,facing=down,persistent=false,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 180
+    },
+    "distance=4,facing=down,persistent=false,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 180
+    },
+    "distance=4,facing=down,persistent=true,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 180
+    },
+    "distance=4,facing=down,persistent=true,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 180
+    },
+    "distance=4,facing=east,persistent=false,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 90
+    },
+    "distance=4,facing=east,persistent=false,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 90
+    },
+    "distance=4,facing=east,persistent=true,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 90
+    },
+    "distance=4,facing=east,persistent=true,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 90
+    },
+    "distance=4,facing=north,persistent=false,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90
+    },
+    "distance=4,facing=north,persistent=false,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90
+    },
+    "distance=4,facing=north,persistent=true,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90
+    },
+    "distance=4,facing=north,persistent=true,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90
+    },
+    "distance=4,facing=south,persistent=false,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 180
+    },
+    "distance=4,facing=south,persistent=false,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 180
+    },
+    "distance=4,facing=south,persistent=true,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 180
+    },
+    "distance=4,facing=south,persistent=true,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 180
+    },
+    "distance=4,facing=up,persistent=false,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves"
+    },
+    "distance=4,facing=up,persistent=false,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves"
+    },
+    "distance=4,facing=up,persistent=true,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves"
+    },
+    "distance=4,facing=up,persistent=true,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves"
+    },
+    "distance=4,facing=west,persistent=false,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 270
+    },
+    "distance=4,facing=west,persistent=false,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 270
+    },
+    "distance=4,facing=west,persistent=true,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 270
+    },
+    "distance=4,facing=west,persistent=true,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 270
+    },
+    "distance=5,facing=down,persistent=false,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 180
+    },
+    "distance=5,facing=down,persistent=false,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 180
+    },
+    "distance=5,facing=down,persistent=true,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 180
+    },
+    "distance=5,facing=down,persistent=true,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 180
+    },
+    "distance=5,facing=east,persistent=false,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 90
+    },
+    "distance=5,facing=east,persistent=false,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 90
+    },
+    "distance=5,facing=east,persistent=true,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 90
+    },
+    "distance=5,facing=east,persistent=true,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 90
+    },
+    "distance=5,facing=north,persistent=false,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90
+    },
+    "distance=5,facing=north,persistent=false,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90
+    },
+    "distance=5,facing=north,persistent=true,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90
+    },
+    "distance=5,facing=north,persistent=true,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90
+    },
+    "distance=5,facing=south,persistent=false,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 180
+    },
+    "distance=5,facing=south,persistent=false,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 180
+    },
+    "distance=5,facing=south,persistent=true,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 180
+    },
+    "distance=5,facing=south,persistent=true,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 180
+    },
+    "distance=5,facing=up,persistent=false,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves"
+    },
+    "distance=5,facing=up,persistent=false,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves"
+    },
+    "distance=5,facing=up,persistent=true,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves"
+    },
+    "distance=5,facing=up,persistent=true,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves"
+    },
+    "distance=5,facing=west,persistent=false,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 270
+    },
+    "distance=5,facing=west,persistent=false,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 270
+    },
+    "distance=5,facing=west,persistent=true,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 270
+    },
+    "distance=5,facing=west,persistent=true,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 270
+    },
+    "distance=6,facing=down,persistent=false,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 180
+    },
+    "distance=6,facing=down,persistent=false,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 180
+    },
+    "distance=6,facing=down,persistent=true,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 180
+    },
+    "distance=6,facing=down,persistent=true,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 180
+    },
+    "distance=6,facing=east,persistent=false,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 90
+    },
+    "distance=6,facing=east,persistent=false,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 90
+    },
+    "distance=6,facing=east,persistent=true,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 90
+    },
+    "distance=6,facing=east,persistent=true,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 90
+    },
+    "distance=6,facing=north,persistent=false,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90
+    },
+    "distance=6,facing=north,persistent=false,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90
+    },
+    "distance=6,facing=north,persistent=true,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90
+    },
+    "distance=6,facing=north,persistent=true,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90
+    },
+    "distance=6,facing=south,persistent=false,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 180
+    },
+    "distance=6,facing=south,persistent=false,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 180
+    },
+    "distance=6,facing=south,persistent=true,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 180
+    },
+    "distance=6,facing=south,persistent=true,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 180
+    },
+    "distance=6,facing=up,persistent=false,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves"
+    },
+    "distance=6,facing=up,persistent=false,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves"
+    },
+    "distance=6,facing=up,persistent=true,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves"
+    },
+    "distance=6,facing=up,persistent=true,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves"
+    },
+    "distance=6,facing=west,persistent=false,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 270
+    },
+    "distance=6,facing=west,persistent=false,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 270
+    },
+    "distance=6,facing=west,persistent=true,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 270
+    },
+    "distance=6,facing=west,persistent=true,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 270
+    },
+    "distance=7,facing=down,persistent=false,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 180
+    },
+    "distance=7,facing=down,persistent=false,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 180
+    },
+    "distance=7,facing=down,persistent=true,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 180
+    },
+    "distance=7,facing=down,persistent=true,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 180
+    },
+    "distance=7,facing=east,persistent=false,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 90
+    },
+    "distance=7,facing=east,persistent=false,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 90
+    },
+    "distance=7,facing=east,persistent=true,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 90
+    },
+    "distance=7,facing=east,persistent=true,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 90
+    },
+    "distance=7,facing=north,persistent=false,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90
+    },
+    "distance=7,facing=north,persistent=false,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90
+    },
+    "distance=7,facing=north,persistent=true,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90
+    },
+    "distance=7,facing=north,persistent=true,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90
+    },
+    "distance=7,facing=south,persistent=false,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 180
+    },
+    "distance=7,facing=south,persistent=false,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 180
+    },
+    "distance=7,facing=south,persistent=true,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 180
+    },
+    "distance=7,facing=south,persistent=true,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 180
+    },
+    "distance=7,facing=up,persistent=false,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves"
+    },
+    "distance=7,facing=up,persistent=false,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves"
+    },
+    "distance=7,facing=up,persistent=true,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves"
+    },
+    "distance=7,facing=up,persistent=true,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves"
+    },
+    "distance=7,facing=west,persistent=false,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 270
+    },
+    "distance=7,facing=west,persistent=false,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 270
+    },
+    "distance=7,facing=west,persistent=true,waterlogged=false": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 270
+    },
+    "distance=7,facing=west,persistent=true,waterlogged=true": {
+      "model": "heartgrove:block/blue_wisteria_leaves",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

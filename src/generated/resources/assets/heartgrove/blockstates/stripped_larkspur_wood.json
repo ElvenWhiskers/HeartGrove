@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "heartgrove:block/stripped_larkspur_wood_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "heartgrove:block/stripped_larkspur_wood"
+    },
+    "axis=z": {
+      "model": "heartgrove:block/stripped_larkspur_wood_horizontal",
+      "x": 90
+    }
+  }
+}

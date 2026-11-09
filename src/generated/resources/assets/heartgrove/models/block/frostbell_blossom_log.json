@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "heartgrove:block/frostbell_blossom_log_top",
+    "side": "heartgrove:block/frostbell_blossom_log"
+  }
+}

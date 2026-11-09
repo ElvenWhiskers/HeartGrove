@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_raw_aegis": {
+      "conditions": {
+        "items": [
+          {
+            "items": "heartgrove:raw_aegis"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "heartgrove:aegis_ingot_from_blasting_raw_aegis"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_raw_aegis"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "heartgrove:aegis_ingot_from_blasting_raw_aegis"
+    ]
+  }
+}

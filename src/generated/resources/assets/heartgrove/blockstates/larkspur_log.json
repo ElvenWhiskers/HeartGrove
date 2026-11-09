@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "heartgrove:block/larkspur_log_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "heartgrove:block/larkspur_log"
+    },
+    "axis=z": {
+      "model": "heartgrove:block/larkspur_log_horizontal",
+      "x": 90
+    }
+  }
+}

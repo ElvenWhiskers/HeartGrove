@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "heartgrove:stripped_frostbell_blossom_wood"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "heartgrove:frostbell_blossom_planks"
+  }
+}

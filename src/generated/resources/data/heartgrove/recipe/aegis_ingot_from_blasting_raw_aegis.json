@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.25,
+  "group": "aegis",
+  "ingredient": {
+    "item": "heartgrove:raw_aegis"
+  },
+  "result": {
+    "count": 1,
+    "id": "heartgrove:aegis_ingot"
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "heartgrove:block/blue_wisteria_hedge_foliage_core_base"
+      },
+      "when": {
+        "base": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "heartgrove:block/blue_wisteria_hedge_foliage_core_full"
+      },
+      "when": {
+        "base": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "heartgrove:block/blue_wisteria_hedge_foliage_north_base"
+      },
+      "when": {
+        "base": "true",
+        "north": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "heartgrove:block/blue_wisteria_hedge_foliage_north_full"
+      },
+      "when": {
+        "base": "false",
+        "north": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "heartgrove:block/blue_wisteria_hedge_foliage_east_base"
+      },
+      "when": {
+        "base": "true",
+        "east": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "heartgrove:block/blue_wisteria_hedge_foliage_east_full"
+      },
+      "when": {
+        "base": "false",
+        "east": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "heartgrove:block/blue_wisteria_hedge_foliage_south_base"
+      },
+      "when": {
+        "base": "true",
+        "south": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "heartgrove:block/blue_wisteria_hedge_foliage_south_full"
+      },
+      "when": {
+        "base": "false",
+        "south": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "heartgrove:block/blue_wisteria_hedge_foliage_west_base"
+      },
+      "when": {
+        "base": "true",
+        "west": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "heartgrove:block/blue_wisteria_hedge_foliage_west_full"
+      },
+      "when": {
+        "base": "false",
+        "west": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "heartgrove:block/blue_wisteria_hedge_wood_core"
+      },
+      "when": {
+        "base": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "heartgrove:block/blue_wisteria_hedge_wood_north"
+      },
+      "when": {
+        "base": "true",
+        "north": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "heartgrove:block/blue_wisteria_hedge_wood_east"
+      },
+      "when": {
+        "base": "true",
+        "east": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "heartgrove:block/blue_wisteria_hedge_wood_south"
+      },
+      "when": {
+        "base": "true",
+        "south": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "heartgrove:block/blue_wisteria_hedge_wood_west"
+      },
+      "when": {
+        "base": "true",
+        "west": "true"
+      }
+    }
+  ]
+}

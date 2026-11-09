@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "heartgrove:block/wisteria_log",
+    "side": "heartgrove:block/wisteria_log"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "heartgrove:frostbell_blossom_planks"
+    },
+    "B": {
+      "item": "heartgrove:frostbell_blossom_slab"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "ABA"
+  ],
+  "result": {
+    "count": 6,
+    "id": "heartgrove:frostbell_blossom_wall"
+  }
+}

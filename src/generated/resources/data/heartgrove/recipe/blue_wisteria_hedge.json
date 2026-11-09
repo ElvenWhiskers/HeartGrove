@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "heartgrove:wisteria_log"
+    },
+    "L": {
+      "item": "heartgrove:wisteria_leaves"
+    }
+  },
+  "pattern": [
+    "LLL",
+    "LLL",
+    " B "
+  ],
+  "result": {
+    "count": 6,
+    "id": "heartgrove:blue_wisteria_hedge"
+  }
+}

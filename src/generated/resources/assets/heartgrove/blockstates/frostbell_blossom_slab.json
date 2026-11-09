@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "heartgrove:block/frostbell_blossom_slab"
+    },
+    "type=double": {
+      "model": "heartgrove:block/frostbell_blossom_planks"
+    },
+    "type=top": {
+      "model": "heartgrove:block/frostbell_blossom_slab_top"
+    }
+  }
+}

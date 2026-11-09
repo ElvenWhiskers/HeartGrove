@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_larkspur_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "heartgrove:larkspur_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "heartgrove:sticks_from_larkspur_planks"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_larkspur_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "heartgrove:sticks_from_larkspur_planks"
+    ]
+  }
+}

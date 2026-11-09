@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "heartgrove:block/frostbell_blossom_planks",
+    "side": "heartgrove:block/frostbell_blossom_planks",
+    "top": "heartgrove:block/frostbell_blossom_planks"
+  }
+}

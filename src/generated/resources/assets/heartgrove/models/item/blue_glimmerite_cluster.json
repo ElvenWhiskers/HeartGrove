@@ -1,0 +1,22 @@
+{
+  "parent": "heartgrove:block/glimmerite/glimmerite_crystal_stage1",
+  "display": {
+    "gui": {
+      "rotation": [
+        30,
+        225,
+        0
+      ],
+      "scale": [
+        2,
+        2,
+        2
+      ],
+      "translation": [
+        0,
+        11,
+        0
+      ]
+    }
+  }
+}

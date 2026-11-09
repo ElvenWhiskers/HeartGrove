@@ -1,0 +1,44 @@
+{
+  "parent": "minecraft:block/block",
+  "elements": [
+    {
+      "faces": {
+        "down": {
+          "texture": "#leaves"
+        },
+        "east": {
+          "texture": "#side_leaves"
+        },
+        "north": {
+          "texture": "#side_leaves"
+        },
+        "south": {
+          "texture": "#side_leaves"
+        },
+        "up": {
+          "cullface": "up",
+          "texture": "#leaves"
+        },
+        "west": {
+          "texture": "#side_leaves"
+        }
+      },
+      "from": [
+        2,
+        2,
+        2
+      ],
+      "to": [
+        14,
+        16,
+        14
+      ]
+    }
+  ],
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "leaves": "heartgrove:block/larkspur_leaves",
+    "particle": "heartgrove:block/larkspur_leaves",
+    "side_leaves": "heartgrove:block/larkspur_leaves"
+  }
+}

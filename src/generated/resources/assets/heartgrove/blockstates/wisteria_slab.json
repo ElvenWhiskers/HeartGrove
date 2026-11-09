@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "heartgrove:block/wisteria_slab"
+    },
+    "type=double": {
+      "model": "heartgrove:block/wisteria_planks"
+    },
+    "type=top": {
+      "model": "heartgrove:block/wisteria_slab_top"
+    }
+  }
+}

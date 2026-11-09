@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "end": "heartgrove:block/larkspur_log_top",
+    "side": "heartgrove:block/larkspur_log"
+  }
+}

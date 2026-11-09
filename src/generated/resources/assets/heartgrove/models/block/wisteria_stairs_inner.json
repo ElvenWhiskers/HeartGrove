@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "heartgrove:block/wisteria_planks",
+    "side": "heartgrove:block/wisteria_planks",
+    "top": "heartgrove:block/wisteria_planks"
+  }
+}

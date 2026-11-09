@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "heartgrove:block/larkspur_crafting_table_front",
+    "side": "heartgrove:block/larkspur_crafting_table_side",
+    "top": "heartgrove:block/larkspur_crafting_table_top"
+  }
+}
